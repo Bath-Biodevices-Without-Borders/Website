@@ -1,0 +1,20 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+main {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size);
+  min-height: 100vh;
+  height: max-content;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

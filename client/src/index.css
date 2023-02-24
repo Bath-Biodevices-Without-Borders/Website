@@ -1,3 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  --color-1: hsl(174, 31%, 20%);
+  --color-2: hsl(76, 4%, 52%);
+  --color-3: hsl(42, 55%, 48%);
+  --color-4: hsl(22, 53%, 39%);
+  --color-5: hsl(22, 40%, 68%);
+
+  --background-color: hsl(22, 20%, 90%);
+  --text-color: #000000;
+
+  --font-size: 16px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  overscroll-behavior: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
