@@ -1,0 +1,34 @@
+{
+  "nav_buttons": [
+    {
+      "id": "about",
+      "link": "about",
+      "text": "About Us"
+    },
+    {
+      "id": "future",
+      "link": "future",
+      "text": "Our Plans"
+    },
+    {
+      "id": "issues",
+      "link": "issue",
+      "text": "Our Issues WIP"
+    },
+    {
+      "id": "partners",
+      "link": "partners",
+      "text": "Our Partners"
+    },
+    {
+      "id": "progress",
+      "link": "progress",
+      "text": "Our Progress"
+    },
+    {
+      "id": "donate",
+      "link": "donate",
+      "text": "Donate"
+    }
+  ]
+}

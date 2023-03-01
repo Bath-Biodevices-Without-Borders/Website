@@ -3,11 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 
-  --color-1: hsl(174, 31%, 20%);
-  --color-2: hsl(76, 4%, 52%);
-  --color-3: hsl(42, 55%, 48%);
-  --color-4: hsl(22, 53%, 39%);
-  --color-5: hsl(22, 40%, 68%);
+  --color-1: #234340;
+  --color-2: #878980;
+  --color-3: #be9537;
+  --color-4: #98552f;
+  --color-5: #cea58d;
 
   --background-color: hsl(22, 20%, 90%);
   --text-color: #000000;
