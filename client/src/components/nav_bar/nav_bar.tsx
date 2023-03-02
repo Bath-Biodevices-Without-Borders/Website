@@ -2,17 +2,17 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import './nav_bar.css';
-import nav_json from './nav_bar.json';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import CustomButton from '../custom_button/custom_button';
 
-export default function NavBar() {
+type T_nav_button = {id: string, text: string, link: string};
+
+export default function NavBar(props: {buttons: T_nav_button[]}) {
   const [isNavOpen, setNavOpen] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
-  const nav_buttons = nav_json.nav_buttons;
 
   const closeNav = (e: any) => {
     if (navRef.current && isNavOpen && !navRef.current.contains(e.target)) {
@@ -40,10 +40,10 @@ export default function NavBar() {
       </div>
       <ul className={`nav-list nav-list-${isNavOpen}`}>
         {
-          nav_buttons.map((button, index) => {
+          props.buttons.map((button: T_nav_button, index: number) => {
             return (
               <li key={index} id={`${button.id}-button`}>
-                <CustomButton lnIntFraction={index/nav_buttons.length}>
+                <CustomButton lnIntFraction={index/props.buttons.length}>
                   <Link className='link' to={button.link}>{button.text}</Link>
                 </CustomButton>
               </li>

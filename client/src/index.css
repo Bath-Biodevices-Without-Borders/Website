@@ -9,7 +9,7 @@
   --color-4: #98552f;
   --color-5: #cea58d;
 
-  --background-color: hsl(22, 20%, 90%);
+  --background-color: #ebe4e0;
   --text-color: #000000;
 
   --font-size: 16px;
@@ -22,6 +22,8 @@
   user-select: none;
 
   overscroll-behavior: none;
+
+  overflow-x: hidden;
 }
 
 body {
@@ -31,6 +33,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
 }
 
 code {

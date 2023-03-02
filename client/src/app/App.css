@@ -8,13 +8,10 @@ header {
 
 main {
   background-color: var(--background-color);
+  background-image: radial-gradient(var(--color-4) 1.15px, var(--background-color) 1.15px);
+  background-size: 25px 25px;
   color: var(--text-color);
   font-size: var(--font-size);
   min-height: 100vh;
   height: max-content;
-  margin-top: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
