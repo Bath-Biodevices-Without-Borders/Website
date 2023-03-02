@@ -1,0 +1,31 @@
+{
+  "sections": [
+    {
+      "id": "about",
+      "heading": "Who are we?",
+      "text": "Proident exercitation pariatur eiusmod aute eiusmod est minim in dolore eu. Adipisicing qui minim dolore velit quis elit reprehenderit quis ad quis mollit occaecat aliqua. Dolor aliqua cupidatat aute proident et.",
+      "img_idx": 0,
+      "alt": "Aliqua nostrud labore incididunt sint labore ullamco amet.",
+      "button": "Learn More",
+      "link": "about"
+    },
+    {
+      "id": "work",
+      "heading": "What do we do?",
+      "text": "Proident exercitation pariatur eiusmod aute eiusmod est minim in dolore eu. Adipisicing qui minim dolore velit quis elit reprehenderit quis ad quis mollit occaecat aliqua. Dolor aliqua cupidatat aute proident et.",
+      "img_idx": 1,
+      "alt": "Minim eu excepteur commodo dolor elit deserunt nostrud et pariatur irure labore enim magna ut.",
+      "button": "Learn More",
+      "link": "progress"
+    },
+    {
+      "id": "connected",
+      "heading": "Keep up to date",
+      "text": "Proident exercitation pariatur eiusmod aute eiusmod est minim in dolore eu. Adipisicing qui minim dolore velit quis elit reprehenderit quis ad quis mollit occaecat aliqua. Dolor aliqua cupidatat aute proident et.",
+      "img_idx": 2,
+      "alt": "Lorem labore sunt aute ad ea eu velit exercitation veniam adipisicing fugiat adipisicing excepteur magna.",
+      "button": "Learn More",
+      "link": "donate"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+.home-page {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-padding-bottom: 100px;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.home-page .img-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-page .img-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
+
+.home-page > .img-container > h1 {
+  position: absolute;
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 0.5rem black;
+  font-size: 5rem;
+}
+
+
+
+.home-page > .divider {
+  width: 100%;
+  height: 3rem;
+  background-color: var(--color-1);
+}
+
+
+
+.home-page > .section {
+  padding: 5rem 10vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.home-page > .section:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.home-page > .section > div:nth-child(n) {
+  border-radius: 1rem;
+  width: 48%;
+}
+
+.home-page > .section > .img-container {
+  height: 100%;
+}
+
+.home-page > .section > .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--color-5);
+  color: var(--color-1);
+}
+
+.home-page > .section h2,
+.home-page > .section p,
+.home-page > .section .button-container {
+  margin: 0.5rem 0;
+} 
+
+.home-page .button-container {
+  height: 2rem;
+  width: fit-content;
+}
