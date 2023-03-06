@@ -1,0 +1,79 @@
+.highlight-box {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+}
+
+.highlight-box .card-grid {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  margin: 0 5%;
+}
+
+.highlight-box .card {
+  position: relative;
+  gap: 30px;
+  transition: .3s ease;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.highlight-box .card:before {
+  content: "";
+  display: block;
+  padding-bottom: 150%;
+  width: 100%;
+}
+
+.highlight-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform-origin: center;
+  transform: scale(1) translateZ(0);
+  transition: .3s ease;
+  object-fit: contain;
+  object-position: center;
+}
+
+.highlight-box .card:hover img {
+  transform: scale(1.15) translateZ(0);
+  background-size: 260px;
+}
+
+.highlight-box .card-grid:hover > .card:not(:hover) {
+  transform: scale(.9);
+}
+
+.highlight-box .card-grid:hover > .card:not(:hover) img,
+.highlight-box .card-grid:hover > .card:not(:hover) h2 {
+  filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+}
+
+.highlight-box .content {
+  top: 50%;
+  left: 0;
+  padding: 25px;
+  position: absolute;
+}
+
+.highlight-box h2 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.highlight-box p {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}

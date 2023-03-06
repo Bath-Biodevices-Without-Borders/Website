@@ -1,0 +1,25 @@
+{
+  "heroCards": [
+    {
+      "id": "1",
+      "title": "Card 1",
+      "text": "This is card 1",
+      "img": "../src/images/temp_team_1.jpg",
+      "alt": "Card 1"
+    },
+    {
+      "id": "2",
+      "title": "Card 2",
+      "text": "This is card 2",
+      "img": "../src/images/temp_team_2.jpg",
+      "alt": "Card 2"
+    },
+    {
+      "id": "3",
+      "title": "Card 3",
+      "text": "This is card 3",
+      "img": "../src/images/temp_team_3.jpg",
+      "alt": "Card 3"
+    }
+  ]
+}
