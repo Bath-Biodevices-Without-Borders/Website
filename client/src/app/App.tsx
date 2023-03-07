@@ -15,9 +15,6 @@ function App() {
       <main>
         <Outlet />
       </main>
-      <footer>
-
-      </footer>
     </div>
   );
 }
