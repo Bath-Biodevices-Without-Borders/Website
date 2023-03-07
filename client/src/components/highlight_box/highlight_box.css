@@ -16,7 +16,6 @@
 
 .highlight-box .card {
   position: relative;
-  border: 1px solid red;
   transition: .3s ease;
   overflow: hidden;
   border-radius: 1rem;
