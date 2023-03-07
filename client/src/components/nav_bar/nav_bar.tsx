@@ -38,7 +38,7 @@ export default function NavBar(props: {buttons: T_nav_button[]}) {
           }
         </div>
       </div>
-      <ul className={`nav-list nav-list-${isNavOpen}`}>
+      <ul className={`nav-list nav-list-${isNavOpen}`} onClick={() => setNavOpen(false)}>
         {
           props.buttons.map((button: T_nav_button, index: number) => {
             return (
