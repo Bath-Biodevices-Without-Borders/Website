@@ -30,5 +30,13 @@
       "link": "donate",
       "text": "Donate"
     }
-  ]
+  ],
+  "contact": {
+    "email": "lorem.ipsum@tbb.com",
+    "phone": "123-456-7890",
+    "instagram": "@loremipsum",
+    "facebook": "loremipsum",
+    "twitter": "@loremipsum",
+    "linkedin": "loremipsum"
+  }
 }
