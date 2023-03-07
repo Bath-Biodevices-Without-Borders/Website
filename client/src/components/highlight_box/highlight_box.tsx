@@ -11,7 +11,7 @@ type T_highlight_card = {id: string, title: string, text: string, img: string, a
 export default function HighlightBox(props: {cards: T_highlight_card[]}) {
 
   const images = [team_img_1, team_img_2, team_img_3];
-  const cardWidth = `${100 / props.cards.length}%`;
+  const cardWidth = `${90 / props.cards.length}%`;
 
   return (
     <div className='highlight-box'>
