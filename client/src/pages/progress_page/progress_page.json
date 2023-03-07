@@ -1,0 +1,32 @@
+{
+  "timeline": [
+    {
+      "year": 2015,
+      "events": [
+        {
+          "title": "First Event",
+          "description": "Deserunt nostrud eiusmod enim sit Lorem reprehenderit dolore cillum consectetur non veniam amet eiusmod.",
+          "imgIdx": 0,
+          "alt": "Lorem ipsum"
+        },
+        {
+          "title": "Second Event",
+          "description": "Consectetur nisi et consequat id nisi occaecat veniam anim.",
+          "imgIdx": 1,
+          "alt": "Lorem ipsum"
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "events": [
+        {
+          "title": "Third Event",
+          "description": "Et qui tempor eiusmod do nulla fugiat nulla labore velit consequat nulla exercitation.",
+          "imgIdx": 2,
+          "alt": "Lorem ipsum"
+        }
+      ]
+    }
+  ]
+}
