@@ -10,20 +10,7 @@ import imgPerson2 from '../../images/temp_person_2.jpg';
 import imgPerson3 from '../../images/temp_person_3.jpg';
 import imgPerson4 from '../../images/temp_person_4.jpg';
 
-type T_member = {
-  name: string,
-  title: string,
-  text: string,
-  imgIdx: number,
-  alt: string
-}
-
-type T_team = {
-  id: string,
-  name: string,
-  text: string,
-  members: T_member[]
-}
+import { ITeam } from '../../types';
 
 /**
  * @abstract A page consisting of information about the organization.
@@ -41,7 +28,7 @@ export default function AboutPage() {
         <HighlightBox cards={about_json.heroCards}/>
       </div>
       {
-        about_json.teams.map((team: T_team, index: number) => {
+        about_json.teams.map((team: ITeam, index: number) => {
           return (
             <section key={index}>
               <div className='divider' id={team.id}></div>

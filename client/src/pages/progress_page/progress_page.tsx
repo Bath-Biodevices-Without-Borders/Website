@@ -8,17 +8,7 @@ import timeline_img_1 from '../../images/temp_timeline_1.jpg';
 import timeline_img_2 from '../../images/temp_timeline_2.jpg';
 import timeline_img_3 from '../../images/temp_timeline_3.jpg';
 
-type T_event = {
-  title: string,
-  description: string,
-  imgIdx: number,
-  alt: string
-}
-
-type T_timeline = {
-  year: number,
-  events: T_event[]
-}
+import { IEvent, ITimeline } from '../../types';
 
 
 /**
@@ -38,15 +28,15 @@ export default function ProgressPage() {
       </div>
       <div className='divider'></div>
       {
-        progress_json.timeline.sort((a: T_timeline, b: T_timeline) => {
+        progress_json.timeline.sort((a: ITimeline, b: ITimeline) => {
           return b.year - a.year;
-        }).map((progress: T_timeline, index: number) => {
+        }).map((progress: ITimeline, index: number) => {
           return (
             <section className="events" key={index}>
               <div className="content">
                 <h2>{progress.year}</h2>
                 {
-                  progress.events.map((event: T_event, index: number) => {
+                  progress.events.map((event: IEvent, index: number) => {
                     return (
                       <div className="event" key={index}>
                         <div className='text-container'>

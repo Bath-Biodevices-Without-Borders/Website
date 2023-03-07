@@ -8,9 +8,9 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import CustomButton from '../custom_button/custom_button';
 
-type T_nav_button = {id: string, text: string, link: string};
+import { INavButton } from '../../types';
 
-export default function NavBar(props: {buttons: T_nav_button[]}) {
+export default function NavBar(props: {buttons: INavButton[]}) {
   const [isNavOpen, setNavOpen] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
 
@@ -40,7 +40,7 @@ export default function NavBar(props: {buttons: T_nav_button[]}) {
       </div>
       <ul className={`nav-list nav-list-${isNavOpen}`} onClick={() => setNavOpen(false)}>
         {
-          props.buttons.map((button: T_nav_button, index: number) => {
+          props.buttons.map((button: INavButton, index: number) => {
             return (
               <li key={index} id={`${button.id}-button`}>
                 <CustomButton lnIntFraction={index/props.buttons.length}>

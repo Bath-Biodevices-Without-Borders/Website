@@ -1,10 +1,6 @@
-export const url: string = 'http://localhost:3001/';
+import { IColors } from './types';
 
-interface IColors {
-  h: number;
-  s: number;
-  l: number;
-}
+export const url: string = 'http://localhost:3001/';
 
 export const colors: IColors[] = [{ h: 312, s: 100, l: 50 }, { h: 277, s: 100, l: 50 }, { h: 248, s: 100, l: 50 }, { h: 219, s: 100, l: 50 }, { h: 191, s: 100, l: 50 }];
 
