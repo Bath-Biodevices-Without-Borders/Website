@@ -10,8 +10,6 @@ import imgPerson2 from '../../images/temp_person_2.jpg';
 import imgPerson3 from '../../images/temp_person_3.jpg';
 import imgPerson4 from '../../images/temp_person_4.jpg';
 
-import { ITeam } from '../../types';
-
 /**
  * @abstract A page consisting of information about the organization.
  * 
@@ -28,7 +26,7 @@ export default function AboutPage() {
         <HighlightBox cards={about_json.heroCards}/>
       </div>
       {
-        about_json.teams.map((team: ITeam, index: number) => {
+        about_json.teams.map((team: any, index: number) => {
           return (
             <section key={index}>
               <div className='divider' id={team.id}></div>
@@ -36,7 +34,7 @@ export default function AboutPage() {
               <p>{team.text}</p>
               <div className='members'>
                 {
-                  team.members.map((member, index) => {
+                  team.members.map((member: any, index: number) => {
                     return(
                       <div key={index} className='member'>
                         <img src={profileImages[member.imgIdx]} alt={member.alt}/>

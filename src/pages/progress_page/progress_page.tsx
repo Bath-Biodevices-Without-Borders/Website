@@ -8,8 +8,6 @@ import timeline_img_1 from '../../images/temp_timeline_1.jpg';
 import timeline_img_2 from '../../images/temp_timeline_2.jpg';
 import timeline_img_3 from '../../images/temp_timeline_3.jpg';
 
-import { IEvent, ITimeline } from '../../types';
-
 
 /**
  * @abstract A page consisting of information about the progress of the
@@ -28,15 +26,15 @@ export default function ProgressPage() {
       </div>
       <div className='divider'></div>
       {
-        progress_json.timeline.sort((a: ITimeline, b: ITimeline) => {
+        progress_json.timeline.sort((a: any, b: any) => {
           return b.year - a.year;
-        }).map((progress: ITimeline, index: number) => {
+        }).map((progress: any, index: number) => {
           return (
             <section className="events" key={index}>
               <div className="content">
                 <h2>{progress.year}</h2>
                 {
-                  progress.events.map((event: IEvent, index: number) => {
+                  progress.events.map((event: any, index: number) => {
                     return (
                       <div className="event" key={index}>
                         <div className='text-container'>
