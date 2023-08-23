@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
@@ -14,30 +14,32 @@ import IssuePage from './pages/issue_page/issue_page';
 import PartnersPage from './pages/partners_page/partners_page';
 import ProgressPage from './pages/progress_page/progress_page';
 
+import ErrorPage from './pages/error_page/error_page';
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "about", element: <AboutPage /> },
+      { path: "donate", element: <DonatePage /> },
+      { path: "future", element: <FuturePage /> },
+      { path: "issue", element: <IssuePage /> },
+      { path: "partners", element: <PartnersPage /> },
+      { path: "progress", element: <ProgressPage /> }
+    ]
+
+  }
+])
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <Router>
-      <Routes>
-        <Route path='/' element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path='about' element={<AboutPage />} />
-          <Route path='donate' element={<DonatePage />} />
-          <Route path='future' element={<FuturePage />} />
-          <Route path='issue' element={<IssuePage />} />
-          <Route path='partners' element={<PartnersPage />} />
-          <Route path='progress' element={<ProgressPage />} />
-          <Route path='*' element={
-            <div className='incorrect-page'>
-              <h1>404</h1>
-              <h2>Page not found</h2>
-            </div>
-          } />
-        </Route>
-      </Routes>
-    </Router>
+  <RouterProvider router={router} />
 );
 
 // If you want to start measuring performance in your app, pass a function
