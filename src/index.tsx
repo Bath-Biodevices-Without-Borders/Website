@@ -15,13 +15,14 @@ const router = createHashRouter([
     path: '/',
     element: <App />,
     children: [
-      { path: '/', element: <HomePage /> },
-      { path: '/about', element: <AboutPage /> },
-      { path: '/oasis', element: <OasisPage /> },
-      { path: '/contact', element: <ContactPage /> }
+      { path: '', element: <HomePage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'oasis', element: <OasisPage /> },
+      { path: 'contact', element: <ContactPage /> }
     ]
   }
 ])
+
 
 ReactDOM.render(
   <React.StrictMode>
