@@ -1,42 +1,28 @@
-import React from 'react';
-import logo from './option 1 - normal (cropped).png';
-import { ReactComponent as Linkedin } from './linkedin.svg';
-import { ReactComponent as Instagram } from './instagram.svg';
 import './App.css';
+import NavBar from './components/nav_bar/nav_bar';
+import Footer from './components/footer/footer';
+import HomePage from './pages/home_page/home_page';
+import AboutPage from './pages/about_page/about_page';
+import OasisPage from './pages/oasis_page/oasis_page';
+import ContactPage from './pages/contact_page/contact_page';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App" id='App'>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Sorry, Biodevices Without Borders' website is still being developed. <br />
-          Please check back later for updates.
-        </p>
-        <p>
-          Please check out our LinkedIn and Instagram pages for more information.
-        </p>
-        <div className="App-links">
-          <a  
-            className="App-link"
-            href="https://www.linkedin.com/company/team-bath-biodevices-without-borders"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin className='link-icon'/>
-            <p>LinkedIn</p>
-          </a>
-          <a
-            className="App-link"
-            href="https://www.instagram.com/teambathbiodevicesuk/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className='link-icon'/>
-            <p>Instagram</p>
-          </a>
-        </div>
-      </header>
+    <div className="App">
+        <Router>
+          <header>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route path="/about" element={<AboutPage />}></Route>
+              <Route path="/oasis" element={<OasisPage/>}></Route>
+              <Route path="/contact" element={<ContactPage/>}></Route>
+            </Routes>
+          </header>
+          <Footer />
+        </Router>
     </div>
   );
 }
