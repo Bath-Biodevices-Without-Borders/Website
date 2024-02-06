@@ -1,0 +1,160 @@
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 60px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bolder;
+}
+
+
+.card-product {
+  overflow: hidden;
+  height: 600px;
+  background-color: #ECEBFF ;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.card-product h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+  margin-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.card-product p {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.8;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  margin-left: 20px;
+  margin-right: 60px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+  line-height: 20px;
+}
+
+.team-imgs {
+  height: 500px;
+  width: 3000px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  margin-left: 70px;
+  margin-bottom: 50px;
+
+}
+
+.team-imgs img {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  text-align: center;
+  margin: 20px;
+}
+
+.team-card h3 {
+  font-size: 18px;
+  margin: 0;
+  margin-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.team-card p {
+  font-size: 16px;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  opacity: .7;
+}
+
+.team-2023-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 850px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font-family: 'Open Sans', sans-serif;
+  background-color: #030026;
+
+}
+
+.team-2023-table h2 {
+  font-size: 40px;
+  margin: 0;
+  margin-top: 70px;
+  margin-bottom: 50px;
+  color: #ECEBFF;
+}
+
+.team-2023-row-one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+}
+
+.team-2023-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 200px;
+  padding: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: #0E7C7B ;
+  border-radius: 10px;
+  color: #ECEBFF;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.team-2023-card h3 {
+  margin: 0;
+  margin-top: 5px;
+}
+
+.team-2023-row-two {
+  display:flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.team-2023-row-two .team-2023-card {
+  background-color: #0E7C7B;
+}
+
+.team-2023-row-three {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.inner-square {
+  background-color: #ECEBFF;
+  color: #030026;
+  border-radius: 5px;
+  width: 90%;
+  height: 100%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

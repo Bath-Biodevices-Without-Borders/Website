@@ -1,0 +1,283 @@
+
+.home-card-category {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 150px;
+
+}
+
+.home-card-category h1 {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.home-card-category p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.custom-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #fff;
+  background-color: #355DF2 ;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.custom-button:hover {
+  background-color: #5976e0;
+  color: #fff;
+}
+
+.issue-card {
+  background-color: #ECEBFF;
+  height: 600px;
+  display: flex;
+}
+
+.issue-part-one {
+  margin-top: 40px;
+  margin-left: 100px;
+  width: 60%;
+}
+
+.issue-part-two {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.issue-card h2 {
+  font-size: 40px;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 5px;
+  color: #030026;
+}
+
+.container-one {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container-one p {
+  color: #030026;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+.africa-map {
+  height: 500px;
+}
+
+.container-two {
+  margin-top: 20px;
+}
+.water-scarcity {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+
+}
+
+.water-scarcity i {
+  font-size: 50px;
+  color: #030026;
+}
+
+.water-scarcity p {
+  font-size: 18px;
+  color: #030026;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+
+.container-two p {
+  color: #030026;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.waterbourne-disease {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+}
+
+.number {
+  font-size: 40px;
+  color: #030026;
+  margin: 0;
+  padding: 0;
+  line-height: 0.25;
+}
+
+.text {
+  font-size: 18px;
+  color: #030026;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.lack-access {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+}
+
+.our-mission {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #030026;
+  padding-top: 50px;
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+}
+
+.our-mission h2 {
+  font-size: 40px;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 35px;
+  color: #ECEBFF;
+}
+
+.our-mission h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.statement {
+  color:#ECEBFF;
+  width: 70%;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 60px rgb(82, 225, 177);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.our-mission img {
+  width: 70%;
+
+}
+
+.our-solution {
+  height: 600px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: #030026;
+  background: linear-gradient(180deg, #EBF1FF 40%,  #BAD0FF 100%);
+  display: flex;
+
+}
+
+.solution-container-one {
+  width: 40%;
+
+}
+
+.solution-container-one img{
+  width: 100%;
+  margin-top: 18px;
+  background-color: #EBF1FF;
+}
+
+.solution-container-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.our-solution h2 {
+  font-size: 40px;
+  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 70px;
+}
+
+.our-solution p {
+  font-size: 20px;
+  width: 750px;
+  margin:0;
+  margin-left: 70px;
+  margin-bottom: 20px;
+
+}
+
+.our-solution h4 {
+  margin: 0px;
+}
+
+.solution-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+
+}
+
+.solution-card i{
+  font-size: 20px;
+}
+
+.solution-card h4{
+  margin: 0;
+  margin-left: 30px;
+
+}
+
+.solution-table {
+  display: flex;
+  margin-left: 70px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.solution-table-part-two {
+  margin-left: 40px;
+
+}
+
+.custom-button-solu {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #fff;
+  background-color: #355DF2 ;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  margin-top: 15px;
+  margin-left: 70px;
+}
+
+.custom-button-solu:hover {
+  background-color: #5976e0;
+  color: #fff;
+}
