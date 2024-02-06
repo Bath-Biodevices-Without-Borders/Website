@@ -3,23 +3,25 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 50vmin;
   pointer-events: none;
+  margin: 1em;
 }
 
 .App-header {
-  background-color: whitesmoke;
+  background-color: var(--bg-color-light);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: black;
+  color: var(--font-color);
 }
 
 header p {
   margin: 1em 10%;
+  font-size: 20px;
 }
 
 .App-links {
@@ -32,7 +34,7 @@ header p {
 }
 
 .App-link {
-  color: black;
+  color: var(--color-3);
   margin: 1em;
   padding: 0.2em 1em;;
   border-radius: 0.5em;
@@ -43,7 +45,7 @@ header p {
   flex-direction: row;
   align-items: center;
 
-  border: black solid 2px;
+  border: var(--color-3) solid 2px;
 
   transition: all 0.2s ease-in-out;
 }
@@ -60,8 +62,8 @@ header p {
 }
 
 .App-link:hover {
-  color: whitesmoke;
-  background-color: black;
+  color: var(--bg-color-light);
+  background-color: var(--color-3);
 }
 
 @media (max-width: 600px) {

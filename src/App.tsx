@@ -1,14 +1,14 @@
 import React from 'react';
-import error from './error.svg';
+import logo from './option 1 - normal (cropped).png';
 import { ReactComponent as Linkedin } from './linkedin.svg';
-import { ReactComponent as Github } from './github.svg';
+import { ReactComponent as Instagram } from './instagram.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id='App'>
       <header className="App-header">
-        <img src={error} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Sorry, Biodevices Without Borders' website is still being developed. <br />
           Please check back later for updates.
@@ -19,7 +19,7 @@ function App() {
         <div className="App-links">
           <a  
             className="App-link"
-            href="https://www.linkedin.com/in/georgemadeleybathcompsyseng"
+            href="https://www.linkedin.com/company/team-bath-biodevices-without-borders"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -28,12 +28,12 @@ function App() {
           </a>
           <a
             className="App-link"
-            href="https://github.com/George-Madeley"
+            href="https://www.instagram.com/teambathbiodevicesuk/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Github className='link-icon'/>
-            <p>GitHub</p>
+            <Instagram className='link-icon'/>
+            <p>Instagram</p>
           </a>
         </div>
       </header>
