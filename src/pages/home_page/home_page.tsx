@@ -25,31 +25,37 @@ export default function HomePage() {
         <Link to="/contact" className="custom-button">Get Involved</Link>
       </div>
       <div className="issue-card">
-        <div className="issue-part-one">
-          <div className='container-one'>
-            <h2>The Water Crisis</h2>
-            <p>More than 783 million people worldwide currently lack access to clean and safe water,
-              posing a severe threat to public health and well-being. The impact is particularly
-              devastating in the developing world, where waterborne diseases emerge as a critical
-              concern.</p>
+      <h2>The Water Crisis</h2>
+        <div className= "issue-content">
+          <div className="issue-part-one">
+            <div className='container-one'>
+              <p>More than 783 million people worldwide currently lack access to clean and safe water,
+                posing a severe threat to public health and well-being. The impact is particularly
+                devastating in the developing world, where waterborne diseases emerge as a critical
+                concern.</p>
+            </div>
+            <div className='container-two'>
+              <div className='water-scarcity'>
+                <div><i className="fa-solid fa-person"></i>
+                  <i className="fa-solid fa-person" ></i>
+                  <i className="fa-solid fa-person" style= {{color: "#355DF2"}}></i>
+                </div>
+                <div className='text'>
+                  <p>1 in 3 Africans face water scarcity</p>
+                </div>
+              </div>
+              <div className='waterbourne-disease'>
+                <div className='number'><p><strong>115</strong></p></div>
+                <div className='text'><p>people in Africa die from waterbourne diseases every hour</p></div>
+              </div>
+              <div className='lack-access'>
+                <div className='number'><p><strong>400</strong></p></div>
+                <div className='text'><p> million sub-saharan Africans lack access to basic drinking water</p></div>
+              </div>
+            </div>
           </div>
-          <div className='container-two'>
-            <div className='water-scarcity'><i className="fa-solid fa-person"></i>
-              <i className="fa-solid fa-person" ></i>
-              <i className="fa-solid fa-person" style= {{color: "#355DF2"}}></i>
-              <p>1 in 3 Africans face water scarcity</p>
-            </div>
-            <div className='waterbourne-disease'>
-              <div className='number'><p><strong>115</strong></p></div>
-              <div className='text'><p>people in Africa die from waterbourne diseases every hour</p></div>
-            </div>
-            <div className='lack-access'>
-              <div className='number'><p><strong>400</strong></p></div>
-              <div className='text'><p> million sub-saharan Africans lack access to basic drinking water</p></div>
-            </div>
-          </div>
+          <div className="issue-part-two"><img className='africa-map' src={AfricaMap} alt="Africa Map" /></div>
         </div>
-        <div className="issue-part-two"><img className='africa-map' src={AfricaMap} alt="Africa Map" /></div>
       </div>
       <div className='our-mission'>
         <h2>Our Mission</h2>

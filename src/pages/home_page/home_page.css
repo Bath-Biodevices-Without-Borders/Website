@@ -4,20 +4,20 @@
   background-position: center;
   height: 300px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 150px;
+  padding: 10%;
 
 }
 
 .home-card-category h1 {
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 36px;
+  font-size: 2.25em;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 }
 
 .home-card-category p {
-  font-size: 20px;
+  font-size: 1.25em;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -47,11 +47,19 @@
   background-color: #ECEBFF;
   height: 600px;
   display: flex;
+  padding-top: 5%;
+  padding-left: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
+.issue-content {
+  display: flex;
+
+}
+
+
 .issue-part-one {
-  margin-top: 40px;
-  margin-left: 100px;
   width: 60%;
 }
 
@@ -66,6 +74,7 @@
   font-size: 40px;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 5px;
+  margin-top: 0;
   color: #030026;
 }
 
@@ -147,7 +156,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #030026;
-  padding-top: 50px;
+  padding-top: 5%;
   box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
 }
 
@@ -273,11 +282,129 @@
   border-radius: 10px;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
-  margin-top: 15px;
-  margin-left: 70px;
+  margin-top: 2%;
+  margin-left: 7%;
 }
 
 .custom-button-solu:hover {
   background-color: #5976e0;
   color: #fff;
+}
+
+
+@media (max-width: 768px) {
+
+  .home-card-category {
+    height: 50%;
+  }
+  .issue-card {
+    height: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+
+  .issue-card h2 {
+    font-size: 30px;
+  }
+
+  .issue-part-one {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .issue-part-two {
+    width: 10%;
+  }
+
+  .container-one {
+    align-items: center;
+  }
+
+  .container-one p {
+    font-size: 1em;
+  }
+
+  .africa-map {
+    height: 100px;
+    display: none;
+  }
+
+
+  .water-scarcity i {
+    font-size: 2em;
+  }
+
+  .water-scarcity p {
+    font-size: 1em;
+  }
+
+  .container-two p {
+    font-size: 1em;
+
+  }
+
+  .lack-access p {
+    font-size: 1em;
+  }
+
+  .text {
+    font-size: 0.9em;
+  }
+
+  .number {
+    font-size: 2em;
+  }
+
+  .our-mission {
+    height: 100%;
+  }
+
+  .our-mission h2 {
+    font-size: 30px;
+  }
+
+  .our-mission h4 {
+    font-size: 16px;
+  }
+
+  .our-mission img {
+    width: 100%;
+  }
+
+  .our-solution {
+    padding: 10%;
+
+  }
+
+  .solution-container-one img {
+    width: 0;
+  }
+
+  .our-solution h2 {
+    font-size: 30px;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .our-solution p {
+    font-size: 16px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .solution-table {
+    margin-left: 0;
+
+  }
+
+  .solution-table-part-two {
+    margin-left: 0;
+  }
+
+  .custom-button-solu {
+    margin-left: 0;
+    margin-top: 10%;
+  }
+
+
 }
