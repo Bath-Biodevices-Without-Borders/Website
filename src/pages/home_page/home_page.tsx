@@ -54,9 +54,8 @@ export default function HomePage() {
       <div className='our-mission'>
         <h2>Our Mission</h2>
         <div className='statement'>
-          <h4>Our mission is to provide portable and reusable water-quality diagnostic
-            devices for water-quality safety and inspection, focusing on communities suffering
-            from intense water scarcity and stress.</h4>
+          <h4>Our mission is to provide portable and reusable diagnostic devices for water-quality safety and inspection, 
+            focusing on communities suffering from water scarcity and stress.</h4>
         </div>
         <img src={TeamPhoto} alt="Team" />
       </div>
