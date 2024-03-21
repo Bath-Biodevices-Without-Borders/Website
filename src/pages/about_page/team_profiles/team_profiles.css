@@ -1,8 +1,8 @@
-.team-profiles-container {
+.team-list-container {
 
 }
 
-.team-profiles-header {
+.team-list-header {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -12,12 +12,13 @@
     font-weight: bold;
 }
 
-.team-profiles {
+
+.team-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
-    flex-wrap: wrap;
+    flex-direction: column;
+
+    width: 100%;
 
     gap: 1em;
+
 }

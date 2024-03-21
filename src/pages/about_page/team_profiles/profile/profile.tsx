@@ -9,8 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: any) {
+
+  const role = props.Roles.find((role: any) => role.Team === props.team)
+
   return (
-    <div className='team-profile'>
+    <div
+      className='team-profile'
+      style={{ backgroundColor: props.isLead ? '#f0f0f0' : 'white' }}
+    >
       <input
         type='checkbox'
         name='team-profile'
@@ -28,7 +34,7 @@ export default function Profile(props: any) {
         <div className='team-profile-details'>
           <span className='team-profile-text'>
             <p>{props.Name}</p>
-            <p>{props.Roles[0].Role}</p>
+            <p>{role.Role}</p>
             <p>{props.Course}</p>
           </span>
           <LinkIcons link={props.Link} />

@@ -1,9 +1,8 @@
 import React from 'react'
 import './team_profiles.css'
 
-import Profile from './profile/profile';
-
 import teamDetails from '../../../content/team_details.json'
+import TeamSection from './team_section/team_section';
 
 type T_teamMember = {
     Id: number;
@@ -18,6 +17,11 @@ type T_teamMember = {
         Team: string;
     }[];
     Legacy: boolean;
+    Lead: string;
+};
+
+type T_orgDetails = {
+    [key: string]: T_teamMember[];
 };
 
 /**
@@ -27,7 +31,7 @@ type T_teamMember = {
  * @returns The rendered team profiles section.
  */
 export default function TeamProfiles() {
-    const [teamMembers, setTeamMembers] = React.useState<T_teamMember[]>([])
+    const [teamMembers, setTeamMembers] = React.useState<T_orgDetails>({});
 
     React.useEffect(() => {
         const newTeamDetails: T_teamMember[] = teamDetails 
@@ -67,8 +71,41 @@ export default function TeamProfiles() {
             return null;
         });
 
+        const orgTeamDetails: T_orgDetails = {
+            "Management": [],
+            "Hardware": [],
+            "Sensors": [],
+            "Software": [],
+            "Finance": [],
+            "Outreach": [],
+            "Social": []
+        }
+
+
+        Object.keys(orgTeamDetails).forEach((teamName: string) => {
+
+            // This is used to filter the team members based on the team name
+            const teamMembers = newTeamDetails.filter((member) => {
+                return member.Roles.find((role) => role.Team === teamName);
+            });
+
+            const sortedTeamMembers = teamMembers.sort((a, b) => {
+                if (a.Lead === teamName && b.Lead !== teamName) {
+                    return -1;
+                } else if (a.Lead !== teamName && b.Lead === teamName) {
+                    return 1;
+                } else {
+                    return a.Name.localeCompare(b.Name);
+                }
+            });
+
+            orgTeamDetails[teamName] = sortedTeamMembers;
+        });
+        
+        console.log(orgTeamDetails)
+
         // This is used to set the team members to the new team details
-        setTeamMembers(newTeamDetails)
+        setTeamMembers(orgTeamDetails);
 
     }, [])
 
@@ -84,20 +121,24 @@ export default function TeamProfiles() {
 
 
     return (
-        <section className='team-profiles-container'>
-            <div className='team-profiles-header'>
+        <section className='team-list-container'>
+            <div className='team-list-header'>
                 <h2>Meet the Team</h2>
             </div>
-            <div className='team-profiles'>
+            <div className='team-list'>
                 {
-                    teamMembers.map((teamMember, index) => {
+                    teamMembers && Object.keys(teamMembers).map((
+                        teamName: string,
+                        index: number
+                    ) => {
                         return (
-                            <Profile
+                            <TeamSection
                                 key={index}
                                 index={index}
-                                isSelected={selected === index}
+                                teamName={teamName}
+                                teamMembers={teamMembers[teamName]}
+                                selected={selected}
                                 handleSelection={handleSelection}
-                                {...teamMember}
                             />
                         )
                     })
