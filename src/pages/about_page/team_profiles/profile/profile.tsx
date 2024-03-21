@@ -3,6 +3,7 @@ import ImageErrorBoundary from './image_error_boundary'
 import './profile.css'
 
 import Blank from '../../../../images/team_profiles/blank.jpg'
+import LinkIcons from './link_icons'
 
 export default function Profile(props: any) {
   return (
@@ -14,12 +15,12 @@ export default function Profile(props: any) {
         />
       </div>
       <div className='team-profile-details'>
-        <p>{props.Name}</p>
-        <p>{props.Roles[0].Role}</p>
-        <p>{props.Course}</p>
-        <a href={props.Link} target='_blank' rel='noreferrer'>
-          Contact
-        </a>
+        <span className='team-profile-text'>
+          <p>{props.Name}</p>
+          <p>{props.Roles[0].Role}</p>
+          <p>{props.Course}</p>
+        </span>
+        <LinkIcons link={props.Link} />
       </div>
     </div>
   )

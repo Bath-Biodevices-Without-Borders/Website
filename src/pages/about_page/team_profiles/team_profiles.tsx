@@ -75,7 +75,7 @@ export default function TeamProfiles() {
     return (
         <section className='team-profiles-container'>
             <div className='team-profiles-header'>
-                <h1>Meet the Team</h1>
+                <h2>Meet the Team</h2>
             </div>
             <div className='team-profiles'>
                 {
