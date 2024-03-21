@@ -72,6 +72,17 @@ export default function TeamProfiles() {
 
     }, [])
 
+    const [selected, setSelected] = React.useState(-1)
+
+    const handleSelection = (index: number) => {
+        if (selected === index) {
+            setSelected(-1)
+        } else {
+            setSelected(index)
+        }
+    }
+
+
     return (
         <section className='team-profiles-container'>
             <div className='team-profiles-header'>
@@ -81,7 +92,13 @@ export default function TeamProfiles() {
                 {
                     teamMembers.map((teamMember, index) => {
                         return (
-                            <Profile key={index} {...teamMember} />
+                            <Profile
+                                key={index}
+                                index={index}
+                                isSelected={selected === index}
+                                handleSelection={handleSelection}
+                                {...teamMember}
+                            />
                         )
                     })
                 }

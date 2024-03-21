@@ -1,8 +1,26 @@
 .team-profile {
-  box-sizing: border-box;
+  position: relative;
   width: 15em;
   overflow: hidden;
+
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.team-profile:hover {
+  transform: scale(1.1);
+}
+
+.team-profile > input[type="checkbox"] {
+  display: none;
+}
+
+.team-profile > .foreground {
+  box-sizing: border-box;
   padding: 1em;
+
+  height: 100%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -14,7 +32,7 @@
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
-  margin-bottom: 0.7em;;
+  margin-bottom: 0.7em;
 }
 
 .team-profile-image img {
@@ -40,11 +58,11 @@
 }
 
 .team-profile-text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .team-profile-details p:nth-child(1) {
@@ -76,4 +94,58 @@
 
 .team-profile-details > a:hover {
   color: #000;
+}
+
+.team-profile > .background {
+  position: absolute;
+  top: 100%;
+
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--OxfordBlue);
+  color: var(--Lavander);
+
+  box-sizing: border-box;
+  padding: 1em;
+  border-radius: 1em;
+
+  transition: transform 0.2s;
+
+  cursor: default;
+}
+
+.team-profile > .background > div {
+  width: 100%;
+  flex: 1;
+
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--Lavander) var(--OxfordBlue);
+
+  padding-right: 0.5em;
+}
+
+.team-profile > .background label {
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.team-profile > .background label:hover {
+  transform: scale(1.2) rotate(720deg);
+}
+
+.team-profile input[type="checkbox"]:checked ~ .background {
+  transform: translateY(-100%);
 }
