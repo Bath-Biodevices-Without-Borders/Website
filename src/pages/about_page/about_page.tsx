@@ -7,6 +7,8 @@ import TeamMember4 from '../../images/team-member-4.png';
 import TeamMember5 from '../../images/team-member-5.png';
 import TeamMember6 from '../../images/team-member-6.png';
 
+import TeamProfiles from './team_profiles/team_profiles';
+
 export default function AboutPage() {
   return (
     <div className="about-page">
@@ -72,6 +74,7 @@ export default function AboutPage() {
             </p>
         </div>
       </div>
+      <TeamProfiles />
     </div>
   );
 }
