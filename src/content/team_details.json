@@ -20,7 +20,8 @@
         "Role": "Technical Advisor",
         "Team": "Hardware"
       }
-    ]
+    ],
+    "Legacy": true
   },
   {
     "Id": 2,
@@ -39,7 +40,8 @@
         "Role": "Electronics Engineer",
         "Team": "Hardware"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 3,
@@ -54,7 +56,8 @@
         "Role": "Technical Director",
         "Team": "Management"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 4,
@@ -73,7 +76,8 @@
         "Role": "Conductivity Sensor Developer",
         "Team": "Sensors"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 5,
@@ -88,7 +92,8 @@
         "Role": "Managing Director",
         "Team": "Management"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 6,
@@ -103,7 +108,8 @@
         "Role": "Front-End Engineer",
         "Team": "Software"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 7,
@@ -118,7 +124,8 @@
         "Role": "Back-end Developer",
         "Team": "Software"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 8,
@@ -133,7 +140,8 @@
         "Role": "Back-end Developer",
         "Team": "Software"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 9,
@@ -148,7 +156,8 @@
         "Role": "Head of Sensors",
         "Team": "Sensors"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 10,
@@ -167,7 +176,8 @@
         "Role": "Grant Seeker",
         "Team": "Finance"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 11,
@@ -182,7 +192,8 @@
         "Role": "Electronics Engineer",
         "Team": "Hardware"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 12,
@@ -205,7 +216,8 @@
         "Role": "Event Coordinator",
         "Team": "Outreach"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 13,
@@ -224,7 +236,8 @@
         "Role": "Event Coordinator",
         "Team": "Outreach"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 14,
@@ -243,7 +256,8 @@
         "Role": "Nitrate Sensor Developer",
         "Team": "Sensors"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 15,
@@ -258,7 +272,8 @@
         "Role": "Front-End Engineer",
         "Team": "Software"
       }
-    ]
+    ],
+    "Legacy": false
   },
   {
     "Id": 16,
@@ -281,6 +296,7 @@
         "Role": "Grant Seeker",
         "Team": "Finance"
       }
-    ]
+    ],
+    "Legacy": false
   }
 ]
