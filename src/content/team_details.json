@@ -21,7 +21,8 @@
                 "Team": "Hardware"
             }
         ],
-        "Legacy": true
+        "Legacy": true,
+        "Lead": "Software"
     },
     {
         "Id": 2,
@@ -41,7 +42,8 @@
                 "Team": "Hardware"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 3,
@@ -57,7 +59,8 @@
                 "Team": "Management"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 4,
@@ -77,7 +80,8 @@
                 "Team": "Sensors"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": "Finance"
     },
     {
         "Id": 5,
@@ -93,7 +97,8 @@
                 "Team": "Management"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": "Management"
     },
     {
         "Id": 6,
@@ -109,7 +114,8 @@
                 "Team": "Software"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 7,
@@ -125,7 +131,8 @@
                 "Team": "Software"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 8,
@@ -141,7 +148,8 @@
                 "Team": "Software"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 9,
@@ -157,7 +165,8 @@
                 "Team": "Sensors"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": "Sensors"
     },
     {
         "Id": 10,
@@ -177,7 +186,8 @@
                 "Team": "Finance"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": "Hardware"
     },
     {
         "Id": 11,
@@ -193,7 +203,8 @@
                 "Team": "Hardware"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 12,
@@ -217,7 +228,8 @@
                 "Team": "Outreach"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 13,
@@ -237,7 +249,8 @@
                 "Team": "Outreach"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 14,
@@ -257,7 +270,8 @@
                 "Team": "Sensors"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": "Social"
     },
     {
         "Id": 15,
@@ -273,7 +287,8 @@
                 "Team": "Software"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     },
     {
         "Id": 16,
@@ -297,6 +312,7 @@
                 "Team": "Finance"
             }
         ],
-        "Legacy": false
+        "Legacy": false,
+        "Lead": ""
     }
 ]
