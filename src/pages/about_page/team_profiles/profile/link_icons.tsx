@@ -5,7 +5,7 @@ import { faLinkedin, faInstagram, faGithub } from '@fortawesome/free-brands-svg-
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 export default function LinkIcons({ link }: { link: string }) {
-    const [icon, setIcon] = React.useState<any>()
+    const [icon, setIcon] = React.useState<any>(faLink)
 
     useEffect(() => {
         if (link.includes('linkedin')) {
