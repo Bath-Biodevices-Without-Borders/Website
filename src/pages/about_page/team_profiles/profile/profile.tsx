@@ -14,9 +14,9 @@ export default function Profile(props: any) {
         />
       </div>
       <div className='team-profile-details'>
-        <h2>{props.Name}</h2>
-        <h3>{props.Course}</h3>
-        <p>{props.Role}</p>
+        <p>{props.Name}</p>
+        <p>{props.Roles[0].Role}</p>
+        <p>{props.Course}</p>
         <a href={props.Link} target='_blank' rel='noreferrer'>
           Contact
         </a>

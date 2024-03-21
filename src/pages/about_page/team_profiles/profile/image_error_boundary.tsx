@@ -16,20 +16,11 @@ const ImageErrorBoundary: React.FC<ImageErrorBoundaryProps> = ({
     };
 
     return (
-        <>
-            {hasError ? (
-                <img
-                    src={fallbackImage}
-                    alt=""
-                />
-            ) : (
-                <img
-                    src={image}
-                    onError={handleImageError}
-                    alt=""
-                />
-            )}
-        </>
+        <img
+            src={hasError ? fallbackImage : image}
+            onError={handleImageError}
+            alt=""
+        />
     );
 };
 

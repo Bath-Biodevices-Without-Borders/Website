@@ -1,0 +1,15 @@
+.team-profiles-container {
+
+}
+
+.team-profiles-header {
+
+}
+
+.team-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
