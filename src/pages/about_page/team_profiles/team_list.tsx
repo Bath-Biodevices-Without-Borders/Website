@@ -1,5 +1,5 @@
 import React from 'react'
-import './team_profiles.css'
+import './team_list.css'
 
 import teamDetails from '../../../content/team_details.json'
 import aboutJson from '../../../content/about_page.json'
@@ -40,8 +40,8 @@ type T_orgDetails = {
  * 
  * @returns The rendered team profiles section.
  */
-export default function TeamProfiles() {
-    const [teamMembers, setTeamMembers] = React.useState<T_orgDetails>({});
+export default function TeamList() {
+    const [orgDetails, setOrgDetails] = React.useState<T_orgDetails>({});
 
     React.useEffect(() => {
         const newTeamDetails: T_teamMember[] = teamDetails 
@@ -143,29 +143,50 @@ export default function TeamProfiles() {
         console.log(orgTeamDetails)
 
         // This is used to set the team members to the new team details
-        setTeamMembers(orgTeamDetails);
+        setOrgDetails(orgTeamDetails);
 
     }, [])
 
-    const [selectedIndex, setSelectedIndex] = React.useState(-1)
+    const [selectedProfileIndex, setSelectedProfileIndex] = React.useState(-1)
 
-    const handleSelection = (index: number) => {
-        if (selectedIndex === index) {
-            setSelectedIndex(-1)
+    const handleProfileSelection = (index: number) => {
+        if (selectedProfileIndex === index) {
+            setSelectedProfileIndex(-1)
         } else {
-            setSelectedIndex(index)
+            setSelectedProfileIndex(index)
         }
     }
 
-
     return (
         <section className='team-list-container'>
-            <div className='team-list-header'>
+            <header className='team-list-header'>
                 <h2>Meet the Team</h2>
-            </div>
+                <span className="team-list-selection">
+                    {
+                        Object.keys(orgDetails).map((
+                            teamName: string,
+                            index: number
+                        ) => {
+                            return (
+                                <>
+                                    <input
+                                        type="radio"
+                                        name="team-list"
+                                        id={teamName}
+                                    />
+                                    <label htmlFor={teamName}>
+                                        <img src={orgDetails[teamName].icon} alt={teamName} />
+                                    </label>
+                                </>
+                            )
+                        })
+                    }
+                </span>
+            </header>
+
             <div className='team-list'>
                 {
-                    teamMembers && Object.keys(teamMembers).map((
+                    orgDetails && Object.keys(orgDetails).map((
                         teamName: string,
                         index: number
                     ) => {
@@ -174,9 +195,9 @@ export default function TeamProfiles() {
                                 key={index}
                                 index={index}
                                 teamName={teamName}
-                                selectedIndex={selectedIndex}
-                                handleSelection={handleSelection}
-                                {...teamMembers[teamName]}
+                                selectedIndex={selectedProfileIndex}
+                                handleSelection={handleProfileSelection}
+                                {...orgDetails[teamName]}
                             />
                         )
                     })
