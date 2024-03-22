@@ -8,6 +8,7 @@ import TeamSection from './team_section/team_section';
 
 import iconFinance from '../../../images/team_icons/icon_finance.png'
 import iconHardware from '../../../images/team_icons/icon_hardware.png'
+import iconManagement from '../../../images/team_icons/icon_management.png'
 import iconOutreach from '../../../images/team_icons/icon_outreach.png'
 import iconSensors from '../../../images/team_icons/icon_sensors.png'
 import iconSocial from '../../../images/team_icons/icon_social.png'
@@ -82,7 +83,7 @@ export default function TeamProfiles() {
 
         const orgTeamDetails: T_orgDetails = {
             "Management": {
-                "icon": '',
+                "icon": iconManagement,
                 "description": aboutJson.teamDescriptions.Management,
                 "members": []
             },
