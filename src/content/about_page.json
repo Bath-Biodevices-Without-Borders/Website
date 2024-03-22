@@ -1,0 +1,11 @@
+{
+  "teamDescriptions": {
+    "Management": "The management team is responsible for the overall direction of the company. They are responsible for setting the company's goals and ensuring that the company is on track to meet those goals.",
+    "Hardware": "The hardware team is responsible for designing and building the physical components of the product. They are responsible for ensuring that the product is functional and meets the company's requirements.",
+    "Software": "The software team is responsible for developing the software that runs on the product. They are responsible for ensuring that the software is reliable, secure, and user-friendly.",
+    "Sensors": "The sensors team is responsible for designing and building the sensors that are used in the product. They are responsible for ensuring that the sensors are accurate and reliable.",
+    "Outreach": "The outreach team is responsible for promoting the product and building relationships with customers. They are responsible for ensuring that the product is well-received in the market.",
+    "Finance": "The finance team is responsible for managing the company's finances. They are responsible for ensuring that the company is financially stable and that it is able to meet its financial obligations.",
+    "Social": "The social team is responsible for managing the company's social media presence. They are responsible for ensuring that the company is active on social media and that it is engaging with its customers."
+  }
+}

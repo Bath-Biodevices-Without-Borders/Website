@@ -22,10 +22,18 @@ type T_teamMember = {
 export default function TeamSection(props: any) {
   return (
     <div className='team'>
-      <h3>{props.teamName}</h3>
+      <header>
+        <figure>
+          <img src={props.icon} alt={props.teamName + " icon"} />
+        </figure>
+        <aside>
+          <h3>{props.teamName}</h3>
+          <p>{props.description}</p>
+        </aside>
+      </header>
       <div className='team-profiles'>
         {
-          props.teamMembers.map((teamMember: T_teamMember, index: number) => {
+          props.members.map((teamMember: T_teamMember, index: number) => {
             return <Profile
               key={index}
               index={props.index * 100 + index}

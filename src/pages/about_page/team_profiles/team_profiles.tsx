@@ -2,7 +2,16 @@ import React from 'react'
 import './team_profiles.css'
 
 import teamDetails from '../../../content/team_details.json'
+import aboutJson from '../../../content/about_page.json'
+
 import TeamSection from './team_section/team_section';
+
+import iconFinance from '../../../images/team_icons/icon_finance.png'
+import iconHardware from '../../../images/team_icons/icon_hardware.png'
+import iconOutreach from '../../../images/team_icons/icon_outreach.png'
+import iconSensors from '../../../images/team_icons/icon_sensors.png'
+import iconSocial from '../../../images/team_icons/icon_social.png'
+import iconSoftware from '../../../images/team_icons/icon_software.png'
 
 type T_teamMember = {
     Id: number;
@@ -21,7 +30,7 @@ type T_teamMember = {
 };
 
 type T_orgDetails = {
-    [key: string]: T_teamMember[];
+    [key: string]: {icon: any, description: string, members: T_teamMember[]};
 };
 
 /**
@@ -72,13 +81,41 @@ export default function TeamProfiles() {
         });
 
         const orgTeamDetails: T_orgDetails = {
-            "Management": [],
-            "Hardware": [],
-            "Sensors": [],
-            "Software": [],
-            "Finance": [],
-            "Outreach": [],
-            "Social": []
+            "Management": {
+                "icon": '',
+                "description": aboutJson.teamDescriptions.Management,
+                "members": []
+            },
+            "Hardware": {
+                "icon": iconHardware,
+                "description": aboutJson.teamDescriptions.Hardware,
+                "members": []
+            },
+            "Sensors": {
+                "icon": iconSensors,
+                "description": aboutJson.teamDescriptions.Sensors,
+                "members": []
+            },
+            "Software": {
+                "icon": iconSoftware,
+                "description": aboutJson.teamDescriptions.Software,
+                "members": []
+            },
+            "Finance": {
+                "icon": iconFinance,
+                "description": aboutJson.teamDescriptions.Finance,
+                "members": []
+            },
+            "Outreach": {
+                "icon": iconOutreach,
+                "description": aboutJson.teamDescriptions.Outreach,
+                "members": []
+            },
+            "Social": {
+                "icon": iconSocial,
+                "description": aboutJson.teamDescriptions.Social,
+                "members": []
+            }
         }
 
 
@@ -99,7 +136,7 @@ export default function TeamProfiles() {
                 }
             });
 
-            orgTeamDetails[teamName] = sortedTeamMembers;
+            orgTeamDetails[teamName].members = sortedTeamMembers;
         });
         
         console.log(orgTeamDetails)
@@ -136,9 +173,9 @@ export default function TeamProfiles() {
                                 key={index}
                                 index={index}
                                 teamName={teamName}
-                                teamMembers={teamMembers[teamName]}
                                 selectedIndex={selectedIndex}
                                 handleSelection={handleSelection}
+                                {...teamMembers[teamName]}
                             />
                         )
                     })
