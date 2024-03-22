@@ -12,6 +12,7 @@ const ImageErrorBoundary: React.FC<ImageErrorBoundaryProps> = ({
     const [hasError, setHasError] = useState(false);
 
     const handleImageError = () => {
+        console.error(`Failed to load image: ${image}`);
         setHasError(true);
     };
 
