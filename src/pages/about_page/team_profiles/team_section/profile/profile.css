@@ -30,6 +30,7 @@
 }
 
 .team-profile-image {
+  position: relative;
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
@@ -41,6 +42,25 @@
   height: 100%;
   object-fit: cover;
   border-radius: 0.4em;
+}
+
+.team-profile-image .founder-badge {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  width: 6em;
+  padding: 0.2em 0.5em;
+
+  color: hsl(179, 80%, 12%);
+  background-color: hsl(179, 60%, 37%);
+  border-radius: 1000px;
+
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 .team-profile-details {
@@ -66,7 +86,7 @@
   align-items: center;
 }
 
-.team-profile-details p:nth-child(1) {
+.team-profile .member-name {
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -134,7 +154,8 @@
 }
 
 .team-profile > .background label {
-  height: 2em;
+  margin-top: 0.5em;
+  height: 1em;
   display: flex;
   justify-content: center;
   align-items: center;

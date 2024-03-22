@@ -6,12 +6,13 @@ import Blank from '../../../../../images/team_profiles/blank.jpg'
 import LinkIcons from './link_icons'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: any) {
 
   const role = props.Roles.find((role: any) => role.Team === props.team)
 
+  const isFounder = props.Email === 'jd2099@bath.ac.uk' || props.Email === 'tm907@bath.ac.uk'
   return (
     <div
       className='team-profile'
@@ -33,10 +34,17 @@ export default function Profile(props: any) {
             image={props.Image}
             fallbackImage={Blank}
           />
+          <div
+            className='founder-badge'
+            style={{ visibility: isFounder ? 'visible' : 'hidden' }}
+          >
+            <FontAwesomeIcon icon={faStar} />
+            Founder
+          </div>
         </div>
         <div className='team-profile-details'>
           <span className='team-profile-text'>
-            <p>{props.Name}</p>
+            <p className='member-name'>{props.Name}</p>
             <p>{role.Role}</p>
             <p>{props.Course}</p>
           </span>
@@ -45,6 +53,7 @@ export default function Profile(props: any) {
       </label>
       <div className='background'>
         <div className='profile-description'>
+          <p className='member-name'>{props.Name}</p>
           <p>{props.Description}</p>
         </div>  
         <label htmlFor={props.index}>
