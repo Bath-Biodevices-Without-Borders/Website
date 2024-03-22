@@ -2,7 +2,7 @@ import React from 'react'
 import ImageErrorBoundary from './image_error_boundary'
 import './profile.css'
 
-import Blank from '../../../../images/team_profiles/blank.jpg'
+import Blank from '../../../../../images/team_profiles/blank.jpg'
 import LinkIcons from './link_icons'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
