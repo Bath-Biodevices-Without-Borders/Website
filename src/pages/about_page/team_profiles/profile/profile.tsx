@@ -15,7 +15,6 @@ export default function Profile(props: any) {
   return (
     <div
       className='team-profile'
-      style={{ backgroundColor: props.isLead ? '#f0f0f0' : 'white' }}
     >
       <input
         type='checkbox'
@@ -24,7 +23,11 @@ export default function Profile(props: any) {
         checked={props.isSelected}
         onChange={() => props.handleSelection(props.index)}
       />
-      <label className='foreground' htmlFor={props.index}>
+      <label
+        className='foreground'
+        htmlFor={props.index}
+        style={{ backgroundColor: props.isLead ? '#f0f0f0' : 'white' }}
+      >
         <div className='team-profile-image'>
           <ImageErrorBoundary
             image={props.Image}
