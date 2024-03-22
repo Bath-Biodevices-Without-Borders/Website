@@ -1,7 +1,7 @@
 import React from "react";
 import "./team_section.css";
 
-import Profile from '../profile/profile';
+import Profile from './profile/profile';
 
 type T_teamMember = {
   Id: number;
