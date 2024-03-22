@@ -29,7 +29,7 @@ export default function TeamSection(props: any) {
             return <Profile
               key={index}
               index={props.index * 100 + index}
-              selected={props.selected}
+              isSelected={props.selectedIndex === props.index * 100 + index}
               handleSelection={props.handleSelection}
               isLead={teamMember.Lead === props.teamName}
               team={props.teamName}

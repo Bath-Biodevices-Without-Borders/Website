@@ -109,13 +109,13 @@ export default function TeamProfiles() {
 
     }, [])
 
-    const [selected, setSelected] = React.useState(-1)
+    const [selectedIndex, setSelectedIndex] = React.useState(-1)
 
     const handleSelection = (index: number) => {
-        if (selected === index) {
-            setSelected(-1)
+        if (selectedIndex === index) {
+            setSelectedIndex(-1)
         } else {
-            setSelected(index)
+            setSelectedIndex(index)
         }
     }
 
@@ -137,7 +137,7 @@ export default function TeamProfiles() {
                                 index={index}
                                 teamName={teamName}
                                 teamMembers={teamMembers[teamName]}
-                                selected={selected}
+                                selectedIndex={selectedIndex}
                                 handleSelection={handleSelection}
                             />
                         )
