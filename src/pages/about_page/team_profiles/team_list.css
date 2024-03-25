@@ -15,41 +15,6 @@
     font-weight: bold;
 }
 
-.team-list-container > header span {
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.2em;
-
-}
-
-.team-list-container > header label {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-
-    flex: 1;
-    cursor: pointer;
-
-    transition: transform;
-}
-
-.team-list-container > header label:hover {
-    animation: moveUpDown 0.3s ease-in-out;
-}
-
-.team-list-container > header input[type="radio"] {
-    display: none;
-}
-
-.team-list-container > header label img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .team-list {
     display: flex;
     flex-direction: column;
@@ -58,17 +23,4 @@
 
     gap: 1em;
 
-}
-
-
-@keyframes moveUpDown {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-1em);
-    }
-    100% {
-        transform: translateY(0);
-    }
 }

@@ -161,27 +161,6 @@ export default function TeamList() {
         <section className='team-list-container'>
             <header className='team-list-header'>
                 <h2>Meet the Team</h2>
-                <span className="team-list-selection">
-                    {
-                        Object.keys(orgDetails).map((
-                            teamName: string,
-                            index: number
-                        ) => {
-                            return (
-                                <>
-                                    <input
-                                        type="radio"
-                                        name="team-list"
-                                        id={teamName}
-                                    />
-                                    <label htmlFor={teamName}>
-                                        <img src={orgDetails[teamName].icon} alt={teamName} />
-                                    </label>
-                                </>
-                            )
-                        })
-                    }
-                </span>
             </header>
 
             <div className='team-list'>
