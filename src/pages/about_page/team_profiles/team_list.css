@@ -1,6 +1,5 @@
 .team-list-container {
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding: 0 10vw 4em 10vw;
 }
 
 .team-list-container > header {

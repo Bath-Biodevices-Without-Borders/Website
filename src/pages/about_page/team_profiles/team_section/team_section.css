@@ -70,3 +70,20 @@
   width: 100%;
   gap: 1.3em;
 }
+
+@media (max-width: 768px) {
+  .team header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3em 1em;
+  }
+
+  .team figure {
+    width: 8em;
+  }
+
+  .team header aside {
+    padding: 1em;
+  }
+}
