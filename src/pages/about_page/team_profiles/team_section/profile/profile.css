@@ -5,6 +5,8 @@
 
   cursor: pointer;
   transition: transform 0.2s;
+  border-radius: 1.4em;
+  
 }
 
 .team-profile:hover {
@@ -18,7 +20,6 @@
 .team-profile > .foreground {
   box-sizing: border-box;
   padding: 1em;
-  border-radius: 1.4em;
 
   height: 100%;
   width: 100%;
@@ -110,11 +111,12 @@
   font-size: 1.5em;
   font-weight: normal;
   font-style: normal;
-  color: #777;
+  transition: transform 0.2s;
+  color: #094e4d
 }
 
 .team-profile-details > a:hover {
-  color: #000;
+  transform: scale(1.2);
 }
 
 .team-profile > .background {
@@ -170,4 +172,13 @@
 
 .team-profile input[type="checkbox"]:checked ~ .background {
   transform: translateY(-100%);
+}
+
+.team-profile .legacy-overlay {
+  background-color: #bbb7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

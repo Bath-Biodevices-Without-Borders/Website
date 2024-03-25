@@ -22,6 +22,7 @@
             }
         ],
         "Legacy": true,
+        "isLegacy": false,
         "Lead": "Software"
     },
     {
@@ -43,6 +44,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -60,6 +62,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -81,6 +84,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": "Finance"
     },
     {
@@ -98,6 +102,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": "Management"
     },
     {
@@ -115,6 +120,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -132,6 +138,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -149,6 +156,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -166,6 +174,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": "Sensors"
     },
     {
@@ -187,6 +196,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": "Hardware"
     },
     {
@@ -204,6 +214,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -229,6 +240,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -250,6 +262,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -271,6 +284,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": "Social"
     },
     {
@@ -288,6 +302,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     },
     {
@@ -313,6 +328,7 @@
             }
         ],
         "Legacy": false,
+        "isLegacy": false,
         "Lead": ""
     }
 ]

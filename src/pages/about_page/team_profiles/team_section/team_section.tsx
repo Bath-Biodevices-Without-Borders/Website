@@ -20,6 +20,8 @@ type T_teamMember = {
 };
 
 export default function TeamSection(props: any) {
+  let counter: number = 0;
+
   return (
     <div className='team'>
       <header>
@@ -34,10 +36,26 @@ export default function TeamSection(props: any) {
       <div className='team-profiles'>
         {
           props.members.map((teamMember: T_teamMember, index: number) => {
+            counter++;
             return <Profile
               key={index}
               index={props.index * 100 + index}
               isSelected={props.selectedIndex === props.index * 100 + index}
+              handleSelection={props.handleSelection}
+              isLead={teamMember.Lead === props.teamName}
+              team={props.teamName}
+              {...teamMember}
+            />;
+          })
+        }
+        { props.showLegacy && props.legacyMembers.map((
+            teamMember: T_teamMember,
+            index: number
+          ) => {
+            return <Profile
+              key={index}
+              index={props.index * 100 + index + counter}
+              isSelected={props.selectedIndex === props.index * 100 + index + counter}
               handleSelection={props.handleSelection}
               isLead={teamMember.Lead === props.teamName}
               team={props.teamName}

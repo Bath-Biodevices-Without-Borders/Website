@@ -27,11 +27,17 @@ type T_teamMember = {
         Team: string;
     }[];
     Legacy: boolean;
+    isLegacy: boolean;
     Lead: string;
 };
 
 type T_orgDetails = {
-    [key: string]: {icon: any, description: string, members: T_teamMember[]};
+    [key: string]: {
+        icon: any,
+        description: string,
+        members: T_teamMember[],
+        legacyMembers: T_teamMember[]
+    };
 };
 
 /**
@@ -85,37 +91,44 @@ export default function TeamList() {
             "Management": {
                 "icon": iconManagement,
                 "description": aboutJson.teamDescriptions.Management,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             },
             "Hardware": {
                 "icon": iconHardware,
                 "description": aboutJson.teamDescriptions.Hardware,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             },
             "Sensors": {
                 "icon": iconSensors,
                 "description": aboutJson.teamDescriptions.Sensors,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             },
             "Software": {
                 "icon": iconSoftware,
                 "description": aboutJson.teamDescriptions.Software,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             },
             "Finance": {
                 "icon": iconFinance,
                 "description": aboutJson.teamDescriptions.Finance,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             },
             "Outreach": {
                 "icon": iconOutreach,
                 "description": aboutJson.teamDescriptions.Outreach,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             },
             "Social": {
                 "icon": iconSocial,
                 "description": aboutJson.teamDescriptions.Social,
-                "members": []
+                "members": [],
+                "legacyMembers": []
             }
         }
 
@@ -127,7 +140,10 @@ export default function TeamList() {
                 return member.Roles.find((role) => role.Team === teamName);
             });
 
-            const sortedTeamMembers = teamMembers.sort((a, b) => {
+            const legacyMembers = teamMembers.filter((member) => member.isLegacy);
+            const nonLegacyMembers = teamMembers.filter((member) => !member.isLegacy);
+
+            const sortedNonLegacyMembers = nonLegacyMembers.sort((a, b) => {
                 if (a.Lead === teamName && b.Lead !== teamName) {
                     return -1;
                 } else if (a.Lead !== teamName && b.Lead === teamName) {
@@ -137,7 +153,12 @@ export default function TeamList() {
                 }
             });
 
-            orgTeamDetails[teamName].members = sortedTeamMembers;
+            const sortedLegacyMembers = legacyMembers.sort((a, b) => {
+                return a.Name.localeCompare(b.Name);
+            });
+
+            orgTeamDetails[teamName].members = sortedNonLegacyMembers;
+            orgTeamDetails[teamName].legacyMembers = sortedLegacyMembers;
         });
         
         console.log(orgTeamDetails)
@@ -157,10 +178,30 @@ export default function TeamList() {
         }
     }
 
+    const [showLegacy, setShowLegacy] = React.useState(false);
+
+    const handleLegacyToggle = () => {
+        setShowLegacy(!showLegacy);
+    }
+
     return (
         <section className='team-list-container'>
             <header className='team-list-header'>
                 <h2>Meet the Team</h2>
+                <div className='legacy-toggle'>
+                    <p>
+                        Show Legacy Members: 
+                    </p>
+                    <div className='toggle'>
+                        <input
+                            type="checkbox"
+                            id="legacy-toggle"
+                            checked={showLegacy}
+                            onChange={handleLegacyToggle}
+                        />
+                        <label htmlFor="legacy-toggle"></label>
+                    </div>
+                </div>
             </header>
 
             <div className='team-list'>
@@ -174,6 +215,7 @@ export default function TeamList() {
                                 key={index}
                                 index={index}
                                 teamName={teamName}
+                                showLegacy={showLegacy}
                                 selectedIndex={selectedProfileIndex}
                                 handleSelection={handleProfileSelection}
                                 {...orgDetails[teamName]}
