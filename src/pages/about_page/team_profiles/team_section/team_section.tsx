@@ -6,8 +6,6 @@ import { I_teamSectionProps, T_teamMember, T_role } from "../../../../types/type
 import Profile from './profile';
 
 export default function TeamSection(props: I_teamSectionProps) {
-  let counter: number = 0;
-
   return (
     <div className='team'>
       <header>
@@ -22,7 +20,6 @@ export default function TeamSection(props: I_teamSectionProps) {
       <div className='team-profiles'>
         {
           props.members.map((teamMember: T_teamMember, index: number) => {
-            counter++;
             const teamRole: T_role | undefined = teamMember.roles.find((role: T_role) => {
               return role.team === props.teamName
             });

@@ -55,3 +55,7 @@ export interface I_profileProps extends T_teamMember {
   isLead: boolean;
   team: string;
 };
+
+export interface I_modalProps extends T_teamMember {
+  handleSelection: (index: number) => void;
+};

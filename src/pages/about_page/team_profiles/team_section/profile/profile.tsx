@@ -1,11 +1,11 @@
 import React from 'react'
-import ImageErrorBoundary from './image_error_boundary'
 import './profile.css'
 
 import { I_profileProps, T_role } from '../../../../../types/types';
 
 import Blank from '../../../../../images/team_profiles/blank.jpg'
-import LinkIcons from './link_icons'
+import LinkIcons from '../../../../../components/link_icons/link_icons'
+import ImageErrorBoundary from '../../../../../components/image/image_error_boundary'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faStar } from '@fortawesome/free-solid-svg-icons'
