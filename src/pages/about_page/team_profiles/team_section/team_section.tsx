@@ -1,25 +1,11 @@
 import React from "react";
 import "./team_section.css";
 
+import { I_teamSectionProps, T_teamMember, T_role } from "../../../../types/types";
+
 import Profile from './profile/profile';
 
-type T_teamMember = {
-  Id: number;
-  Email: string;
-  Name: string;
-  Course: string;
-  Link: string;
-  Description: string;
-  Image: string | any;
-  Roles: {
-      Role: string;
-      Team: string;
-  }[];
-  Legacy: boolean;
-  Lead: string;
-};
-
-export default function TeamSection(props: any) {
+export default function TeamSection(props: I_teamSectionProps) {
   let counter: number = 0;
 
   return (
@@ -37,12 +23,16 @@ export default function TeamSection(props: any) {
         {
           props.members.map((teamMember: T_teamMember, index: number) => {
             counter++;
+            const teamRole: T_role | undefined = teamMember.roles.find((role: T_role) => {
+              return role.team === props.teamName
+            });
+            const isLead: boolean = teamRole?.lead || false;
             return <Profile
               key={index}
               index={props.index * 100 + index}
               isSelected={props.selectedIndex === props.index * 100 + index}
               handleSelection={props.handleSelection}
-              isLead={teamMember.Lead === props.teamName}
+              isLead={isLead}
               team={props.teamName}
               {...teamMember}
             />;
@@ -57,7 +47,7 @@ export default function TeamSection(props: any) {
               index={props.index * 100 + index + counter}
               isSelected={props.selectedIndex === props.index * 100 + index + counter}
               handleSelection={props.handleSelection}
-              isLead={teamMember.Lead === props.teamName}
+              isLead={false}
               team={props.teamName}
               {...teamMember}
             />;
