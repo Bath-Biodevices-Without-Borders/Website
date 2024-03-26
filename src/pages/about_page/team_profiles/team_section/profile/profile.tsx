@@ -8,7 +8,7 @@ import LinkIcons from '../../../../../components/link_icons/link_icons'
 import ImageErrorBoundary from '../../../../../components/image/image_error_boundary'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
 
@@ -65,15 +65,6 @@ export default function Profile(props: I_profileProps) {
         }}
       >
       </label>
-      <div className='background'>
-        <div className='profile-description'>
-          <p className='member-name'>{props.name}</p>
-          <p>{props.description}</p>
-        </div>  
-        <label htmlFor={props.index.toString()}>
-            <FontAwesomeIcon icon={faXmark} />
-          </label>
-      </div>
     </div>
   )
 }
