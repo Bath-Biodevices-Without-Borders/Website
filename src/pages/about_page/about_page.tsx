@@ -1,7 +1,7 @@
 import './about_page.css';
 import OurStory from './our_story/our_story';
 
-import TeamList from './team_profiles/team_list';
+import TeamList from './team_profiles';
 
 export default function AboutPage() {
   return (

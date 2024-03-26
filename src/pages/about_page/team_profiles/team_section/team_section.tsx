@@ -3,7 +3,7 @@ import "./team_section.css";
 
 import { I_teamSectionProps, T_teamMember, T_role } from "../../../../types/types";
 
-import Profile from './profile/profile';
+import Profile from './profile';
 
 export default function TeamSection(props: I_teamSectionProps) {
   let counter: number = 0;
