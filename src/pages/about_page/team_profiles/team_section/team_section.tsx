@@ -28,9 +28,9 @@ export default function TeamSection(props: I_teamSectionProps) {
             });
             const isLead: boolean = teamRole?.lead || false;
             return <Profile
-              key={index}
-              index={props.index * 100 + index}
-              isSelected={props.selectedIndex === props.index * 100 + index}
+              key={teamMember.id}
+              index={teamMember.id}
+              isSelected={props.selectedIndex === teamMember.id}
               handleSelection={props.handleSelection}
               isLead={isLead}
               team={props.teamName}
@@ -44,8 +44,8 @@ export default function TeamSection(props: I_teamSectionProps) {
           ) => {
             return <Profile
               key={index}
-              index={props.index * 100 + index + counter}
-              isSelected={props.selectedIndex === props.index * 100 + index + counter}
+              index={teamMember.id}
+              isSelected={props.selectedIndex === teamMember.id}
               handleSelection={props.handleSelection}
               isLead={false}
               team={props.teamName}
