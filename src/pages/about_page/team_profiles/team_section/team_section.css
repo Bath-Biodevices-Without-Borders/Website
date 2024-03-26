@@ -86,4 +86,10 @@
   .team header aside {
     padding: 1em;
   }
+
+  .team header h3,
+  .team header p {
+    justify-content: center;
+    text-align: center;
+  }
 }
