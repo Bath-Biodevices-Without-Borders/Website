@@ -1,338 +1,756 @@
-[
-    {
-        "Id": 1,
-        "Email": "gm768@bath.ac.uk",
-        "Name": "George Madeley",
-        "Course": "MEng Computer Systems Engineering",
-        "Link": "https://george-madeley-portfolio.co.uk/",
-        "Description": "As a passionate software developer, I delve into the realms of full-stack web development, machine learning, and game development. You\u00e2\u20ac\u2122ll often find me immersed in learning new programming languages, meticulously documenting code, or contributing to exciting new projects.",
-        "Image": "gm768.jpg",
-        "Roles": [
-            {
-                "Role": "Head of Software",
-                "Team": "Software"
-            },
-            {
-                "Role": "Keeper of the Room",
-                "Team": "Social"
-            },
-            {
-                "Role": "Technical Advisor",
-                "Team": "Hardware"
-            },
-            {
-                "Role": "Brand Creator",
-                "Team": "Outeach"
-            }
-        ],
-        "Legacy": true,
-        "isLegacy": false,
-        "Lead": "Software"
-    },
-    {
-        "Id": 2,
-        "Email": "th2021@bath.ac.uk",
-        "Name": "Tabitha Hirst",
-        "Course": "BEng Computer Systems Engineering",
-        "Link": "https://www.linkedin.com/in/tabitha-hirst-062a292b8/",
-        "Description": "I am a second year Computer Systems student and I love both hardware and software. I also enjoy product design and film. Hopefully I'll be back in 2025 after my placement year!",
-        "Image": "th2021.jpg",
-        "Roles": [
-            {
-                "Role": "Embedded Software Engineer",
-                "Team": "Software"
-            },
-            {
-                "Role": "Electronics Engineer",
-                "Team": "Hardware"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 3,
-        "Email": "mm3196@bath.ac.uk",
-        "Name": "Melissa Mitchell",
-        "Course": "PhD Electronic and Electrical Engineering",
-        "Link": "https://www.linkedin.com/in/melissa-mitchell-bsc-msc-afhea-0b865a174/",
-        "Description": "I am a third year PhD student in Electronic and Electrical Engineering, with an MSc in Radiation Biology and a BSc in Physics. I joined the team in 2022 and now lead the technical groups and act as a consultant where possible.",
-        "Image": "mm3196.png",
-        "Roles": [
-            {
-                "Role": "Technical Director",
-                "Team": "Management"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 4,
-        "Email": "dl923@bath.ac.uk",
-        "Name": "Daniel Light",
-        "Course": "MEng Electronic and Electrical Engineering",
-        "Link": "https://www.linkedin.com/in/daniel-light-646bb72b8/",
-        "Description": "Possesses experience in programming, circuit design, and finance management. As Head of Finance, created a finance spreadsheet for the team, implemented an autonomous notification system to aid future cohorts in finding and applying for grants, and supported team members throughout the course of the year.",
-        "Image": "",
-        "Roles": [
-            {
-                "Role": "Head of Finance",
-                "Team": "Finance"
-            },
-            {
-                "Role": "Conductivity Sensor Developer",
-                "Team": "Sensors"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": "Finance"
-    },
-    {
-        "Id": 5,
-        "Email": "af874@bath.ac.uk",
-        "Name": "Alexz Farrall",
-        "Course": "PhD Computer Science",
-        "Link": "https://www.linkedin.com/in/alexzfarrall/",
-        "Description": "I am a Research Engineer specialising in Human-Computer Interaction (HCI) within the field of Computer Science, with a robust background in Electronics and Communication Engineering. My expertise lies in developing innovative healthcare solutions that integrate Artificial Intelligence, Biofeedback, and Shape-changing Technologies. Beyond my primary focus, I've contributed to advancing optical transmission technologies in biomedical devices and spearheaded transformative strategies for phosphate retrieval and the release of GMOs in water treatment and fertilisation processes. I am the founder of the Bidevice Without Borders Team, an initiative dedicated to leveraging technology for global health improvements.",
-        "Image": "af874.jpg",
-        "Roles": [
-            {
-                "Role": "Managing Director",
-                "Team": "Management"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": "Management"
-    },
-    {
-        "Id": 6,
-        "Email": "pb754@bath.ac.uk",
-        "Name": "Pati Bertran",
-        "Course": "MEng Computer Systems Engineering",
-        "Link": "https://www.linkedin.com/in/patricia-bertran-clotet/",
-        "Description": "",
-        "Image": "pb754.jpg",
-        "Roles": [
-            {
-                "Role": "Front-End Engineer",
-                "Team": "Software"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 7,
-        "Email": "jd2605@bath.ac.uk",
-        "Name": "Jamie Diamand",
-        "Course": "BSc Physics",
-        "Link": "https://github.com/ja-mie0/",
-        "Description": "I'm from Brighton, I enjoy playing piano and looking after my cat. Within my team I am retrieving, organising, and processing the data we are given by our sensors.",
-        "Image": "",
-        "Roles": [
-            {
-                "Role": "Back-end Developer",
-                "Team": "Software"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 8,
-        "Email": "th2166@bath.ac.uk",
-        "Name": "Tom Henderson",
-        "Course": "BSc Mathematics",
-        "Link": "https://www.linkedin.com/in/thomas-henderson-0a8107242/",
-        "Description": "Hi I'm Tom, I'm a first year student who loves to read, play all sorts of sports and create things! When home I enjoy spending time with my two dogs and travelling with friends. Glad to be a member of BWB.",
-        "Image": "th2166.jpeg",
-        "Roles": [
-            {
-                "Role": "Back-end Developer",
-                "Team": "Software"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 9,
-        "Email": "jd2099@bath.ac.uk",
-        "Name": "Jordan Dawson",
-        "Course": "MEng Electrical and Electronic Engineering",
-        "Link": "https://www.linkedin.com/in/jordan-dawson-7757a61b2/",
-        "Description": "One of the founding members and current Head of Sensors for Biodevices Without Borders. Led development on all the sensors currently under development with a focus on pH sensors.",
-        "Image": "jd2099.jpg",
-        "Roles": [
-            {
-                "Role": "Head of Sensors",
-                "Team": "Sensors"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": "Sensors"
-    },
-    {
-        "Id": 10,
-        "Email": "ogo21@bath.ac.uk",
-        "Name": "Lani Obikoya",
-        "Course": "MEng Electrical and Electronic Engineering",
-        "Link": "https://www.linkedin.com/in/laniobikoya/",
-        "Description": "",
-        "Image": "ogo21.jpg",
-        "Roles": [
-            {
-                "Role": "Head of Hardware",
-                "Team": "Hardware"
-            },
-            {
-                "Role": "Grant Seeker",
-                "Team": "Finance"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": "Hardware"
-    },
-    {
-        "Id": 11,
-        "Email": "hkr33@bath.ac.uk",
-        "Name": "Harry Kneale Roby",
-        "Course": "MEng Computer Systems Engineering",
-        "Link": "https://www.linkedin.com/in/harryknealeroby/",
-        "Description": "I am a hardware engineer for TBBwB, I specialise in RTL hardware design for FPGAs and embedded development.",
-        "Image": "hkr33.jpg",
-        "Roles": [
-            {
-                "Role": "Electronics Engineer",
-                "Team": "Hardware"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 12,
-        "Email": "vpr24@bath.ac.uk",
-        "Name": "Vrinda Raninga",
-        "Course": "MEng Chemical Engineering",
-        "Link": "https://www.linkedin.com/in/vrinda-raninga-959459249/",
-        "Description": "I am a 3rd year student studying Chemical Engineering who has been a part of Bath Biodevices without Borders (and its iterations) since my first year. I have thoroughly enjoyed watching the team grow to what it is today and am excited for it to continue when I leave too.",
-        "Image": "vpr24.png",
-        "Roles": [
-            {
-                "Role": "Business Director",
-                "Team": "Management"
-            },
-            {
-                "Role": "Grant Seeker",
-                "Team": "Finance"
-            },
-            {
-                "Role": "Event Coordinator",
-                "Team": "Outreach"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 13,
-        "Email": "amm305@bath.ac.uk",
-        "Name": "Alexa Mesham",
-        "Course": "MEng Chemical Engineering",
-        "Link": "https://linkedin.com/in/alexa-mesham-715883265/",
-        "Description": "I am a third year chemical engineering student and have been a member of the team since my second year. As a South African, this project is close to my heart and I have loved playing a part in its progress.",
-        "Image": "amm305.jpg",
-        "Roles": [
-            {
-                "Role": "Nitrate Sensor Developer",
-                "Team": "Sensors"
-            },
-            {
-                "Role": "Event Coordinator",
-                "Team": "Outreach"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 14,
-        "Email": "os590@bath.ac.uk",
-        "Name": "Olivia Smith",
-        "Course": "MBiol Biology",
-        "Link": "https://www.linkedin.com/in/olivia-smith-632397210/",
-        "Description": "I'm a biology student who enjoys microbiology, climbing, occasionally running and trying to make sense of what these engineers say in the weekly meetings.",
-        "Image": "",
-        "Roles": [
-            {
-                "Role": "Head of Social",
-                "Team": "Social"
-            },
-            {
-                "Role": "Nitrate Sensor Developer",
-                "Team": "Sensors"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": "Social"
-    },
-    {
-        "Id": 15,
-        "Email": "ad2598@bath.ac.uk",
-        "Name": "Anjleen Devgun",
-        "Course": "Beng Electrical and Electronic Engineering",
-        "Link": "https://www.linkedin.com/in/anjleen-devgun-8a7ba91aa/",
-        "Description": "I am a second year EEE student who is interested in a career in cyber security.",
-        "Image": "ad2598.png",
-        "Roles": [
-            {
-                "Role": "Front-End Engineer",
-                "Team": "Software"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    },
-    {
-        "Id": 16,
-        "Email": "hw2435@bath.ac.uk",
-        "Name": "Helena Woodvine",
-        "Course": "BSc Biology with Professional Placement",
-        "Link": "https://www.linkedin.com/in/helena-woodvine/",
-        "Description": "Being a highly motivated and inquisitive individual I am hugely enjoying contributing towards Biodevices without Borders' applied learning project. Eager to pursue a Biotechnology-orientated career addressing UN STGs, aiding in the development and testing of electrochemical sensors for different water safety parameters is incredibly insightful. Further fuelling my interest in diagnostic lab-on-chip biosensing technology, I'm integrated across teams to have a comprehensive understanding of the processes involved to allow the development of these devices.",
-        "Image": "hw2435.jpg",
-        "Roles": [
-            {
-                "Role": "Event Coordinator",
-                "Team": "Outreach"
-            },
-            {
-                "Role": "pH Sensor Developer",
-                "Team": "Sensors"
-            },
-            {
-                "Role": "Grant Seeker",
-                "Team": "Finance"
-            }
-        ],
-        "Legacy": false,
-        "isLegacy": false,
-        "Lead": ""
-    }
-]
+{
+    "Management": [
+        {
+            "id": 3,
+            "name": "Melissa Mitchell",
+            "email": "mm3196@bath.ac.uk",
+            "course": "PhD Electronic and Electrical Engineering",
+            "link": "https://www.linkedin.com/in/melissa-mitchell-bsc-msc-afhea-0b865a174/",
+            "description": "I am a third year PhD student in Electronic and Electrical Engineering, with an MSc in Radiation Biology and a BSc in Physics. I joined the team in 2022 and now lead the technical groups and act as a consultant where possible.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/image_Melissa%20Mitchell.png",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Technical Director",
+                    "team": "Management",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Alexz Farrall",
+            "email": "af874@bath.ac.uk",
+            "course": "PhD Computer Science",
+            "link": "https://www.linkedin.com/in/alexzfarrall",
+            "description": "I am a Research Engineer specialising in Human-Computer Interaction (HCI) within the field of Computer Science, with a robust background in Electronics and Communication Engineering. My expertise lies in developing innovative healthcare solutions that integrate Artificial Intelligence, Biofeedback, and Shape-changing Technologies. Beyond my primary focus, I've contributed to advancing optical transmission technologies in biomedical devices and spearheaded transformative strategies for phosphate retrieval and the release of GMOs in water treatment and fertilisation processes. I am the founder of the Bidevice Without Borders Team, an initiative dedicated to leveraging technology for global health improvements.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Alexz%202_Alexz%20Farrall.JPG",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Managing Director",
+                    "team": "Management",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Vrinda Raninga",
+            "email": "vpr24@bath.ac.uk",
+            "course": "MEng Chemical Engineering",
+            "link": "https://www.linkedin.com/in/vrinda-raninga-959459249",
+            "description": "I am a 3rd year student studying Chemical Engineering who has been a part of Bath Biodevices without Borders (and its iterations) since my first year. I have thoroughly enjoyed watching the team grow to what it is today and am excited for it to continue when I leave too. ",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Business Director",
+                    "team": "Management",
+                    "lead": false
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                }
+            ]
+        }
+    ],
+    "Hardware": [
+        {
+            "id": 1,
+            "name": "George Madeley",
+            "email": "gm768@bath.ac.uk",
+            "course": "MEng Computer Systems Engineering",
+            "link": "https://george-madeley-portfolio.co.uk/",
+            "description": "As a passionate software developer, I delve into the realms of full-stack web development, machine learning, and game development. You\u2019ll often find me immersed in learning new programming languages, meticulously documenting code, or contributing to exciting new projects.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/20230912_225706_George%20Madeley.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Technical Advisor",
+                    "team": "Hardware",
+                    "lead": false
+                },
+                {
+                    "role": "Heeper of the Room",
+                    "team": "Social",
+                    "lead": false
+                },
+                {
+                    "role": "Head of Software",
+                    "team": "Software",
+                    "lead": true
+                },
+                {
+                    "role": "Brand Creator",
+                    "team": "Outreach",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Tabitha Hirst",
+            "email": "th2021@bath.ac.uk",
+            "course": "BEng Computer Systems Engineering",
+            "link": "https://www.linkedin.com/in/tabitha-hirst-062a292b8",
+            "description": "I am a second year Computer Systems student and I love both hardware and software. I also enjoy product design and film. Hopefully I'll be back in 2025 after my placement year!",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/IMG-20240131-WA0021_Tabitha%20Hirst.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Electronics Engineer",
+                    "team": "Hardware",
+                    "lead": false
+                },
+                {
+                    "role": "Embedded Software Engineer",
+                    "team": "Software",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Lani Obikoya",
+            "email": "ogo21@bath.ac.uk",
+            "course": "MEng Electrical and Electronic Engineering",
+            "link": "https://www.linkedin.com/in/laniobikoya",
+            "description": "",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Head of Hardware",
+                    "team": "Hardware",
+                    "lead": true
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Harry Kneale Roby",
+            "email": "hkr33@bath.ac.uk",
+            "course": "MEng Computer Systems Engineering",
+            "link": "https://www.linkedin.com/in/harryknealeroby/",
+            "description": "I am a hardware engineer for TBBwB, I specialise in RTL hardware design for FPGAs and embedded development.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/IMG_1336_Harry%20Kneale%20Roby.JPG",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Electronics Engineer",
+                    "team": "Hardware",
+                    "lead": false
+                }
+            ]
+        }
+    ],
+    "Sensors": [
+        {
+            "id": 4,
+            "name": "Daniel Light",
+            "email": "dl923@bath.ac.uk",
+            "course": "MEng Electronic and Electrical Engineering",
+            "link": "https://www.linkedin.com/in/daniel-light-646bb72b8",
+            "description": "Possesses experience in programming, circuit design, and finance management. As Head of Finance, created a finance spreadsheet for the team, implemented an autonomous notification system to aid future cohorts in finding and applying for grants, and supported team members throughout the course of the year.",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Head of Finance",
+                    "team": "Finance",
+                    "lead": true
+                },
+                {
+                    "role": "Conductivity Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Jordan Dawson",
+            "email": "jd2099@bath.ac.uk",
+            "course": "MEng Electrical and Electronic Engineering ",
+            "link": "https://www.linkedin.com/in/jordan-dawson-7757a61b2",
+            "description": "One of the founding members and current Head of Sensors for Biodevices Without Borders. Led development on all the sensors currently under development with a focus on pH sensors. ",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/WhatsApp%20Image%202023-11-06%20at%2021.52.51_0fc6d64_Jordan%20Dawson.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Head of Sensors",
+                    "team": "Sensors",
+                    "lead": true
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Alexa Mesham",
+            "email": "amm305@bath.ac.uk",
+            "course": "MEng Chemical Engineering",
+            "link": "https://linkedin.com/in/alexa-mesham-715883265",
+            "description": "I am a third year chemical engineering student and have been a member of the team since my second year. As a South African, this project is close to my heart and I have loved playing a part in its progress.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/tempImageRZtcli_Alexa%20Mesham.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Olivia Smith",
+            "email": "os590@bath.ac.uk",
+            "course": "MBiol Biology",
+            "link": "https://www.linkedin.com/in/olivia-smith-632397210/",
+            "description": "I\u2019m a biology student who enjoys microbiology, climbing, occasionally running and trying to make sense of what these engineers say in the weekly meetings.",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Head of Social",
+                    "team": "Social",
+                    "lead": true
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Helena Woodvine",
+            "email": "hw2435@bath.ac.uk",
+            "course": "BSc(Hons) Biology with Professional Placement",
+            "link": "https://www.linkedin.com/in/helena-woodvine/",
+            "description": "Being a highly motivated and inquisitive individual I am hugely enjoying contributing towards Biodevices without Borders' applied learning project. Eager to pursue a Biotechnology-orientated career addressing UN STGs, aiding in the development and testing of electrochemical sensors for different water safety parameters is incredibly insightful. Further fuelling my interest in diagnostic lab-on-chip biosensing technology, I'm integrated across teams to have a comprehensive understanding of the processes involved to allow the development of these devices. ",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Blue%20walled%20BWB%20website_Helena%20Woodvine.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "pH Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Tara Mckenna",
+            "email": "tm907@bath.ac.uk",
+            "course": "MEng Integrated Mechanical and Electrical Engineering ",
+            "link": "https://www.linkedin.com/in/tara-mckenna-721529203?trk=contact-info",
+            "description": "A member of the Sensors team, working primarily on pH sensing. ",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/53CDC751-B115-46ED-BE7F-C890C1EE8B8C_Tara%20Mckenna.jpeg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "pH Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        }
+    ],
+    "Software": [
+        {
+            "id": 1,
+            "name": "George Madeley",
+            "email": "gm768@bath.ac.uk",
+            "course": "MEng Computer Systems Engineering",
+            "link": "https://george-madeley-portfolio.co.uk/",
+            "description": "As a passionate software developer, I delve into the realms of full-stack web development, machine learning, and game development. You\u2019ll often find me immersed in learning new programming languages, meticulously documenting code, or contributing to exciting new projects.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/20230912_225706_George%20Madeley.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Technical Advisor",
+                    "team": "Hardware",
+                    "lead": false
+                },
+                {
+                    "role": "Heeper of the Room",
+                    "team": "Social",
+                    "lead": false
+                },
+                {
+                    "role": "Head of Software",
+                    "team": "Software",
+                    "lead": true
+                },
+                {
+                    "role": "Brand Creator",
+                    "team": "Outreach",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Tabitha Hirst",
+            "email": "th2021@bath.ac.uk",
+            "course": "BEng Computer Systems Engineering",
+            "link": "https://www.linkedin.com/in/tabitha-hirst-062a292b8",
+            "description": "I am a second year Computer Systems student and I love both hardware and software. I also enjoy product design and film. Hopefully I'll be back in 2025 after my placement year!",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/IMG-20240131-WA0021_Tabitha%20Hirst.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Electronics Engineer",
+                    "team": "Hardware",
+                    "lead": false
+                },
+                {
+                    "role": "Embedded Software Engineer",
+                    "team": "Software",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Pati Bertran",
+            "email": "pb754@bath.ac.uk",
+            "course": "MEng Computer Systems Engineering",
+            "link": "https://www.linkedin.com/in/patricia-bertran-clotet",
+            "description": "",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/IMG_1543_Pati%20Bertran.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Front-End Engineer",
+                    "team": "Software",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Jamie Diamand",
+            "email": "jd2605@bath.ac.uk",
+            "course": "BSc Physics",
+            "link": "https://github.com/ja-mie0",
+            "description": "Hi, I'm Jamie.\nI'm from Brighton, I enjoy playing piano and looking after my cat. Within my team I am retrieving, organising, and processing the data we are given by our sensors.",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Back-End Engineer",
+                    "team": "Software",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Tom Henderson",
+            "email": "th2166@bath.ac.uk",
+            "course": "BSc Mathematics",
+            "link": "https://www.linkedin.com/in/thomas-henderson-0a8107242/",
+            "description": "Hi I'm Tom, I'm a first year student who loves to read, play all sorts of sports and create things! When home I enjoy spending time with my two dogs and travelling with friends. Glad to be a member of BWB.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Railcard%20Photo_Tom%20Henderson.jpeg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Back-End Engineer",
+                    "team": "Software",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Anjleen Devgun",
+            "email": "ad2598@bath.ac.uk",
+            "course": "Electrical and Electronic Engineering ",
+            "link": "https://www.linkedin.com/in/anjleen-devgun-8a7ba91aa/",
+            "description": "I am a second year EEE student who is interested in a career in cyber security.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Screenshot%202024-03-20%20at%2014.33.19_Anjleen%20Devgun.png",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Front-End Engineer",
+                    "team": "Software",
+                    "lead": false
+                }
+            ]
+        }
+    ],
+    "Finance": [
+        {
+            "id": 4,
+            "name": "Daniel Light",
+            "email": "dl923@bath.ac.uk",
+            "course": "MEng Electronic and Electrical Engineering",
+            "link": "https://www.linkedin.com/in/daniel-light-646bb72b8",
+            "description": "Possesses experience in programming, circuit design, and finance management. As Head of Finance, created a finance spreadsheet for the team, implemented an autonomous notification system to aid future cohorts in finding and applying for grants, and supported team members throughout the course of the year.",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Head of Finance",
+                    "team": "Finance",
+                    "lead": true
+                },
+                {
+                    "role": "Conductivity Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Lani Obikoya",
+            "email": "ogo21@bath.ac.uk",
+            "course": "MEng Electrical and Electronic Engineering",
+            "link": "https://www.linkedin.com/in/laniobikoya",
+            "description": "",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Head of Hardware",
+                    "team": "Hardware",
+                    "lead": true
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Helena Woodvine",
+            "email": "hw2435@bath.ac.uk",
+            "course": "BSc(Hons) Biology with Professional Placement",
+            "link": "https://www.linkedin.com/in/helena-woodvine/",
+            "description": "Being a highly motivated and inquisitive individual I am hugely enjoying contributing towards Biodevices without Borders' applied learning project. Eager to pursue a Biotechnology-orientated career addressing UN STGs, aiding in the development and testing of electrochemical sensors for different water safety parameters is incredibly insightful. Further fuelling my interest in diagnostic lab-on-chip biosensing technology, I'm integrated across teams to have a comprehensive understanding of the processes involved to allow the development of these devices. ",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Blue%20walled%20BWB%20website_Helena%20Woodvine.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "pH Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Tara Mckenna",
+            "email": "tm907@bath.ac.uk",
+            "course": "MEng Integrated Mechanical and Electrical Engineering ",
+            "link": "https://www.linkedin.com/in/tara-mckenna-721529203?trk=contact-info",
+            "description": "A member of the Sensors team, working primarily on pH sensing. ",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/53CDC751-B115-46ED-BE7F-C890C1EE8B8C_Tara%20Mckenna.jpeg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "pH Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        }
+    ],
+    "Outreach": [
+        {
+            "id": 1,
+            "name": "George Madeley",
+            "email": "gm768@bath.ac.uk",
+            "course": "MEng Computer Systems Engineering",
+            "link": "https://george-madeley-portfolio.co.uk/",
+            "description": "As a passionate software developer, I delve into the realms of full-stack web development, machine learning, and game development. You\u2019ll often find me immersed in learning new programming languages, meticulously documenting code, or contributing to exciting new projects.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/20230912_225706_George%20Madeley.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Technical Advisor",
+                    "team": "Hardware",
+                    "lead": false
+                },
+                {
+                    "role": "Heeper of the Room",
+                    "team": "Social",
+                    "lead": false
+                },
+                {
+                    "role": "Head of Software",
+                    "team": "Software",
+                    "lead": true
+                },
+                {
+                    "role": "Brand Creator",
+                    "team": "Outreach",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Vrinda Raninga",
+            "email": "vpr24@bath.ac.uk",
+            "course": "MEng Chemical Engineering",
+            "link": "https://www.linkedin.com/in/vrinda-raninga-959459249",
+            "description": "I am a 3rd year student studying Chemical Engineering who has been a part of Bath Biodevices without Borders (and its iterations) since my first year. I have thoroughly enjoyed watching the team grow to what it is today and am excited for it to continue when I leave too. ",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Business Director",
+                    "team": "Management",
+                    "lead": false
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Alexa Mesham",
+            "email": "amm305@bath.ac.uk",
+            "course": "MEng Chemical Engineering",
+            "link": "https://linkedin.com/in/alexa-mesham-715883265",
+            "description": "I am a third year chemical engineering student and have been a member of the team since my second year. As a South African, this project is close to my heart and I have loved playing a part in its progress.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/tempImageRZtcli_Alexa%20Mesham.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Helena Woodvine",
+            "email": "hw2435@bath.ac.uk",
+            "course": "BSc(Hons) Biology with Professional Placement",
+            "link": "https://www.linkedin.com/in/helena-woodvine/",
+            "description": "Being a highly motivated and inquisitive individual I am hugely enjoying contributing towards Biodevices without Borders' applied learning project. Eager to pursue a Biotechnology-orientated career addressing UN STGs, aiding in the development and testing of electrochemical sensors for different water safety parameters is incredibly insightful. Further fuelling my interest in diagnostic lab-on-chip biosensing technology, I'm integrated across teams to have a comprehensive understanding of the processes involved to allow the development of these devices. ",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Blue%20walled%20BWB%20website_Helena%20Woodvine.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "pH Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Grant Seeker",
+                    "team": "Finance",
+                    "lead": false
+                }
+            ]
+        }
+    ],
+    "Social": [
+        {
+            "id": 1,
+            "name": "George Madeley",
+            "email": "gm768@bath.ac.uk",
+            "course": "MEng Computer Systems Engineering",
+            "link": "https://george-madeley-portfolio.co.uk/",
+            "description": "As a passionate software developer, I delve into the realms of full-stack web development, machine learning, and game development. You\u2019ll often find me immersed in learning new programming languages, meticulously documenting code, or contributing to exciting new projects.",
+            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/20230912_225706_George%20Madeley.jpg",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Technical Advisor",
+                    "team": "Hardware",
+                    "lead": false
+                },
+                {
+                    "role": "Heeper of the Room",
+                    "team": "Social",
+                    "lead": false
+                },
+                {
+                    "role": "Head of Software",
+                    "team": "Software",
+                    "lead": true
+                },
+                {
+                    "role": "Brand Creator",
+                    "team": "Outreach",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Olivia Smith",
+            "email": "os590@bath.ac.uk",
+            "course": "MBiol Biology",
+            "link": "https://www.linkedin.com/in/olivia-smith-632397210/",
+            "description": "I\u2019m a biology student who enjoys microbiology, climbing, occasionally running and trying to make sense of what these engineers say in the weekly meetings.",
+            "image": "",
+            "startDate": "2022-10-01 00:00:00",
+            "endDate": "2024-07-18 00:00:00",
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                },
+                {
+                    "role": "Head of Social",
+                    "team": "Social",
+                    "lead": true
+                }
+            ]
+        }
+    ]
+}
