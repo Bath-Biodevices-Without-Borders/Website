@@ -12,13 +12,11 @@ import { faXmark, faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
 
-  const role: T_role | undefined = props.roles.find((role: any) => role.Team === props.team)
+  const role: T_role | undefined = props.roles.find((role: T_role) => role.team === props.team)
   const isFounder = props.email === 'jd2099@bath.ac.uk' || props.email === 'tm907@bath.ac.uk'
 
   return (
-    <div
-      className='team-profile'
-    >
+    <div className='team-profile'>
       <input
         type='checkbox'
         name='team-profile'
