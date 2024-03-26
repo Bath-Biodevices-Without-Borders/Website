@@ -22,12 +22,12 @@ export default function ModalForeground(props: I_modalProps) {
           />
         </figure>
         <span>
-          <h5>Duration</h5>
           <div className="time-span">
+            <h5>Duration</h5>
             <p>{props.startDate.split('-')[0]} - {props.endDate.split('-')[0]}</p>
           </div>
-          <h5>Roles</h5>
           <div className="roles">
+          <h5>Roles</h5>
             {
               props.roles.map(({role, team}, index) => (
                 <div className="role">
@@ -41,6 +41,9 @@ export default function ModalForeground(props: I_modalProps) {
             <LinkIcons link={props.link} darkMode={true} />
           </div>
         </span>
+        <div className='social-links'>
+          <LinkIcons link={props.link} darkMode={true} />
+        </div>
       </aside>
       <main>
         <header>
