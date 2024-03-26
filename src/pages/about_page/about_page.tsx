@@ -12,14 +12,7 @@ import TeamList from './team_profiles/team_list';
 export default function AboutPage() {
   return (
     <div className="about-page">
-      <div
-        className="card-category"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1548705085-101177834f47?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-          backgroundPosition: '20% 70%'
-          }}
-      >
+      <div className="card-category">
         About Us
       </div>
       <div className="card-product">
