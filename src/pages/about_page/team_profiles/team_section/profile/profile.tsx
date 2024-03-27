@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
-  const transitionTime = 1;
+  const transitionTime = 0.2;
 
   const containerVariant: { active: Variant, inactive: Variant } = {
     active: {
@@ -69,7 +69,7 @@ export default function Profile(props: I_profileProps) {
           />
         }
         <motion.div
-          onClick={() => props.handleSelection(props.id)}
+          onClick={props.isSelected ? () => {} : () => props.handleSelection(props.id)}
           className={`profile ${props.isLead ? "lead" : "non-lead"}`}
           layout
           transition={{ duration: transitionTime }}
@@ -88,7 +88,7 @@ export default function Profile(props: I_profileProps) {
               Founder
             </div>
           </motion.figure>
-          <motion.aside layoutId={`${props.id}-aside`}>
+          <motion.aside>
             <div className="time-span">
               <h5>Duration</h5>
               <p>{props.startDate.split('-')[0]} - {props.endDate.split('-')[0]}</p>
@@ -106,17 +106,16 @@ export default function Profile(props: I_profileProps) {
             </div>
             <motion.div
               className='social-links'
-              layoutId={`${props.id}-social-links`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.5 }}
             >
               <LinkIcons link={props.link} darkMode={true} />
             </motion.div>
           </motion.aside>
-          <motion.main layoutId={`${props.id}-main`}>
-            <motion.header layoutId={`${props.id}-header`}>
-              <motion.h4 layoutId={`${props.id}-name`}>{props.name}</motion.h4>
-              <motion.h5 layoutId={`${props.id}-course`}>{props.course}</motion.h5>
+          <motion.main>
+            <motion.header>
+              <motion.h4>{props.name}</motion.h4>
+              <motion.h5>{props.course}</motion.h5>
             </motion.header>
             <motion.main
               initial={{ opacity: 0 }}
