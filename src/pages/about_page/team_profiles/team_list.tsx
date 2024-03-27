@@ -60,7 +60,6 @@ export default function TeamList() {
                     </div>
                 </div>
             </header>
-
             <div className='team-list'>
                 {
                     orgDetails && Object.keys(orgDetails).map((

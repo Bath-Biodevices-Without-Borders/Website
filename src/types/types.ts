@@ -49,9 +49,12 @@ export interface I_teamSectionProps {
 };
 
 export interface I_profileProps extends T_teamMember {
-  index: number;
   isSelected: boolean;
   handleSelection: (index: number) => void;
   isLead: boolean;
   team: string;
+};
+
+export interface I_modalProps extends T_teamMember {
+  handleSelection: (index: number) => void;
 };

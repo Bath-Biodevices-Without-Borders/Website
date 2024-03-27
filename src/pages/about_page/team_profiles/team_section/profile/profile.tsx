@@ -1,79 +1,146 @@
 import React from 'react'
-import ImageErrorBoundary from './image_error_boundary'
 import './profile.css'
+
+import { AnimatePresence, motion, Variant } from 'framer-motion'
 
 import { I_profileProps, T_role } from '../../../../../types/types';
 
 import Blank from '../../../../../images/team_profiles/blank.jpg'
-import LinkIcons from './link_icons'
+import LinkIcons from '../../../../../components/link_icons/link_icons'
+import ImageErrorBoundary from '../../../../../components/image/image_error_boundary'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
+  const transitionTime = 0.2;
 
-  const role: T_role | undefined = props.roles.find((role: T_role) => role.team === props.team)
+  const containerVariant: { active: Variant, inactive: Variant } = {
+    active: {
+      overflow: 'visible',
+      transition: { duration: 0 }
+    },
+    inactive: {
+      overflow: 'hidden',
+      transition: { duration: 0, delay: transitionTime }
+    }
+  }
+
+  const pmVariant: { active: Variant, inactive: Variant } = {
+    active: {
+      zIndex: 1000,
+      color: 'var(--Lavander)',
+      backgroundColor: 'var(--OxfordBlue)',
+      transition: {
+        duration: transitionTime,
+        zIndex: { duration: 0 }
+      }
+    },
+    inactive: {
+      zIndex: 0,
+      color: props.isLead ? 'var(--Lavander)' : 'var(--OxfordBlue)',
+      backgroundColor: props.isLead ? 'var(--Teal)' : '#fff',
+      transition: {
+        duration: transitionTime,
+        zIndex: { duration: 10, delay: transitionTime }
+      }
+    }
+  }
+
   const isFounder = props.email === 'jd2099@bath.ac.uk' || props.email === 'tm907@bath.ac.uk'
 
   return (
-    <div className='team-profile'>
-      <input
-        type='checkbox'
-        name='team-profile'
-        id={props.index.toString()}
-        checked={props.isSelected}
-        onChange={() => props.handleSelection(props.index)}
-      />
-      <label
-        className='foreground'
-        htmlFor={props.index.toString()}
-        style={{ backgroundColor: props.isLead && !props.isLegacy ? '#094e4d' : 'white' }}
+    <AnimatePresence>
+      <motion.div
+        className={`pm-container ${props.isSelected ? 'modal' : 'profile'}-container`}
+        initial={'inactive'}
+        animate={props.isSelected ? 'active' : 'inactive'}
+        variants={containerVariant}
       >
-        <div className='team-profile-image'>
-          <ImageErrorBoundary
-            image={props.image}
-            fallbackImage={Blank}
+        {
+          props.isSelected &&
+          <motion.div
+            className={`modal-bg`}
+            onClick={() => props.handleSelection(props.id)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: transitionTime }}
           />
-          <div
-            className='founder-badge'
-            style={{visibility: isFounder ? 'visible' : 'hidden' }}
+        }
+        <motion.div
+          onClick={props.isSelected ? () => {} : () => props.handleSelection(props.id)}
+          className={`profile ${props.isLead ? "lead" : "non-lead"}`}
+          layout
+          transition={{ duration: transitionTime }}
+          variants={pmVariant}
+        >
+          <motion.figure layoutId={`${props.id}-figure`}>
+            <ImageErrorBoundary
+              fallbackImage={Blank}
+              image={props.image}
+            />
+            <div
+              className='founder-badge'
+              style={{visibility: isFounder ? 'visible' : 'hidden' }}
+            >
+              <FontAwesomeIcon icon={faStar} />
+              Founder
+            </div>
+          </motion.figure>
+          <motion.aside>
+            <div className="time-span">
+              <h5>Duration</h5>
+              <p>{props.startDate.split('-')[0]} - {props.endDate.split('-')[0]}</p>
+            </div>
+            <div className="roles">
+            <h5>Roles</h5>
+              {
+                props.roles.map(({role, team}: T_role, index: number) => (
+                  <div className={`role ${team === props.team ? "main-role" : "sub-role"}`}>
+                    <p>{role}</p>
+                    <p>{team}</p>
+                  </div>
+                ))
+              }
+            </div>
+            <motion.div
+              className='social-links'
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              <LinkIcons link={props.link} darkMode={true} />
+            </motion.div>
+          </motion.aside>
+          <motion.main>
+            <motion.header>
+              <motion.h4>{props.name}</motion.h4>
+              <motion.h5>{props.course}</motion.h5>
+            </motion.header>
+            <motion.main
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {props.description}
+            </motion.main>
+          </motion.main>
+          <motion.footer
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <FontAwesomeIcon icon={faStar} />
-            Founder
-          </div>
-        </div>
-        <div className='team-profile-details'>
-          <span className='team-profile-text'>
-            <p className='member-name' style={{
-              color: props.isLead && !props.isLegacy ? 'white' : 'black'
-            }}>{props.name}</p>
-            <p style={{
-              color: props.isLead && !props.isLegacy ? 'white' : 'black'
-            }}>{role?.role}</p>
-            <p style={{
-              color: props.isLead && !props.isLegacy ? 'white' : 'black'
-            }}>{props.course}</p>
-          </span>
-          <LinkIcons link={props.link} darkMode={props.isLead && !props.isLegacy} />
-        </div>
-      </label>
-      <label
-        htmlFor={props.index.toString()}
-        className="legacy-overlay"
-        style={{
-          display: props.isLegacy ? 'block' : 'none'
-        }}
-      >
-      </label>
-      <div className='background'>
-        <div className='profile-description'>
-          <p className='member-name'>{props.name}</p>
-          <p>{props.description}</p>
-        </div>  
-        <label htmlFor={props.index.toString()}>
-            <FontAwesomeIcon icon={faXmark} />
-          </label>
-      </div>
-    </div>
+            <motion.label
+              className='close-button'
+              htmlFor={`${props.id}-modal`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              <FontAwesomeIcon icon={faXmark} onClick={() => props.handleSelection(-1)} />
+            </motion.label>
+          </motion.footer>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   )
 }
