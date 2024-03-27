@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.team header {
+.team > header {
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -15,7 +15,7 @@
   padding: 5em 3em 3em 3em;
 }
 
-.team figure {
+.team > header > figure {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,13 +29,13 @@
   padding: 0;
 }
 
-.team figure img {
+.team > header > figure img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.team header aside {
+.team > header aside {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -45,7 +45,7 @@
   flex: 1;
 }
 
-.team header h3 {
+.team > header h3 {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -72,23 +72,23 @@
 }
 
 @media (max-width: 768px) {
-  .team header {
+  .team > header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 3em 1em;
   }
 
-  .team figure {
+  .team > header figure {
     width: 8em;
   }
 
-  .team header aside {
+  .team > header aside {
     padding: 1em;
   }
 
-  .team header h3,
-  .team header p {
+  .team > header h3,
+  .team > header p {
     justify-content: center;
     text-align: center;
   }

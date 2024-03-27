@@ -20,9 +20,7 @@ export default function LinkIcons({ link, darkMode }: { link: string, darkMode: 
     }, [link])
 
     return (
-        <a href={link} target='_blank' rel='noreferrer' style={{
-            color: darkMode ? '#ddd' : '#777'
-        }}>
+        <a href={link} target='_blank' rel='noreferrer'>
             <FontAwesomeIcon icon={icon} /> 
         </a>
     )
