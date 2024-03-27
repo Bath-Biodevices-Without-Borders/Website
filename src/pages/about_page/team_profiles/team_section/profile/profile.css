@@ -16,21 +16,29 @@
   display: unset;
 }
 
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pm-container {
+  width: 15rem;
+  border-radius: 1.5rem;
+}
+
 .pm-container * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.pm-container {
-  overflow: hidden;
-}
-
-.pm-container > input[type="checkbox"] {
-  display: none;
-}
-
 .pm-container > .profile {
+  border-radius: 1.5rem;
   box-sizing: border-box;
   padding: 1em;
 }
@@ -145,14 +153,9 @@
 
 
 
-.profile-container {
-  width: 15em;
-  border-radius: 1.4em;
-
-  cursor: pointer;
-}
 
 .profile-container > .profile {
+  position: relative;
   height: 100%;
   width: 100%;
 
@@ -163,14 +166,6 @@
   gap: 1em;
 
   cursor: pointer;
-}
-
-.profile-container > .lead {
-  background-color: var(--Teal);
-}
-
-.profile-container > .non-lead {
-  background-color: white;
 }
 
 .profile-container figure {
@@ -217,27 +212,24 @@
 
 
 
-.modal-container {
+
+
+.modal-container > .profile {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-container > .profile {
   width: 80%;
   height: 80%;
-  background-color: var(--OxfordBlue);
-  border-radius: 1.5em;
+  margin: 10%;
   padding: 1em;
+
+  
+  border-radius: 1.5em;
   overflow: hidden;
+
+  /* color: var(--Lavander);
+  background-color: var(--OxfordBlue); */
 
   display: grid;
   grid-template-columns: 1fr 2fr;

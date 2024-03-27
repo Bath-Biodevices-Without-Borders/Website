@@ -49,7 +49,6 @@ export interface I_teamSectionProps {
 };
 
 export interface I_profileProps extends T_teamMember {
-  index: number;
   isSelected: boolean;
   handleSelection: (index: number) => void;
   isLead: boolean;

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import './profile.css'
 
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion, Variant } from 'framer-motion'
 
 import { I_profileProps, T_role } from '../../../../../types/types';
 
@@ -13,106 +13,135 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
-  const [style, setStyle] = useState({} as React.CSSProperties)
+  const transitionTime = 1;
 
-  useEffect(() => {
-    if (props.isSelected || props.isLead) {
-      setStyle({
-        color: 'var(--Lavander)'
-      })
-    } else {
-      setStyle({
-        color: 'var(--OxfordBlue)'
-      })
+  const containerVariant: { active: Variant, inactive: Variant } = {
+    active: {
+      overflow: 'visible',
+      transition: { duration: 0 }
+    },
+    inactive: {
+      overflow: 'hidden',
+      transition: { duration: 0, delay: transitionTime }
     }
-  }, [props.isSelected, props.isLead])
+  }
+
+  const pmVariant: { active: Variant, inactive: Variant } = {
+    active: {
+      zIndex: 1000,
+      color: 'var(--Lavander)',
+      backgroundColor: 'var(--OxfordBlue)',
+      transition: {
+        duration: transitionTime,
+        zIndex: { duration: 0 }
+      }
+    },
+    inactive: {
+      zIndex: 0,
+      color: props.isLead ? 'var(--Lavander)' : 'var(--OxfordBlue)',
+      backgroundColor: props.isLead ? 'var(--Teal)' : '#fff',
+      transition: {
+        duration: transitionTime,
+        zIndex: { duration: 10, delay: transitionTime }
+      }
+    }
+  }
 
   const isFounder = props.email === 'jd2099@bath.ac.uk' || props.email === 'tm907@bath.ac.uk'
 
   return (
-    <motion.label
-      className={`pm-container ${props.isSelected ? "modal" : "profile"}-container`}
-      style={style}
-      htmlFor={`${props.index}-modal`}
-      whileHover={!props.isSelected ? { scale: 1.1 } : {}}
-    >
-      <input
-        type='checkbox'
-        name='team-profile'
-        id={`${props.index}-profile`}
-        checked={props.isSelected}
-        disabled={props.isSelected}
-        onChange={() => props.handleSelection(props.index)}
-      />
-      <input
-        type='checkbox'
-        name='team-profile'
-        id={`${props.index}-modal`}
-        checked={props.isSelected}
-        disabled={!props.isSelected}
-        onChange={() => props.handleSelection(props.index)}
-      />
-      <label
-        className={`profile ${props.isLead ? "lead" : "non-lead"}`}
-        htmlFor={`${props.index}-profile`}
+    <AnimatePresence>
+      <motion.div
+        className={`pm-container ${props.isSelected ? 'modal' : 'profile'}-container`}
+        initial={'inactive'}
+        animate={props.isSelected ? 'active' : 'inactive'}
+        variants={containerVariant}
       >
-        <figure>
-          <ImageErrorBoundary
-            fallbackImage={Blank}
-            image={props.image}
-          />
-          <div
-            className='founder-badge'
-            style={{visibility: isFounder ? 'visible' : 'hidden' }}
-          >
-            <FontAwesomeIcon icon={faStar} />
-            Founder
-          </div>
-        </figure>
-        <aside>
-          <div className="time-span">
-            <h5>Duration</h5>
-            <p>{props.startDate.split('-')[0]} - {props.endDate.split('-')[0]}</p>
-          </div>
-          <div className="roles">
-          <h5>Roles</h5>
-            {
-              props.roles.map(({role, team}: T_role, index: number) => (
-                <div className={`role ${team === props.team ? "main-role" : "sub-role"}`}>
-                  <p>{role}</p>
-                  <p>{team}</p>
-                </div>
-              ))
-            }
-          </div>
+        {
+          props.isSelected &&
           <motion.div
-            className='social-links'
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.5 }}
+            className={`modal-bg`}
+            onClick={() => props.handleSelection(props.id)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: transitionTime }}
+          />
+        }
+        <motion.div
+          onClick={() => props.handleSelection(props.id)}
+          className={`profile ${props.isLead ? "lead" : "non-lead"}`}
+          layout
+          transition={{ duration: transitionTime }}
+          variants={pmVariant}
+        >
+          <motion.figure layoutId={`${props.id}-figure`}>
+            <ImageErrorBoundary
+              fallbackImage={Blank}
+              image={props.image}
+            />
+            <div
+              className='founder-badge'
+              style={{visibility: isFounder ? 'visible' : 'hidden' }}
+            >
+              <FontAwesomeIcon icon={faStar} />
+              Founder
+            </div>
+          </motion.figure>
+          <motion.aside layoutId={`${props.id}-aside`}>
+            <div className="time-span">
+              <h5>Duration</h5>
+              <p>{props.startDate.split('-')[0]} - {props.endDate.split('-')[0]}</p>
+            </div>
+            <div className="roles">
+            <h5>Roles</h5>
+              {
+                props.roles.map(({role, team}: T_role, index: number) => (
+                  <div className={`role ${team === props.team ? "main-role" : "sub-role"}`}>
+                    <p>{role}</p>
+                    <p>{team}</p>
+                  </div>
+                ))
+              }
+            </div>
+            <motion.div
+              className='social-links'
+              layoutId={`${props.id}-social-links`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              <LinkIcons link={props.link} darkMode={true} />
+            </motion.div>
+          </motion.aside>
+          <motion.main layoutId={`${props.id}-main`}>
+            <motion.header layoutId={`${props.id}-header`}>
+              <motion.h4 layoutId={`${props.id}-name`}>{props.name}</motion.h4>
+              <motion.h5 layoutId={`${props.id}-course`}>{props.course}</motion.h5>
+            </motion.header>
+            <motion.main
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {props.description}
+            </motion.main>
+          </motion.main>
+          <motion.footer
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <LinkIcons link={props.link} darkMode={true} />
-          </motion.div>
-        </aside>
-        <main>
-          <header>
-            <h4>{props.name}</h4>
-            <h5>{props.course}</h5>
-          </header>
-          <main>
-            {props.description}
-          </main>
-        </main>
-        <footer>
-          <motion.label
-            className='close-button'
-            htmlFor={`${props.index}-modal`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.5 }}
-          >
-            <FontAwesomeIcon icon={faXmark} onClick={() => props.handleSelection(-1)} />
-          </motion.label>
-        </footer>
-      </label>
-    </motion.label>
+            <motion.label
+              className='close-button'
+              htmlFor={`${props.id}-modal`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.5 }}
+            >
+              <FontAwesomeIcon icon={faXmark} onClick={() => props.handleSelection(-1)} />
+            </motion.label>
+          </motion.footer>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   )
 }
