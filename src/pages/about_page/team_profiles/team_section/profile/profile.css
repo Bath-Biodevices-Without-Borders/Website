@@ -273,12 +273,9 @@
   padding: 0.5em
 }
 
-.modal-container aside > * {
-  width: 100%;
-}
-
 .modal-container .time-span {
   display: flex;
+  width: 100%;
 }
 
 .modal-container .roles {
@@ -287,9 +284,11 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 0.3rem;
+  width: 100%;
 }
 
 .modal-container .role {
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -301,6 +300,7 @@
 }
 
 .modal-container .social-links {
+  align-self: center;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;

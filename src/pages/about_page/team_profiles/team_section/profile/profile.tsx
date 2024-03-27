@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import './profile.css'
 
+import { motion } from 'framer-motion'
+
 import { I_profileProps, T_role } from '../../../../../types/types';
 
 import Blank from '../../../../../images/team_profiles/blank.jpg'
@@ -28,10 +30,11 @@ export default function Profile(props: I_profileProps) {
   const isFounder = props.email === 'jd2099@bath.ac.uk' || props.email === 'tm907@bath.ac.uk'
 
   return (
-    <label
+    <motion.label
       className={`pm-container ${props.isSelected ? "modal" : "profile"}-container`}
       style={style}
       htmlFor={`${props.index}-modal`}
+      whileHover={!props.isSelected ? { scale: 1.1 } : {}}
     >
       <input
         type='checkbox'
@@ -82,9 +85,13 @@ export default function Profile(props: I_profileProps) {
               ))
             }
           </div>
-          <div className='social-links'>
+          <motion.div
+            className='social-links'
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.5 }}
+          >
             <LinkIcons link={props.link} darkMode={true} />
-          </div>
+          </motion.div>
         </aside>
         <main>
           <header>
@@ -96,14 +103,16 @@ export default function Profile(props: I_profileProps) {
           </main>
         </main>
         <footer>
-          <label
+          <motion.label
             className='close-button'
             htmlFor={`${props.index}-modal`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.5 }}
           >
             <FontAwesomeIcon icon={faXmark} onClick={() => props.handleSelection(-1)} />
-          </label>
+          </motion.label>
         </footer>
       </label>
-    </label>
+    </motion.label>
   )
 }
