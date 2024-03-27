@@ -154,6 +154,14 @@
 
 
 
+.profile-container {
+  transition: scale 0.1s ease-in-out;
+}
+
+.profile-container:hover {
+  scale: 1.1;
+}
+
 .profile-container > .profile {
   position: relative;
   height: 100%;
