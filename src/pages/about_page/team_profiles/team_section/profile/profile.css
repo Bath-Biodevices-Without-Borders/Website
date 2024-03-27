@@ -1,0 +1,184 @@
+.team-profile {
+  position: relative;
+  width: 15em;
+  overflow: hidden;
+
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: 1.4em;
+  
+}
+
+.team-profile:hover {
+  transform: scale(1.1);
+}
+
+.team-profile > input[type="checkbox"] {
+  display: none;
+}
+
+.team-profile > .foreground {
+  box-sizing: border-box;
+  padding: 1em;
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.team-profile-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  margin-bottom: 0.7em;
+}
+
+.team-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.4em;
+}
+
+.team-profile-image .founder-badge {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  width: 6em;
+  padding: 0.2em 0.5em;
+
+  color: hsl(179, 80%, 12%);
+  background-color: hsl(179, 60%, 37%);
+  border-radius: 1000px;
+
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.team-profile-details {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-profile-details * {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.team-profile-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.team-profile .member-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.team-profile-details p:nth-child(2) {
+  font-size: 1.2em;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+.team-profile-details p:nth-child(3) {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.team-profile-details > a {
+  font-size: 1.5em;
+  font-weight: normal;
+  font-style: normal;
+  transition: transform 0.2s;
+  color: #094e4d
+}
+
+.team-profile-details > a:hover {
+  transform: scale(1.2);
+}
+
+.team-profile > .background {
+  position: absolute;
+  top: 100%;
+
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--OxfordBlue);
+  color: var(--Lavander);
+
+  box-sizing: border-box;
+  padding: 1em;
+  border-radius: 1em;
+
+  transition: transform 0.2s;
+
+  cursor: default;
+}
+
+.team-profile > .background > div {
+  width: 100%;
+  flex: 1;
+
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--Lavander) var(--OxfordBlue);
+
+  padding-right: 0.5em;
+}
+
+.team-profile > .background label {
+  margin-top: 0.5em;
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.team-profile > .background label:hover {
+  transform: scale(1.2) rotate(720deg);
+}
+
+.team-profile input[type="checkbox"]:checked ~ .background {
+  transform: translateY(-100%);
+}
+
+.team-profile .legacy-overlay {
+  background-color: #bbb7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
