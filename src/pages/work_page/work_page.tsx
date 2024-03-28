@@ -1,4 +1,4 @@
-import './oasis_page.css';
+import './work_page.css';
 
 import DeviceRender from '../../images/Picture1.png';
 import AppRender from '../../images/App_Safe.png';

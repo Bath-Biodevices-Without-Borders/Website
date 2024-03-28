@@ -22,7 +22,7 @@ export default function NavBar() {
           <NavLink to = "/about">About Us</NavLink>
         </li>
         <li>
-          <NavLink to = "/oasis">Our Work</NavLink>
+          <NavLink to = "/work">Our Work</NavLink>
         </li>
         <li>
           <NavLink to= "/contact">Get In Touch</NavLink>

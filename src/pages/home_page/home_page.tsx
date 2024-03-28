@@ -80,7 +80,7 @@ export default function HomePage() {
               The findings are conveniently displayed on the device and seamlessly transmitted to a
               Bluetooth-connected smartphone app.
             </p>
-            <Link to="/oasis" className="custom-button">Our Work</Link>
+            <Link to="/work" className="custom-button">Our Work</Link>
           </main>
           <ul>
             <li>
