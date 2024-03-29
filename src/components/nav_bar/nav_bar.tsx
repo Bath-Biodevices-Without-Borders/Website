@@ -5,7 +5,7 @@ import './nav_bar.css';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import Logo from '../../images/Biodevices Without Borders-04.png';
 
