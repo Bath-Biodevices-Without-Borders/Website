@@ -1,4 +1,4 @@
-footer {
+.footer {
   background: #ECEBFF;
   color: rgba(0,0,0,0.5);
 
@@ -8,7 +8,7 @@ footer {
 
 }
 
-footer > div {
+.footer > div {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -16,20 +16,20 @@ footer > div {
   gap: 1rem;
 }
 
-footer > div:nth-child(3) {
+.footer > div:nth-child(3) {
   gap: 0;
 }
 
-footer > div:nth-child(3) > h4 {
+.footer > div:nth-child(3) > h4 {
   margin-bottom: 1rem;
 }
 
-footer > div:nth-child(3) > a {
+.footer > div:nth-child(3) > a {
   font-size: 1.5rem;
 }
 
-footer a,
-footer p {
+.footer a,
+.footer p {
   color: var(--OxfordBlue);
   text-decoration: none;
   transform-origin: left center;
@@ -37,24 +37,24 @@ footer p {
   transition: 0.3s;
 }
 
-footer a:hover {
+.footer a:hover {
   transform: scale(1.1);
 }
 
 @media screen and (max-width: 800px) {
-  footer {
+  .footer {
     grid-template: 1fr 1fr / 1fr 1fr;
     gap: 2rem 1rem;
   }
 }
 
 @media screen and (max-width: 400px) {
-  footer {
+  .footer {
     grid-template: repeat(4, auto) / 1fr;
     gap: 2rem 1rem;
   }
 
-  footer > div {
+  .footer > div {
     align-items: center;
   }
 }

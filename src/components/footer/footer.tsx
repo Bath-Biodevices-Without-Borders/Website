@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className='footer'>
       <div>
         <h4>Contact Us</h4>
         <p>Email: info@example.com</p>
