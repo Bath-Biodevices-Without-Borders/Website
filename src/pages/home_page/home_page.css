@@ -124,6 +124,20 @@
   object-fit: contain;
 }
 
+@media screen and (max-width: 350px) {
+  .issue-card {
+    text-align: center;
+  }
+
+  .issue-card > aside section {
+    grid-template: repeat(6, auto) / 1fr;
+  }
+
+  .issue-card > aside section > .icon-container {
+    margin-top: 2rem;
+  }
+}
+
 .our-mission {
   box-sizing: border-box;
   width: 100%;
