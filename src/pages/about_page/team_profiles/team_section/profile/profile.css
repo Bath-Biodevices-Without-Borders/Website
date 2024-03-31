@@ -27,8 +27,7 @@
 }
 
 .pm-container {
-  width: 15rem;
-  border-radius: 1.5rem;
+  width: clamp(5rem, 40vw, 15rem);
 }
 
 .pm-container * {
@@ -38,9 +37,9 @@
 }
 
 .pm-container > .profile {
-  border-radius: 1.5rem;
+  border-radius: calc(0.5rem + clamp(0.1rem, 1vw, 1rem));
   box-sizing: border-box;
-  padding: 1em;
+  padding: clamp(0.1rem, 1vw, 1rem);
 }
 
 .pm-container figure {
@@ -171,13 +170,17 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1em;
+  gap: clamp(0.2rem, 1vw, 1em);
 
   cursor: pointer;
 }
 
 .profile-container figure {
   order: 1;
+}
+
+.profile-container figure img {
+  object-fit: cover;
 }
 
 .profile-container aside {
@@ -194,16 +197,20 @@
 }
 
 .profile-container main > header {
-  gap: 1rem;
+  gap: clamp(0.2rem, 1vw, 1em);
   justify-content: space-between;
 }
 
 .profile-container h4 {
-  font-size: 1.5em;
+  font-size: clamp(0.5rem, 7vw, 1.5rem);
 }
 
 .profile-container h5 {
-  font-size: 1.2em;
+  font-size: clamp(0.3rem, 4vw, 1.2em);
+}
+
+.profile-container p {
+  font-size: clamp(0.2rem, 4vw, 1em);
 }
 
 .profile-container .lead .social-links a {
@@ -228,7 +235,7 @@
   left: 0;
 
   width: 80%;
-  height: 80%;
+  max-height: 80%;
   margin: 10%;
   padding: 1em;
 
@@ -312,12 +319,16 @@
 }
 
 .modal-container h4 {
-  font-size: clamp(0.5rem, 5vw, 2.5em);
+  font-size: clamp(0.7rem, 10vw, 2.5em);
 }
 
 .modal-container h5 {
-  font-size: clamp(0.2rem, 5vw, 1.5em);
+  font-size: clamp(0.5rem, 8vw, 1.5em);
   font-weight: 700;
+}
+
+.modal-container p {
+  font-size: clamp(0.2rem, 6vw, 1em);
 }
 
 .modal-container main {
@@ -335,6 +346,7 @@
 
 .modal-container main > main {
   display: flex;
+  font-size: clamp(0.2rem, 6vw, 1em);
 }
 
 .modal-container main > header {
@@ -397,8 +409,9 @@
 
   .modal-container figure {
     order: 1;
+    width: 100%;
     aspect-ratio: 1/1;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .modal-container figure img {

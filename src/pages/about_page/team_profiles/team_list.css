@@ -77,3 +77,9 @@
   width: 100%;
   gap: 1em;
 }
+
+@media screen and (max-width: 625px) {
+  .team-list-container {
+    padding: 0 5vw 4em 5vw;
+  }
+}

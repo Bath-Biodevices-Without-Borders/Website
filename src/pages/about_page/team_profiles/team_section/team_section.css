@@ -68,7 +68,7 @@
   flex-wrap: wrap;
 
   width: 100%;
-  gap: 1.3em;
+  gap: 2rem clamp(0.5rem, 2vw, 1.3em);
 }
 
 @media (max-width: 768px) {
