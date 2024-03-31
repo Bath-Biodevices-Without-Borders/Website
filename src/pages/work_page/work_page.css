@@ -1,0 +1,272 @@
+.work-page > .hero {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1519455953755-af066f52f1a6?q=80&w=2261&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: center
+}
+
+.work-page > .oasis {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5rem 10vw;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ECEBFF; ;
+  color: #030026;
+}
+
+.work-page > .oasis > * {
+  flex: 1;
+}
+
+.work-page > .oasis > aside {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.work-page > .oasis h2{
+  width: 100%;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.work-page > .oasis p {
+  width: 100%;
+  font-size: 20px;
+}
+
+.work-page > .oasis h3 {
+  width: 100%;
+  margin: 2.5rem 0 1rem 0;
+}
+
+.work-page > .oasis ul {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  gap: 1rem 3rem;
+
+  list-style: none;
+}
+
+.work-page > .oasis li{
+  width: 100%;
+
+  color: #ECEBFF;
+  background: #0E7C7B;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+}
+
+.work-page > .oasis figure {
+  width: 100%;
+  height: 100%;
+}
+
+.work-page > .oasis img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+
+.work-page > .app {
+  box-sizing: border-box;
+  padding: 5rem 10vw;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  background: #030026 ;
+  color: #ECEBFF;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.work-page > .app > * {
+  flex: 1;
+}
+
+.work-page > .app > figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.work-page > .app img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.work-page > .app > aside {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.work-page > .app h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.work-page > .app ul {
+  list-style: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.work-page > .app li {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.work-page > .app p {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: .7;
+}
+
+@media screen and (max-width: 1000px) {
+  .work-page > .oasis,
+  .work-page > .app {
+    flex-flow: column nowrap;
+  }
+
+  .work-page > .oasis > figure,
+  .work-page > .app > figure {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .work-page > .oasis ul {
+    grid-template: 1fr 1fr 1fr / 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .work-page > .oasis ul {
+    grid-template: repeat(6, 1fr) / 1fr;
+  }
+}
+
+
+
+
+
+
+.outreach {
+  box-sizing: border-box;
+  padding: 5rem 10vw;
+
+  background-color: #ECEBFF;
+}
+
+.outreach h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.outreach ul {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+}
+
+.outreach li {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  overflow: hidden;
+}
+
+.outreach ul li:nth-child(2n) > aside,
+.outreach ul li:nth-child(2n - 1) > figure {
+  order: 1;
+}
+
+.outreach ul li:nth-child(2n) > figure,
+.outreach ul li:nth-child(2n - 1) > aside {
+  order: 2;
+}
+
+.outreach li > aside {
+  flex: 2;
+}
+
+.outreach li > figure {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+}
+
+.outreach li > figure > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media screen and (max-width: 800px) {
+  .work-page .outreach li > aside {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .work-page .outreach li {
+    flex-flow: column nowrap
+  }
+
+  .outreach ul li:nth-child(2n) > figure,
+  .outreach ul li:nth-child(2n - 1) > figure {
+    aspect-ratio: unset;
+    order: 1;
+  }
+
+  .outreach ul li:nth-child(2n) > aside,
+  .outreach ul li:nth-child(2n - 1) > aside {
+    order: 2;
+  }
+}

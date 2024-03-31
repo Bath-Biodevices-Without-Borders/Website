@@ -1,3 +1,7 @@
+:root {
+  font-size: 16px;
+}
+
 * {
   --RISDBlue: #355DF2;
   --Aquamarine: #52e1b1;
@@ -5,12 +9,15 @@
   --Lavander: #ecebff;
   --OxfordBlue: #030026;
   --DogwoodRose: #d62264;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

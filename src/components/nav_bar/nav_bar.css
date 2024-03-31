@@ -1,106 +1,128 @@
-.active{
-  border-bottom: 2px solid #ffffff;
-}
-
 nav {
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(180deg, #030026 0%,  #070055 100%);
   position: sticky;
   top: 0;
-  font-family: 'Open Sans', sans-serif;
+  left: 0;
   z-index: 1000;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem 10vw;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  background: linear-gradient(180deg, #030026 0%,  #070055 100%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
-nav .title {
-  margin-left: 5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  text-decoration: none;
-
+nav header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 nav img {
   height: 7rem;
 }
 
-nav ul{
-  display: flex;
-  margin-right: 10rem;
-  font-size: large;
+nav input[type="checkbox"] {
+  display: none;
 }
 
-nav ul li {
+nav input[type="checkbox"]:checked ~ ul {
+  display: flex;
+}
+
+nav ul{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1rem, 2vw ,3rem);
+
+  font-size: large;
   list-style: none;
-  padding: 1rem;
 }
 
 nav ul li a {
+  position: relative;
+  
+  padding: 0.2rem;
+
   text-decoration: none;
   display: block;
   color: white;
-  padding: 0.5rem;
-  margin: 0 0.5rem;
 }
 
-nav ul li a:not(.active):hover {
-  transition: 0.3s;
-  border-bottom: 2px solid #ffffff;
-}
-
-nav .menu{
-  display: none;
+nav li a::after {
+  content: "";
   position: absolute;
-  top: 0.75rem;
-  right: 0.5rem;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 2.25rem;
-  height: 2rem;
-
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleY(0);
+  transition: 0.2s;
 }
 
-nav .menu span{
-  height: 0.4rem;
-  width: 100%;
-  background-color: white;
+nav li a:hover::after,
+nav li a:active::after {
+  transform: scaleY(1);
+}
+
+nav label{
+  display: none;
 }
 
 @media (max-width: 800px) {
-  nav .menu {
-    display: flex;
+  nav {
+    padding: 0 10vw;
+    flex-flow: row wrap;
+    gap: 1rem;
   }
 
-  nav {
-    flex-direction: column;
-    align-items: start;
+  nav header {
+    flex: 4;
+  }
+
+  nav img {
+    width: 100%;
+    max-width: 18rem;
+    height: unset;
+  }
+
+  nav label {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 10vw, 3rem);
+    width:  clamp(1rem, 10vw, 3rem);
+    color: white;
   }
 
   nav ul {
     display: none;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 0.25rem;
   }
 
-  nav ul.open {
+  nav input[type="checkbox"]:checked ~ ul {
+    box-sizing: border-box;
+    padding: 1rem 0;
+
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+
   }
 
   nav ul li {
     width: 100%;
     text-align: center;
   }
-
-  nav ul li a {
-    margin: 0.2rem 0.5rem;
-  }
-
-  nav ul li a:not(.active):hover {
-    background-color: #251d72;;
-  }
-
 }

@@ -1,22 +1,21 @@
 
-.home-card-category {
+.home-page > .hero {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10vw;
+
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1484318571209-661cf29a69c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
   background-position: center;
-  height: 300px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 150px;
-
 }
 
-.home-card-category h1 {
+.home-page > .hero h1 {
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 36px;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 }
 
-.home-card-category p {
+.home-page > .hero p {
   font-size: 20px;
   color: white;
   opacity: .7;
@@ -24,7 +23,7 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.custom-button {
+.home-page > .hero .custom-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -38,245 +37,282 @@
   margin-top: 10px;
 }
 
-.custom-button:hover {
+.home-page > .hero .custom-button:hover {
   background-color: #5976e0;
   color: #fff;
 }
 
 .issue-card {
   background-color: #ECEBFF;
-  height: 600px;
+  padding: 5em 10vw;
   display: flex;
-}
-
-.issue-part-one {
-  margin-top: 40px;
-  margin-left: 100px;
-  width: 60%;
-}
-
-.issue-part-two {
-  width: 40%;
-  display: flex;
+  flex-flow: row nowrap;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
 }
 
-.issue-card h2 {
+.issue-card > aside {
+  flex: 1;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.issue-card > aside > * {
+  width: 100%;
+}
+
+.issue-card > aside section {
+  width: 100%;
+
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 6rem 1fr;
+}
+
+.issue-card > aside section > * {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.issue-card > aside section > .icon-container {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.issue-card > aside section > .icon-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.issue-card > aside section > .icon-container:first-of-type > *:first-of-type {
+  color: var(--RISDBlue)
+}
+
+.issue-card  h2 {
   font-size: 40px;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 5px;
   color: #030026;
 }
 
-.container-one {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.container-one p {
+.issue-card p {
   color: #030026;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
 }
 
-.africa-map {
-  height: 500px;
-}
-
-.container-two {
-  margin-top: 20px;
-}
-.water-scarcity {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
-
-}
-
-.water-scarcity i {
-  font-size: 50px;
-  color: #030026;
-}
-
-.water-scarcity p {
-  font-size: 18px;
-  color: #030026;
-  font-family: 'Open Sans', sans-serif;
-  margin-left: 30px;
-  margin-bottom: 0;
-}
-
-.container-two p {
-  color: #030026;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.waterbourne-disease {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-
-}
-
-.number {
-  font-size: 40px;
-  color: #030026;
+.issue-card > figure {
   margin: 0;
   padding: 0;
-  line-height: 0.25;
+  flex: 1;
+  height: 100%;
 }
 
-.text {
-  font-size: 18px;
-  color: #030026;
-  font-family: 'Open Sans', sans-serif;
+.issue-card > figure > img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: contain;
 }
 
-.lack-access {
-  display: flex;
-  align-items: center;
-  gap: 30px;
+@media screen and (max-width: 350px) {
+  .issue-card {
+    text-align: center;
+  }
 
+  .issue-card > aside section {
+    grid-template: repeat(6, auto) / 1fr;
+  }
+
+  .issue-card > aside section > .icon-container {
+    margin-top: 2rem;
+  }
 }
 
 .our-mission {
-  height: 600px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5rem 10vw;
+
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
+  justify-content: center;
   align-items: center;
+
   background-color: #030026;
-  padding-top: 50px;
   box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
 }
 
-.our-mission h2 {
-  font-size: 40px;
-  font-family: 'Open Sans', sans-serif;
-  margin-bottom: 35px;
+.our-mission > * {
   color: #ECEBFF;
 }
 
-.our-mission h4 {
+.our-mission h2 {
+  width: 100%;
+  font-size: 40px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #ECEBFF;
+}
+
+.our-mission p {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: lighter;
   text-align: center;
 }
 
-.statement {
-  color:#ECEBFF;
-  width: 70%;
-  border-radius: 30px;
-  margin-bottom: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.our-mission img {
-  width: 69.5%;
-
-}
-
 .our-solution {
-  height: 600px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 20px;
-  color: #030026;
-  background: linear-gradient(180deg, #EBF1FF 40%,  #BAD0FF 100%);
-  display: flex;
+  position: relative;
+  box-sizing: border-box;
 
+  background: #EBF1FF;
 }
 
-.solution-container-one {
-  width: 40%;
-
-}
-
-.solution-container-one img{
+.our-solution > figure {
   width: 100%;
-  margin-top: 13px;
-  background-color: #EBF1FF;
+
+  overflow: hidden;
 }
 
-.solution-container-2 {
+.our-solution > figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.our-solution aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0 10vw;
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.our-solution h2 {
-  font-size: 40px;
-  margin: 0;
+.our-solution main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.our-solution main h2 {
+  width: 100%;
+  font-size: 2.5rem;
   margin-top: 50px;
-  margin-bottom: 20px;
-  margin-left: 70px;
 }
 
-.our-solution p {
+.our-solution main p {
   font-size: 20px;
-  width: 750px;
-  margin:0;
-  margin-left: 70px;
+  width: 60%;
   margin-bottom: 20px;
 
 }
 
-.our-solution h4 {
-  margin: 0px;
-}
+.our-solution ul {
+  align-self: center;
+  margin-bottom: 2rem;
 
-.solution-card {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 10px;
+  display: grid;
+  grid-template: repeat(4, 1fr) / 1fr 1fr;
+  gap: 1rem 5rem;
 
-}
+  list-style: none;
 
-.solution-card i{
-  font-size: 20px;
-}
-
-.solution-card h4{
-  margin: 0;
-  margin-left: 30px;
-
-}
-
-.solution-table {
-  display: flex;
-  margin-left: 70px;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: white;
+  padding: 2rem;
   border-radius: 10px;
+  
+  background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.solution-table-part-two {
-  margin-left: 40px;
-
+.our-solution li {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  font-size: 20px;
 }
 
-.custom-button-solu {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+.our-solution li > figure {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-solution li > p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.our-solution footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-solution .custom-button {
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+
+  color: #fff;
+  background-color: #355DF2;
+
+  font-size: 1rem;
   text-align: center;
-  color: #fff;
-  background-color: #355DF2 ;
-  border-radius: 10px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-  margin-top: 15px;
-  margin-left: 70px;
+  text-decoration: none;  
 }
 
-.custom-button-solu:hover {
-  background-color: #5976e0;
-  color: #fff;
+@media screen and (max-width: 800px) {
+  .issue-card > figure {
+    display: none;
+  }
+
+  .our-solution aside {
+    position: unset;
+  }
+
+  .our-solution main {
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .our-solution main h2 {
+    text-align: center;
+  }
+
+  .our-solution main p {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .our-solution ul {
+    grid-template: repeat(8, 1fr) / 1fr;
+  } 
 }
