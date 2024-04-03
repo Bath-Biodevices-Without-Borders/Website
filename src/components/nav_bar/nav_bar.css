@@ -76,6 +76,7 @@ nav li a:active::after {
 
 nav label{
   display: none;
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {
