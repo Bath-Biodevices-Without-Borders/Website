@@ -4,7 +4,9 @@ export default function ContactPage() {
   return (
     <div className="contact-page">
       <div className="hero">
-        Get in touch
+        <h1>
+          Get in touch
+        </h1>
       </div>
       <div className='form-container'>
         <h2>Contact Us</h2>

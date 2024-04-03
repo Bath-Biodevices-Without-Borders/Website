@@ -11,15 +11,14 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 60px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   font-weight: bolder;
 }
 
 .contact-page .form-container {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 80vw;
+  margin: 0 10vw;
   margin-bottom: 5rem;
 }
 
@@ -27,7 +26,6 @@
   text-align: center;
   margin-top: 4rem;
   margin-bottom: 2rem;
-  font-size: 2rem;
   color: #030026;
 }
 
@@ -51,17 +49,21 @@
 }
 
 .contact-page button {
-  border: none;
-  cursor: pointer;
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
+
+  padding: 1vw 2vw;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
   text-align: center;
+
   color: #fff;
   background-color: #355DF2 ;
-  border-radius: 10px;
+
   transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 10px;
 }
 
 .contact-page button:hover {
