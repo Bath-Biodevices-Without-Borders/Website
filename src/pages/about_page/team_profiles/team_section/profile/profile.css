@@ -27,8 +27,8 @@
 }
 
 .pm-container {
-  width: 15rem;
-  border-radius: 1.5rem;
+  width: 35vw;
+  max-width: 15rem;
 }
 
 .pm-container * {
@@ -38,9 +38,9 @@
 }
 
 .pm-container > .profile {
-  border-radius: 1.5rem;
+  border-radius: calc(0.5rem + clamp(0.1rem, 1vw, 1rem));
   box-sizing: border-box;
-  padding: 1em;
+  padding: clamp(0.1rem, 1vw, 1rem);
 }
 
 .pm-container figure {
@@ -48,7 +48,7 @@
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 }
 
 .pm-container img {
@@ -60,10 +60,11 @@
 
 .pm-container .founder-badge {
   position: absolute;
-  bottom: 0.5em;
-  right: 0.5em;
-  width: 6em;
-  padding: 0.2em 0.5em;
+  bottom: clamp(0.1rem, 2vw, 0.5rem);
+  right: clamp(0.1rem, 2vw, 0.5rem);
+  padding: clamp(0.05rem, 2vw, 0.2rem) clamp(0.1rem, 2vw, 0.5rem);
+
+  font-size: clamp(0.1rem, 4vw, 1rem);
 
   color: hsl(179, 80%, 12%);
   background-color: hsl(179, 60%, 37%);
@@ -74,6 +75,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: clamp(0.1rem, 1vw, 0.5rem);
 }
 
 .pm-container aside {
@@ -92,7 +94,11 @@
 }
 
 .pm-container .social-links {
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, 8vw, 1.5rem);
+}
+
+.pm-container .social-links * {
+  font-size: inherit;
 }
 
 .pm-container main {
@@ -103,10 +109,15 @@
 }
 
 .pm-container main > header {
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.pm-container main > header h4 {
+  width: 100%;
 }
 
 .pm-container main > main {
@@ -171,7 +182,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1em;
+  gap: clamp(0.2rem, 1vw, 1em);
 
   cursor: pointer;
 }
@@ -180,11 +191,15 @@
   order: 1;
 }
 
+.profile-container figure img {
+  object-fit: cover;
+}
+
 .profile-container aside {
   order: 3;
   flex: 1;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: clamp(0.1rem, 6vw, 1rem);
   text-align: center;
 }
 
@@ -194,16 +209,20 @@
 }
 
 .profile-container main > header {
-  gap: 1rem;
+  gap: clamp(0.2rem, 1vw, 1em);
   justify-content: space-between;
 }
 
 .profile-container h4 {
-  font-size: 1.5em;
+  font-size: clamp(0.5rem, 7vw, 1.5rem);
 }
 
 .profile-container h5 {
-  font-size: 1.2em;
+  font-size: clamp(0.3rem, 4vw, 1.2em);
+}
+
+.profile-container p {
+  font-size: clamp(0.2rem, 4vw, 1em);
 }
 
 .profile-container .lead .social-links a {
@@ -224,12 +243,11 @@
 
 .modal-container > .profile {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 10%;
+  left: 10%;
 
   width: 80%;
   height: 80%;
-  margin: 10%;
   padding: 1em;
 
   
@@ -312,12 +330,16 @@
 }
 
 .modal-container h4 {
-  font-size: clamp(0.5rem, 5vw, 2.5em);
+  font-size: clamp(0.7rem, 10vw, 2.5em);
 }
 
 .modal-container h5 {
-  font-size: clamp(0.2rem, 5vw, 1.5em);
+  font-size: clamp(0.5rem, 8vw, 1.5em);
   font-weight: 700;
+}
+
+.modal-container p {
+  font-size: clamp(0.2rem, 6vw, 1em);
 }
 
 .modal-container main {
@@ -335,6 +357,7 @@
 
 .modal-container main > main {
   display: flex;
+  font-size: clamp(0.2rem, 6vw, 1em);
 }
 
 .modal-container main > header {
@@ -343,6 +366,10 @@
 
 .modal-container footer {
   display: flex;
+}
+
+.modal-container footer * {
+  font-size: inherit;
 }
 
 @media screen and (max-width: 768px) {
@@ -371,12 +398,18 @@
     grid-column: 1 / 3;
     grid-row: 3 / 4;
   }
+
+  .modal-container main > header h4 {
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 520px) {
   .modal-container > .profile {
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
 
     border-radius: 1.5em 0 0 1.5em;
 
@@ -397,21 +430,30 @@
 
   .modal-container figure {
     order: 1;
-    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto;
     overflow: visible;
+
+    flex: none;
   }
 
   .modal-container figure img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: top center;
     border-radius: 0.5rem;
   }
 
   .modal-container aside {
     order: 3;
-    height: auto;
-    min-height: unset;
+    min-height: min-content;
     overflow: unset;
   }
 
+
+  .modal-container main > header h4,
   .modal-container .timespan,
   .modal-container aside h5,
   .modal-container main *{
@@ -433,7 +475,7 @@
 
   .modal-container main {
     order: 2;
-    height: auto;
+    height: min-content;
     overflow: unset;
   }
 

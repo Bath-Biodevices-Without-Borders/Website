@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './profile.css'
 
 import { AnimatePresence, motion, Variant } from 'framer-motion'
@@ -13,6 +13,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
+
+  useEffect(() => {
+    if (props.isSelected) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [props.isSelected])
+
   const transitionTime = 0.2;
 
   const containerVariant: { active: Variant, inactive: Variant } = {

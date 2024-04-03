@@ -6,7 +6,7 @@ import TeamList from './team_profiles';
 export default function AboutPage() {
   return (
     <div className="about-page">
-      <div className="card-category">
+      <div className="hero">
         About Us
       </div>
       <OurStory />

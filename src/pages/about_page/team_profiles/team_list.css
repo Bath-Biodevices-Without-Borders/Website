@@ -11,7 +11,6 @@
 }
 
 .team-list-container > header > h2 {
-  font-size: 40px;
   font-weight: bold;
   text-align: center;
 }
@@ -27,8 +26,8 @@
 }
 
 .team-list-container > header .toggle {
-    --toggle-width: 60px;
-    --toggle-height: 30px;
+    --toggle-width: clamp(10px, 10vw, 60px);
+    --toggle-height: clamp(5px, 5vw, 30px);
     --toggle-padding: 5%;
     --toggle-min-size: min(var(--toggle-width), var(--toggle-height));
     width: var(--toggle-width);
@@ -76,4 +75,10 @@
   flex-direction: column;
   width: 100%;
   gap: 1em;
+}
+
+@media screen and (max-width: 625px) {
+  .team-list-container {
+    padding: 0 5vw 4em 5vw;
+  }
 }
