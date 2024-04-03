@@ -27,15 +27,15 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(0.4rem, 11vw, 4rem);
+  font-size: clamp(0.25rem, 11vw, 4rem);
 }
 
 h3 {
-  font-size: clamp(0.3rem, 10vw, 3rem);
+  font-size: clamp(0.2rem, 10vw, 3rem);
 }
 
 h4 {
-  font-size: clamp(0.2rem, 9vw, 2rem);
+  font-size: clamp(0.15rem, 9vw, 2rem);
 }
 
 h5 {
