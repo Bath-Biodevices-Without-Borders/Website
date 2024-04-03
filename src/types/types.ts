@@ -12,8 +12,8 @@ export type T_teamMember = {
   link: string;
   description: string;
   image: string | any;
-  startDate: string;
-  endDate: string;
+  startYear: number;
+  endYear: number;
   legacy: boolean;
   isLegacy: boolean;
   roles: T_role[];

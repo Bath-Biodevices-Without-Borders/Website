@@ -91,7 +91,7 @@ export default function Profile(props: I_profileProps) {
           <motion.aside>
             <div className="time-span">
               <h5>Duration</h5>
-              <p>{props.startDate.split('-')[0]} - {props.endDate.split('-')[0]}</p>
+              <p>{props.startYear} - {props.endYear}</p>
             </div>
             <div className="roles">
             <h5>Roles</h5>

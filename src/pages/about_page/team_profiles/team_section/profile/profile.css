@@ -224,12 +224,11 @@
 
 .modal-container > .profile {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 10%;
+  left: 10%;
 
   width: 80%;
   height: 80%;
-  margin: 10%;
   padding: 1em;
 
   
