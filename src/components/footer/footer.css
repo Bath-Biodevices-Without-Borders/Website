@@ -1,10 +1,14 @@
-.footer {
+  .footer {
   background: #ECEBFF;
   color: rgba(0,0,0,0.5);
 
   display: grid;
   grid-template: 1fr / 2fr repeat(3, 1fr);
   padding: 3rem 10vw;
+
+  overflow: hidden;
+
+  --gap: 1rem;
 
 }
 
@@ -13,7 +17,7 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--gap);
 }
 
 .footer > div:nth-child(3) {
@@ -21,7 +25,7 @@
 }
 
 .footer > div:nth-child(3) > h4 {
-  margin-bottom: 1rem;
+  margin-bottom: var(--gap);;
 }
 
 .footer > div:nth-child(3) > a {
@@ -50,11 +54,20 @@
 
 @media screen and (max-width: 400px) {
   .footer {
+    --gap: clamp(0.1rem, 6vw, 1rem);
     grid-template: repeat(4, auto) / 1fr;
     gap: 2rem 1rem;
+    font-size: clamp(0.1rem, 6vw, 1rem);
+    text-align: center;
+    gap: clac(2 * var(--gap)) var(--gap);
+    padding: 1rem 10vw;
   }
 
   .footer > div {
     align-items: center;
+  }
+
+  .footer > div:nth-child(3) > a {
+    font-size: clamp(0.2rem, 8vw, 1.5rem);
   }
 }
