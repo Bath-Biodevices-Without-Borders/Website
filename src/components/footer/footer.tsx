@@ -1,4 +1,5 @@
 import './footer.css';
+import { NavLink } from 'react-router-dom';
 
 import { faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,8 +13,8 @@ export default function Footer() {
       </div>
       <div>
         <h4>Quick Links</h4>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
+        <NavLink to = "/about">About Us</NavLink>
+        <NavLink to= "/contact">Contact Us</NavLink>
       </div>
       <div>
         <h4>Follow Us</h4>
