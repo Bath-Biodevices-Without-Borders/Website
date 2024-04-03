@@ -109,10 +109,16 @@
 }
 
 .pm-container main > header {
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+.pm-container main > header h4 {
+  width: 100%;
+  text-align: center;
 }
 
 .pm-container main > main {
