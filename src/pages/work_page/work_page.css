@@ -263,9 +263,7 @@
   .work-page .outreach li > aside {
     flex: 1;
   }
-}
 
-@media screen and (max-width: 600px) {
   .work-page .outreach li {
     flex-flow: column nowrap
   }
