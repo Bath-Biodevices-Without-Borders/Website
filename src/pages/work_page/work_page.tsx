@@ -13,7 +13,9 @@ export default function OasisPage() {
   return (
     <div className="work-page">
       <div className="hero">
-        Our Work
+        <h1>
+          Our Work
+        </h1>
       </div>
     <div className="oasis">
       <aside>

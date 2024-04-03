@@ -6,17 +6,16 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 60px;
+
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  font-family: 'Open Sans', sans-serif;
   font-weight: bolder;
 }
 
 .work-page > .oasis {
   box-sizing: border-box;
   width: 100%;
-  padding: 5rem 10vw;
+  padding: clamp(0.5rem, 12vw, 5rem) 10vw;
 
   display: flex;
   flex-flow: row wrap;
@@ -41,25 +40,24 @@
 
 .work-page > .oasis h2{
   width: 100%;
-  margin-bottom: 2rem;
-  font-size: 3rem;
+  margin-bottom: clamp(0.2rem, 9vw, 2rem);
   font-weight: bold;
 }
 
 .work-page > .oasis p {
   width: 100%;
-  font-size: 20px;
 }
 
 .work-page > .oasis h3 {
   width: 100%;
-  margin: 2.5rem 0 1rem 0;
+  margin-top: clamp(0.2rem, 9vw, 2rem);
+  margin-bottom: clamp(0.1rem, 6vw, 1rem);
 }
 
 .work-page > .oasis ul {
   display: grid;
   grid-template: 1fr 1fr / 1fr 1fr 1fr;
-  gap: 1rem 3rem;
+  gap: clamp(0.1rem, 6vw, 1rem) 3rem;
 
   list-style: none;
 }
@@ -72,7 +70,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
   border-radius: 5px;
-  padding: 0.3rem 0.6rem;
+  padding: clamp(0.06rem, 1vw, 0.3rem) clamp(0.1rem, 2vw, 0.6rem);
   text-align: center;
 }
 
@@ -91,13 +89,13 @@
 
 .work-page > .app {
   box-sizing: border-box;
-  padding: 5rem 10vw;
+  padding: clamp(0.5rem, 12vw, 5rem) 10vw;
 
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: clamp(0.2rem, 9vw, 2rem);
 
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
@@ -131,13 +129,12 @@
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: space-around;
-  padding: 0 3rem;
+  padding: 0 auto;
 }
 
 .work-page > .app h2 {
-  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.1rem, 7vw, 1rem);
 }
 
 .work-page > .app ul {
@@ -155,11 +152,10 @@
   justify-content: flex-start;
   align-items: center;
 
-  gap: 1rem;
+  gap: clamp(0.1rem, 7vw, 1rem);
 }
 
 .work-page > .app p {
-  font-size: 1rem;
   line-height: 1.8;
   opacity: .7;
 }
@@ -195,15 +191,14 @@
 
 .outreach {
   box-sizing: border-box;
-  padding: 5rem 10vw;
+  padding: clamp(1rem, 10vw, 5rem) 10vw;
 
   background-color: #ECEBFF;
 }
 
 .outreach h2 {
-  font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .outreach ul {
@@ -212,20 +207,20 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 3rem;
+  gap: clamp(0.1rem, 5vw, 3rem);
 }
 
 .outreach li {
   box-sizing: border-box;
   width: 100%;
-  padding: 2rem 3rem;
-  border-radius: 1rem;
+  padding: clamp(0.5rem, 5vw, 2rem) clamp(0.1rem, 5vw, 3rem);
+  border-radius: clamp(0.5rem, 5vw, 2rem);
 
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: clamp(0.5rem, 5vw, 2rem);
 
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -248,6 +243,7 @@
 }
 
 .outreach li > figure {
+  width: 100%;
   flex: 1;
   aspect-ratio: 1 / 1;
 }
