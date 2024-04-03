@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   gap: 100%;
-  width: 12em;
+  width: clamp(1rem, 80vw, 12em);
   aspect-ratio: 1/1;
   overflow: hidden;
 
@@ -50,8 +50,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
-  font-size: clamp(1rem, 10vw, 2.5rem);
   font-weight: bold;
   font-style: italic;
 
@@ -91,5 +89,9 @@
   .team > header p {
     justify-content: center;
     text-align: center;
+  }
+
+  .team-profiles {
+    align-items: flex-start;
   }
 }

@@ -27,7 +27,8 @@
 }
 
 .pm-container {
-  width: clamp(5rem, 40vw, 15rem);
+  width: 35vw;
+  max-width: 15rem;
 }
 
 .pm-container * {
@@ -47,7 +48,7 @@
   width: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 }
 
 .pm-container img {
@@ -93,7 +94,11 @@
 }
 
 .pm-container .social-links {
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, 8vw, 1.5rem);
+}
+
+.pm-container .social-links * {
+  font-size: inherit;
 }
 
 .pm-container main {
@@ -189,7 +194,7 @@
   order: 3;
   flex: 1;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: clamp(0.1rem, 6vw, 1rem);
   text-align: center;
 }
 
