@@ -409,6 +409,8 @@
   .modal-container > .profile {
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
 
     border-radius: 1.5em 0 0 1.5em;
 
@@ -430,21 +432,29 @@
   .modal-container figure {
     order: 1;
     width: 100%;
-    aspect-ratio: 1/1;
-    overflow: hidden;
+    height: auto;
+    overflow: visible;
+
+    flex: none;
   }
 
   .modal-container figure img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: top center;
     border-radius: 0.5rem;
   }
 
   .modal-container aside {
     order: 3;
-    height: auto;
-    min-height: unset;
+    min-height: min-content;
     overflow: unset;
   }
 
+
+  .modal-container main > header h4,
   .modal-container .timespan,
   .modal-container aside h5,
   .modal-container main *{
@@ -466,7 +476,7 @@
 
   .modal-container main {
     order: 2;
-    height: auto;
+    height: min-content;
     overflow: unset;
   }
 
