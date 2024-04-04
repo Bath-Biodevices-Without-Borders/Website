@@ -13,12 +13,12 @@
 }
 
 .our-story h2 {
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-size: clamp(0.8rem, 8vw, 2.5rem);
   font-weight: bold;
+  text-align: center;
 }
 
 .our-story p {
-  font-size: 1rem;
   line-height: 1.8;
   text-align: center;
   color: #4b4b4b;

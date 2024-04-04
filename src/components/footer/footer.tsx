@@ -1,4 +1,5 @@
 import './footer.css';
+import { NavLink } from 'react-router-dom';
 
 import { faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,16 +8,16 @@ export default function Footer() {
   return (
     <footer className='footer'>
       <div>
-        <h4>Contact Us</h4>
+        <h5>Contact Us</h5>
         <p>Email: info@example.com</p>
       </div>
       <div>
-        <h4>Quick Links</h4>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact Us</a>
+        <h5>Quick Links</h5>
+        <NavLink to = "/about">About Us</NavLink>
+        <NavLink to= "/contact">Contact Us</NavLink>
       </div>
       <div>
-        <h4>Follow Us</h4>
+        <h5>Follow Us</h5>
         <a
           href="https://www.instagram.com/teambathbiodevicesuk/"
           target="_blank"
@@ -33,7 +34,7 @@ export default function Footer() {
         </a>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h5>Legal</h5>
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Service</a>
       </div>
