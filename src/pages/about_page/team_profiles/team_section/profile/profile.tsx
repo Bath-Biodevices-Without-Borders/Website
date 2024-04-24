@@ -10,7 +10,7 @@ import LinkIcons from '../../../../../components/link_icons/link_icons'
 import ImageErrorBoundary from '../../../../../components/image/image_error_boundary'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Profile(props: I_profileProps) {
 
@@ -56,8 +56,6 @@ export default function Profile(props: I_profileProps) {
     }
   }
 
-  const isFounder = props.email === 'jd2099@bath.ac.uk' || props.email === 'tm907@bath.ac.uk'
-
   return (
     <AnimatePresence>
       <motion.div
@@ -89,13 +87,6 @@ export default function Profile(props: I_profileProps) {
               fallbackImage={Blank}
               image={props.image}
             />
-            <div
-              className='founder-badge'
-              style={{visibility: isFounder ? 'visible' : 'hidden' }}
-            >
-              <FontAwesomeIcon icon={faStar} />
-              Founder
-            </div>
           </motion.figure>
           <motion.aside>
             <div className="time-span">
