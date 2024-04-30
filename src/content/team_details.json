@@ -69,6 +69,26 @@
                     "lead": false
                 }
             ]
+        },
+        {
+            "id": 36,
+            "name": "Despina Moschou",
+            "email": "dm855@bath.ac.uk",
+            "course": "Senior Lecturer",
+            "link": "",
+            "description": "",
+            "image": "",
+            "startYear": 2022,
+            "endYear": 2024,
+            "legacy": true,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Academic Director",
+                    "team": "Management",
+                    "lead": false
+                }
+            ]
         }
     ],
     "Hardware": [
