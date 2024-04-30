@@ -14,7 +14,7 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Technical Director",
+                    "role": "Technical Lead",
                     "team": "Management",
                     "lead": false
                 }
@@ -26,7 +26,7 @@
             "email": "af874@bath.ac.uk",
             "course": "PhD Computer Science",
             "link": "www.linkedin.com/in/alexzfarrall",
-            "description": "I am a Research Engineer specialising in Human-Computer Interaction (HCI) within the field of Computer Science, with a robust background in Electronics and Communication Engineering. My expertise lies in developing innovative healthcare solutions that integrate Artificial Intelligence, Biofeedback, and Shape-changing Technologies. Beyond my primary focus, I've contributed to advancing optical transmission technologies in biomedical devices and spearheaded transformative strategies for phosphate retrieval and the release of GMOs in water treatment and fertilisation processes. I am the founder of the Bidevice Without Borders Team, an initiative dedicated to leveraging technology for global health improvements.",
+            "description": "I am a Research Engineer specialising in Human-Computer Interaction (HCI) within the field of Computer Science, with a robust background in Electronics and Communication Engineering. My expertise lies in developing innovative healthcare solutions that integrate Artificial Intelligence, Biofeedback, and Shape-changing Technologies. Beyond my primary focus, I've contributed to advancing optical transmission technologies in biomedical devices and spearheaded transformative strategies for phosphate retrieval and the release of GMOs in water treatment and fertilisation processes.",
             "image": "af874.png",
             "startYear": 2022,
             "endYear": 2024,
@@ -34,9 +34,9 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Managing Director",
+                    "role": "Team Lead",
                     "team": "Management",
-                    "lead": true
+                    "lead": false
                 }
             ]
         },
@@ -54,7 +54,7 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Business Director",
+                    "role": "Business Lead",
                     "team": "Management",
                     "lead": false
                 },
@@ -86,7 +86,7 @@
                 {
                     "role": "Academic Director",
                     "team": "Management",
-                    "lead": false
+                    "lead": true
                 }
             ]
         }
@@ -250,7 +250,7 @@
             "email": "jd2099@bath.ac.uk",
             "course": "MEng Electrical and Electronic Engineering ",
             "link": "https://www.linkedin.com/in/jordan-dawson-7757a61b2",
-            "description": "One of the founding members and current Head of Sensors for Biodevices Without Borders. Led development on all the sensors currently under development with a focus on pH sensors. ",
+            "description": "One of the original members and current Head of Sensors for Biodevices Without Borders. Led development on all the sensors currently under development with a focus on pH sensors. ",
             "image": "jd2099.png",
             "startYear": 2022,
             "endYear": 2024,
@@ -278,7 +278,7 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Business Director",
+                    "role": "Business Lead",
                     "team": "Management",
                     "lead": false
                 },
@@ -749,7 +749,7 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Business Director",
+                    "role": "Business Lead",
                     "team": "Management",
                     "lead": false
                 },
