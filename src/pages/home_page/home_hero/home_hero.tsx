@@ -13,11 +13,14 @@ export default function HomeHero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const logoY = useTransform(scrollYProgress, [0, 1], ["0%", "-200%"]);
-  const logoCaptionY = useTransform(scrollYProgress, [0, 1], ["0%", "-200%"]);
+  const logoY = useTransform(scrollYProgress, [0, 1], ["0", "-500vh"]);
+  const logoCaptionY = useTransform(scrollYProgress, [0.2, 1], ["0", "-500vh"]);
 
-  const springLogoY = useSpring(logoY);
-  const springLogoCaptionY = useSpring(logoCaptionY);
+  const springLogoY = useSpring(logoY, { stiffness: 400, damping: 90 });
+  const springLogoCaptionY = useSpring(logoCaptionY, { stiffness: 400, damping: 90 });
+
+  const logoOpacity = useTransform(scrollYProgress, [0.2, 1], [1, 0]);
+  const logoCaptionOpacity = useTransform(scrollYProgress, [0.2, 1], [1, 0]);
 
   return (
     <div className='home-hero' ref={ref}>
@@ -37,7 +40,10 @@ export default function HomeHero() {
             delay: 2,
           }
         }}
-        style={{ y: springLogoY }}
+        style={{
+          y: springLogoY,
+          opacity: logoOpacity,
+        }}
       />
       <motion.img
         src={LogoCaption}
@@ -55,7 +61,10 @@ export default function HomeHero() {
             delay: 2,
           }
         }}
-        style={{ y: springLogoCaptionY}}
+        style={{
+          y: springLogoCaptionY,
+          opacity: logoCaptionOpacity,
+        }}
       />
       {/* <div
         id="hero-bg"
