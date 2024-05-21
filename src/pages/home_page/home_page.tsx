@@ -4,12 +4,6 @@ import { Link } from 'react-router-dom';
 import AfricaMap from '../../images/map-redone-transformed.png';
 import OasisImage from '../../images/OASIS_Device.png';
 
-import HeroBg from '../../images/home-page-hero-bg.jpg';
-import HeroFg from '../../images/home-page-hero-fg.png';
-
-import Logo from '../../images/logo without caption.png';
-import LogoCaption from '../../images/logo caption.png';
-
 import {
   faPerson,
   faShuffle,
@@ -23,23 +17,13 @@ import {
 import { faEnvira } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import HomeHero from './home_hero/home_hero';
+
 
 export default function HomePage() {
   return (
     <div className="home-page">
-      <div className="hero">
-        <img src={HeroBg} id="hero-bg" alt="Hero Background" />
-        <img src={Logo} id="hero-logo" alt="Logo" />
-        <img src={HeroFg} id="hero-fg" alt="Hero Foreground" />
-        <img src={LogoCaption} id="hero-name" alt="Logo Caption" />
-        {/* <h1>Empowering communities through innovative water testing solutions.</h1>
-        <p>
-          Join us on our mission to provide clean water and monitoring solutions.
-          Whether you're a community member, potential user, or industry partner, we
-          welcome your collaboration and support.
-        </p>
-        <Link to="/contact" className="custom-button">Get Involved</Link> */}
-      </div>
+      <HomeHero />
       <div className="issue-card">
         <aside>
           <main>

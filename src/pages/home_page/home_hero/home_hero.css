@@ -1,0 +1,46 @@
+.home-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vw;
+  overflow: hidden;
+  border: 1px solid red;
+
+  --logo-width: clamp(0px, 70vw, 100vh);
+  --logo-left: calc((100vw - var(--logo-width)) / 2);
+}
+
+.home-hero > #hero-logo {
+  width: var(--logo-width);
+  position: absolute;
+  top: 10vw;
+  left: var(--logo-left);
+  z-index: 10;
+}
+
+.home-hero > #hero-logo-caption {
+  width: var(--logo-width);
+  position: absolute;
+  top: calc((2/3) * var(--logo-width) + 10vw);
+  left: var(--logo-left);
+  z-index: 30;
+
+}
+
+.home-hero > #hero-bg,
+.home-hero > #hero-fg {
+  width: 100vw;
+  inset: 0px;
+
+  object-position: bottom;
+  object-fit: cover;
+}
+
+.home-hero > #hero-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.home-hero > #hero-fg {
+  position: absolute;
+  z-index: 20;
+}
