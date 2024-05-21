@@ -1,46 +1,55 @@
 .home-hero {
   position: relative;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   overflow: hidden;
   border: 1px solid red;
-
-  --logo-width: clamp(0px, 70vw, 100vh);
-  --logo-left: calc((100vw - var(--logo-width)) / 2);
 }
 
-.home-hero > #hero-logo {
-  width: var(--logo-width);
+.home-hero > .logo-container,
+.home-hero > .logo-caption-container {
   position: absolute;
-  top: 10vw;
-  left: var(--logo-left);
+  width: 100%;
+  height: 85%;
+  overflow: hidden;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  --logo-width: clamp(0px, 70vw, 80vh);
+}
+
+.home-hero > .logo-container {
   z-index: 10;
 }
 
-.home-hero > #hero-logo-caption {
-  width: var(--logo-width);
-  position: absolute;
-  top: 10vw;
-  left: var(--logo-left);
+.home-hero > .logo-caption-container {
   z-index: 30;
+}
 
+.home-hero #hero-logo,
+.home-hero #hero-logo-caption {
+  width: var(--logo-width);
 }
 
 .home-hero > #hero-bg,
 .home-hero > #hero-fg {
+  position: absolute;
   width: 100vw;
+  height: 100vh;
   inset: 0px;
 
-  object-position: bottom;
+  object-position: center;
   object-fit: cover;
 }
 
 .home-hero > #hero-bg {
-  position: relative;
   z-index: 0;
 }
 
 .home-hero > #hero-fg {
-  position: absolute;
   z-index: 20;
 }

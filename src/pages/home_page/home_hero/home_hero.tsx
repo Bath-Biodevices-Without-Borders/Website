@@ -8,13 +8,16 @@ import Logo from '../../../images/logo without caption.png';
 import LogoCaption from '../../../images/logo caption.png';
 
 export default function HomeHero() {
+  const duration : number = 2;
+  const delay : number = 2;
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
   const logoY = useTransform(scrollYProgress, [0, 1], ["0", "-500vh"]);
-  const logoCaptionY = useTransform(scrollYProgress, [0.2, 1], ["0", "-500vh"]);
+  const logoCaptionY = useTransform(scrollYProgress, [0.1, 1], ["0", "-500vh"]);
 
   const springLogoY = useSpring(logoY, { stiffness: 400, damping: 90 });
   const springLogoCaptionY = useSpring(logoCaptionY, { stiffness: 400, damping: 90 });
@@ -24,64 +27,56 @@ export default function HomeHero() {
 
   return (
     <div className='home-hero' ref={ref}>
-      <motion.img
-        src={Logo}
-        id="hero-logo"
-        alt="Team Logo"
+      <motion.div
+        className='logo-container'
         initial={{
-          y: 100,
+          y: -100,
           opacity: 0,
         }}
         animate={{
           y: 0,
           opacity: 1,
           transition: {
-            duration: 1,
-            delay: 2,
-          }
+            duration,
+            delay,
+          },
         }}
-        style={{
-          y: springLogoY,
-          opacity: logoOpacity,
-        }}
-      />
-      <motion.img
-        src={LogoCaption}
-        id="hero-logo-caption"
-        alt="Team Logo Caption"
+      >
+        <motion.img
+          src={Logo}
+          id="hero-logo"
+          alt="Team Logo"
+          style={{
+            y: springLogoY,
+            opacity: logoOpacity,
+          }}
+        />
+      </motion.div>
+      <motion.div
+        className='logo-caption-container'
         initial={{
-          y: 100,
+          y: -100,
           opacity: 0,
         }}
         animate={{
           y: 0,
           opacity: 1,
           transition: {
-            duration: 1,
-            delay: 2,
-          }
+            duration,
+            delay,
+          },
         }}
-        style={{
-          y: springLogoCaptionY,
-          opacity: logoCaptionOpacity,
-        }}
-      />
-      {/* <div
-        id="hero-bg"
-        style={{
-          backgroundImage: `url(/hero-page-hero-bg.jpg)`,
-          backgroundPosition: 'bottom',
-          backgroundSize: 'cover',
-        }}
-      />
-      <div
-        id="hero-fg"
-        style={{
-          backgroundImage: `url(/hero-page-hero-fg.png)`,
-          backgroundPosition: 'bottom',
-          backgroundSize: 'cover',
-        }}
-      /> */}
+      >
+        <motion.img
+          src={LogoCaption}
+          id="hero-logo-caption"
+          alt="Team Logo Caption"
+          style={{
+            y: springLogoCaptionY,
+            opacity: logoCaptionOpacity,
+          }}
+        />
+      </motion.div>
       <img
         id="hero-bg"
         src={HeroBg}
