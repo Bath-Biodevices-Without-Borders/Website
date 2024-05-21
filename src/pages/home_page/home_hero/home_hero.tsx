@@ -2,8 +2,8 @@ import React, { useRef } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import './home_hero.css'
 
-import HeroBg from '../../../images/home-page-hero-bg.jpg';
-import HeroFg from '../../../images/home-page-hero-fg.png';
+import HeroBg from '../../../images/home-hero-bg.png';
+import HeroFg from '../../../images/home-hero-fg.png';
 import Logo from '../../../images/logo without caption.png';
 import LogoCaption from '../../../images/logo caption.png';
 
@@ -17,13 +17,13 @@ export default function HomeHero() {
     offset: ["start start", "end start"],
   });
   const logoY = useTransform(scrollYProgress, [0, 1], ["0", "-500vh"]);
-  const logoCaptionY = useTransform(scrollYProgress, [0.1, 1], ["0", "-500vh"]);
+  const logoCaptionY = useTransform(scrollYProgress, [0.2, 1], ["0", "-400vh"]);
 
   const springLogoY = useSpring(logoY, { stiffness: 400, damping: 90 });
   const springLogoCaptionY = useSpring(logoCaptionY, { stiffness: 400, damping: 90 });
 
-  const logoOpacity = useTransform(scrollYProgress, [0.2, 1], [1, 0]);
-  const logoCaptionOpacity = useTransform(scrollYProgress, [0.2, 1], [1, 0]);
+  const logoOpacity = useTransform(scrollYProgress, [0.2, 0.5], [1, 0]);
+  const logoCaptionOpacity = useTransform(scrollYProgress, [0.2, 0.5], [1, 0]);
 
   return (
     <div className='home-hero' ref={ref}>
@@ -78,11 +78,16 @@ export default function HomeHero() {
         />
       </motion.div>
       <img
+        id="hero-placeholder"
+        src={HeroBg}
+        alt="Hero Background"
+      />
+      <img
         id="hero-bg"
         src={HeroBg}
         alt="Hero Background"
       />
-      <motion.img
+      <img
         id="hero-fg"
         src={HeroFg}
         alt="Hero Foreground"
