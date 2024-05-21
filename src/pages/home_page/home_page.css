@@ -1,11 +1,45 @@
 
 .home-page > .hero {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 10vw;
+  position: relative;
 
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1484318571209-661cf29a69c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  border: 1px solid red;
+
+  /* background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1484318571209-661cf29a69c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+}
+
+.home-page > .hero > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  object-position: center;
+
+  --logo-top: 10vw;
+  --logo-width: 70%;
+}
+
+.home-page > .hero > #hero-bg {
+  position: relative;
+}
+
+.home-page > .hero > #hero-logo,
+.home-page > .hero > #hero-name {
+  --logo-left: calc((100% - var(--logo-width)) / 2);
+  width: var(--logo-width);
+  left: var(--logo-left);
+}
+
+.home-page > .hero > #hero-logo {
+  top: var(--logo-top);
+}
+
+.home-page > .hero > #hero-name {
+  top: calc((1/2) * var(--logo-width) + 1em);
 }
 
 .home-page > .hero h1 {
