@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import './home_hero.css'
 
 import HeroBg from '../../../images/home-page-hero-bg.jpg';
@@ -15,6 +15,9 @@ export default function HomeHero() {
   });
   const logoY = useTransform(scrollYProgress, [0, 1], ["0%", "-200%"]);
   const logoCaptionY = useTransform(scrollYProgress, [0, 1], ["0%", "-200%"]);
+
+  const springLogoY = useSpring(logoY);
+  const springLogoCaptionY = useSpring(logoCaptionY);
 
   return (
     <div className='home-hero' ref={ref}>
@@ -34,7 +37,7 @@ export default function HomeHero() {
             delay: 2,
           }
         }}
-        style={{ y: logoY }}
+        style={{ y: springLogoY }}
       />
       <motion.img
         src={LogoCaption}
@@ -52,7 +55,7 @@ export default function HomeHero() {
             delay: 2,
           }
         }}
-        style={{ y: logoCaptionY }}
+        style={{ y: springLogoCaptionY}}
       />
       {/* <div
         id="hero-bg"

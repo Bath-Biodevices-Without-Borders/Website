@@ -20,7 +20,7 @@
 .home-hero > #hero-logo-caption {
   width: var(--logo-width);
   position: absolute;
-  top: calc((2/3) * var(--logo-width) + 10vw);
+  top: 10vw;
   left: var(--logo-left);
   z-index: 30;
 
