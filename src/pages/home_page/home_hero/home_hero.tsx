@@ -7,13 +7,24 @@ import HeroFg from '../../../images/home-hero-fg.png';
 import Logo from '../../../images/logo without caption.png';
 import LogoCaption from '../../../images/logo caption.png';
 
+import { HeroContext } from '../../../context/hero_context';
+
 export default function HomeHero() {
   const duration : number = 2;
   const delay : number = 2;
 
-  const ref = useRef(null);
+  const {heroRef, setHeroRef} = React.useContext(HeroContext);
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (ref.current) {
+      setHeroRef(ref);
+    }
+  }, [ref, setHeroRef]);
+
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: heroRef,
     offset: ["start start", "end start"],
   });
   const logoY = useTransform(scrollYProgress, [0, 1], ["0", "-500vh"]);

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './nav_bar.css';
 
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 import Logo from '../../images/Biodevices Without Borders-04.png';
 import Tabs from './tabs/tabs';
@@ -13,6 +13,8 @@ import Tabs from './tabs/tabs';
 import Products from './tabs/content/products/products';
 import About from './tabs/content/about/about';
 import Social from './tabs/content/social/social';
+
+import { HeroContext } from '../../context/hero_context';
 
 export default function NavBar() {
 
@@ -31,8 +33,23 @@ export default function NavBar() {
     },
   ];
 
+  const {heroRef} = useContext(HeroContext);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const navY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
     <nav>
+      <motion.div
+        className="bg"
+        initial = {{ opacity: 0 }}
+        style = {{
+          opacity: navY,
+        }}
+      />
       <Tabs tabsInfo={tabsInfo} />
       {/* <header>
         <Link to = "/" className = "title">
