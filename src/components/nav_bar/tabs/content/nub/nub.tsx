@@ -9,7 +9,7 @@ export default function Nub({ selected } : { selected: number|null}) {
   useEffect(() => {
     if (selected) {
       const hoveredTab = document.getElementById(`shift-tab-${selected}`);
-      const overlayContent = document.getElementById("overlay-content");
+      const overlayContent = document.getElementById("nav-content-container");
 
       if (!hoveredTab || !overlayContent) return;
 

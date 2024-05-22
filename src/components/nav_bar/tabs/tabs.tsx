@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import './tabs.css';
 
@@ -24,10 +24,20 @@ export default function Tabs(
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div
+    <motion.div
       onMouseLeave={() => handleSetSelected(null)}
       className="nav-tabs"
       ref={ref}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          duration: 2,
+          delay: 2,
+        },
+      }}
     >
       {tabsInfo.map((t:{ title: string; Component: React.FC}, idx: number) => {
         return (
@@ -50,6 +60,6 @@ export default function Tabs(
           parentWidth={ref.current?.clientWidth}
         />}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
