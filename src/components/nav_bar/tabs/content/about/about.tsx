@@ -3,6 +3,7 @@ import './about.css';
 
 import { faPiggyBank, faGear, faHandshake, faEarthAfrica, faVial, faUsers, faCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavLink } from 'react-router-dom';
 
 export default function About() {
   const haveIcon = false;
@@ -13,37 +14,37 @@ export default function About() {
       <div>
         <div className='business'>
           <h4>Business</h4>
-          <a href="#">
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faPiggyBank} />}
             <p>Finance</p>
-          </a>
-          <a href="#">
+          </NavLink>
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faHandshake} />}
             <p>Management</p>
-          </a>
-          <a href="#">
+          </NavLink>
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faEarthAfrica} />}
             <p>Outreach</p>
-          </a>
-          <a href="#">
+          </NavLink>
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faUsers} />}
             <p>Social</p>
-          </a>
+          </NavLink>
         </div>
         <div className='technical'>
           <h4>Technical</h4>
-          <a href="#">
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faGear} />}
             <p>Hardware</p>
-          </a>
-          <a href="#">
+          </NavLink>
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faVial} />}
             <p>Sensors</p>
-          </a>
-          <a href="#">
+          </NavLink>
+          <NavLink to = "/about">
             {haveIcon && <FontAwesomeIcon icon={faCode} />}
             <p>Software</p>
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

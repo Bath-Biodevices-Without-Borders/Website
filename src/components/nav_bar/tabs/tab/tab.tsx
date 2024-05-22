@@ -3,6 +3,7 @@ import './tab.css';
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function Tab(
   { 
@@ -10,13 +11,15 @@ export default function Tab(
     tab,
     handleSetSelected,
     selected,
-    haveChevron
+    haveChevron,
+    link
   } : {
     children : any,
     tab : number | null,
     handleSetSelected : (val: number | null) => void,
     selected : number | null,
-    haveChevron : boolean
+    haveChevron : boolean,
+    link : string | null
   }
 ) {
 
@@ -45,7 +48,8 @@ export default function Tab(
   }
 
   return (
-    <button
+    <NavLink
+      to={link ? link : ""}
       id={`shift-tab-${tab}`}
       onMouseEnter={() => handleEnter()}
       onClick={() => handleEnter()}
@@ -57,6 +61,6 @@ export default function Tab(
         icon={faChevronDown}
         className={`nav-tab-chevron ${active ? "nav-tab-chevron-active" : "nav-tab-chevron-deactive"}`}
       />}
-    </button>
+    </NavLink>
   );
 };

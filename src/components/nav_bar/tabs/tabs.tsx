@@ -43,6 +43,7 @@ export default function Tabs(
           handleSetSelected={() => {}}
           tab={null}
           haveChevron={false}
+          link="/"
         >
           Home
         </Tab>
@@ -60,6 +61,7 @@ export default function Tabs(
               handleSetSelected={handleSetSelected}
               tab={idx + 1}
               haveChevron={true}
+              link={null}
             >
               {t.title}
             </Tab>
