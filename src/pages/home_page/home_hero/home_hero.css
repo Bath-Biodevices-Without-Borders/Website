@@ -33,6 +33,8 @@
 .home-hero #hero-logo,
 .home-hero #hero-logo-caption {
   width: var(--logo-width);
+
+  padding-bottom: 7rem;
 }
 
 .home-hero > #hero-placeholder,

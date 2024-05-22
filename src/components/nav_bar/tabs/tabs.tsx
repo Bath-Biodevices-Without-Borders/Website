@@ -25,9 +25,7 @@ export default function Tabs(
 
   return (
     <motion.div
-      onMouseLeave={() => handleSetSelected(null)}
       className="nav-tabs"
-      ref={ref}
       initial={{
         opacity: 0,
       }}
@@ -39,27 +37,43 @@ export default function Tabs(
         },
       }}
     >
-      {tabsInfo.map((t:{ title: string; Component: React.FC}, idx: number) => {
-        return (
-          <Tab
-            key={idx + 1}
+      <div>
+        <Tab
+          selected={null}
+          handleSetSelected={() => {}}
+          tab={null}
+          haveChevron={false}
+        >
+          Home
+        </Tab>
+      </div>
+      <div
+        className="dropdown"
+        ref={ref}
+        onMouseLeave={() => handleSetSelected(null)}
+      >
+        {tabsInfo.map((t:{ title: string; Component: React.FC}, idx: number) => {
+          return (
+            <Tab
+              key={idx + 1}
+              selected={selected}
+              handleSetSelected={handleSetSelected}
+              tab={idx + 1}
+              haveChevron={true}
+            >
+              {t.title}
+            </Tab>
+          );
+        })}
+        <AnimatePresence>
+          {selected && <Content
+            tabsInfo={tabsInfo}
+            dir={dir}
             selected={selected}
-            handleSetSelected={handleSetSelected}
-            tab={idx + 1}
-          >
-            {t.title}
-          </Tab>
-        );
-      })}
-
-      <AnimatePresence>
-        {selected && <Content
-          tabsInfo={tabsInfo}
-          dir={dir}
-          selected={selected}
-          parentWidth={ref.current?.clientWidth}
-        />}
-      </AnimatePresence>
+            parentWidth={ref.current?.clientWidth}
+          />}
+        </AnimatePresence>
+      </div>
     </motion.div>
   );
 };

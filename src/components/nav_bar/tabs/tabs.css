@@ -1,5 +1,10 @@
 .nav-tabs {
   position: relative;
   display: flex;
+}
+
+.nav-tabs > .dropdown {
+  position: relative;
+  display: flex;
   gap: 1rem;
 }
