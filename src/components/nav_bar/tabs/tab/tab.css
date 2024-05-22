@@ -1,0 +1,31 @@
+.nav-tab-button { 
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  transition: color 0.3s;
+  background-color: transparent;
+}
+
+.nav-tab-button-active {
+  color: white;
+}
+
+.nav-tab-button-deactive {
+  color: var(--Lavander);
+}
+
+.nav-tab-chevron {
+  transition: transform 0.3s;
+}
+
+.nav-tab-chevron-active {
+  transform: rotate(180deg);
+}
+
+.nav-tab-chevron-deactive {
+  transform: rotate(0deg);
+}

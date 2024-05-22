@@ -1,0 +1,14 @@
+#nav-content-container {
+  overlay: content;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 24px);
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-image: linear-gradient(to bottom, #111, #111, #222);
+  padding: 16px;
+}
+
+.nav-content {
+  overflow: hidden;
+}
