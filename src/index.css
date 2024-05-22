@@ -1,8 +1,5 @@
 :root {
   font-size: 16px;
-}
-
-* {
   --RISDBlue: #355DF2;
   --Aquamarine: #52e1b1;
   --Teal: #0e7c7b;
@@ -10,12 +7,14 @@
   --OxfordBlue: #030026;
   --DogwoodRose: #d62264;
 
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.1rem, 6vw, 1rem);
+}
+
+* {
   margin: 0;
   padding: 0;
   border: 0;
-
-  font-family: 'Open Sans', sans-serif;
-  font-size: clamp(0.1rem, 6vw, 1rem);
 }
 
 p {
