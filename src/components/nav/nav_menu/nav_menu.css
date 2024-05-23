@@ -5,8 +5,9 @@
   flex-flow: row nowrap;
   justify-content: flex-end;
   align-items: center;
+  
 }
 
 #nav-menu > .bg {
-  transition: opacity 0.2s;
+  transition: opacity 0.3s;
 }

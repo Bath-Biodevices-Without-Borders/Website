@@ -12,7 +12,7 @@ export default function Content(
     dir,
     parentWidth
   } : {
-    tabsInfo: { title : string, Component : React.FC }[],
+    tabsInfo: { title : string, Component : React.FC<{ handleClick: () => void }> }[],
     selected : number | null,
     dir : string | null,
     parentWidth : number | undefined
@@ -45,7 +45,7 @@ export default function Content(
       <Bridge />
       <Nub selected={selected} />
 
-      {tabsInfo.map((t : { title : string, Component : React.FC }, idx: number) => {
+      {tabsInfo.map((t : { title : string, Component : React.FC<{ handleClick: () => void }> }, idx: number) => {
         return (
           <div className="nav-content" key={idx + 1}>
             {selected === idx + 1 && (
@@ -57,7 +57,7 @@ export default function Content(
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
               >
-                <t.Component />
+                <t.Component handleClick={() => {}}/>
               </motion.div>
             )}
           </div>

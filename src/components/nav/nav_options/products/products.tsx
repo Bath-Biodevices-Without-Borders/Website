@@ -5,20 +5,22 @@ import { faDroplet, faMobileScreenButton, faEarthAfrica } from '@fortawesome/fre
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 
-export default function Products() {
+export default function Products(
+  { handleClick } : { handleClick: () => void }
+) {
   return (
     <div className="nav-products-container">
       <h3>Our Work</h3>
       <div>
-        <NavLink to = "/work">
+        <NavLink to = "/work" onClick={handleClick}>
           <FontAwesomeIcon icon={faDroplet} />
           <p>Oasis</p>
         </NavLink>
-        <NavLink to = "/work">
+        <NavLink to = "/work" onClick={handleClick}>
           <FontAwesomeIcon icon={faMobileScreenButton} />
           <p>App</p>
         </NavLink>
-        <NavLink to = "/work">
+        <NavLink to = "/work" onClick={handleClick}>
           <FontAwesomeIcon icon={faEarthAfrica} />
           <p>Outreach</p>
         </NavLink>

@@ -5,7 +5,9 @@ import { faPiggyBank, faGear, faHandshake, faEarthAfrica, faVial, faUsers, faCod
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 
-export default function About() {
+export default function About(
+  { handleClick } : { handleClick: () => void }
+) {
   const haveIcon = false;
 
   return (
@@ -14,34 +16,34 @@ export default function About() {
       <div>
         <div className='business'>
           <h4>Business</h4>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faPiggyBank} />}
             <p>Finance</p>
           </NavLink>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faHandshake} />}
             <p>Management</p>
           </NavLink>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faEarthAfrica} />}
             <p>Outreach</p>
           </NavLink>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faUsers} />}
             <p>Social</p>
           </NavLink>
         </div>
         <div className='technical'>
           <h4>Technical</h4>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faGear} />}
             <p>Hardware</p>
           </NavLink>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faVial} />}
             <p>Sensors</p>
           </NavLink>
-          <NavLink to = "/about">
+          <NavLink to = "/about" onClick={handleClick}>
             {haveIcon && <FontAwesomeIcon icon={faCode} />}
             <p>Software</p>
           </NavLink>

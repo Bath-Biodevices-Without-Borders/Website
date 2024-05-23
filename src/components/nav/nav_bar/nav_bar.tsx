@@ -8,7 +8,7 @@ import Content from "./content/content";
 import { HeroContext } from "../../../context/hero_context";
 
 export default function NavBar(
-  { tabsInfo } : { tabsInfo: { title: string; Component: React.FC }[] }
+  { tabsInfo } : { tabsInfo: { title: string; Component: React.FC<{ handleClick: () => void }> }[] }
 ) {
   const [selected, setSelected] = useState<number|null>(null);
   const [dir, setDir] = useState<string|null>(null);
@@ -71,7 +71,7 @@ export default function NavBar(
           ref={ref}
           onMouseLeave={() => handleSetSelected(null)}
         >
-          {tabsInfo.map((t:{ title: string; Component: React.FC}, idx: number) => {
+          {tabsInfo.map((t:{ title: string; Component: React.FC<{ handleClick: () => void }> }, idx: number) => {
             return (
               <Tab
                 key={idx + 1}

@@ -4,4 +4,11 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+
+  padding-top: 6rem;
+
+}
+
+.nav-menus > .nav-menu * {
+  color: var(--Lavander) !important;
 }
