@@ -5,6 +5,8 @@ import './content.css';
 import Bridge from "./bridge/bridge";
 import Nub from "./nub/nub";
 
+import { I_navOptionsProps } from "../../../../types/types";
+
 export default function Content(
   { 
     tabsInfo,
@@ -12,7 +14,7 @@ export default function Content(
     dir,
     parentWidth
   } : {
-    tabsInfo: { title : string, Component : React.FC<{ handleClick: () => void }> }[],
+    tabsInfo: { title : string, Component : React.FC<I_navOptionsProps> }[],
     selected : number | null,
     dir : string | null,
     parentWidth : number | undefined
@@ -45,7 +47,7 @@ export default function Content(
       <Bridge />
       <Nub selected={selected} />
 
-      {tabsInfo.map((t : { title : string, Component : React.FC<{ handleClick: () => void }> }, idx: number) => {
+      {tabsInfo.map((t : { title : string, Component : React.FC<I_navOptionsProps> }, idx: number) => {
         return (
           <div className="nav-content" key={idx + 1}>
             {selected === idx + 1 && (
@@ -57,7 +59,7 @@ export default function Content(
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
               >
-                <t.Component handleClick={() => {}}/>
+                <t.Component handleClick={() => {}} navType={1} />
               </motion.div>
             )}
           </div>

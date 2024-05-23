@@ -9,9 +9,11 @@ import Social from './nav_options/social/social';
 import NavMenu from './nav_menu/nav_menu';
 import NavBar from './nav_bar/nav_bar';
 
+import { I_navOptionsProps } from '../../types/types';
+
 export default function Nav() {
 
-  const tabsInfo: { title: string; Component: React.FC<{ handleClick: () => void }> }[] = [
+  const tabsInfo: { title: string; Component: React.FC<I_navOptionsProps> }[] = [
     {
       title: "Products",
       Component: Products,

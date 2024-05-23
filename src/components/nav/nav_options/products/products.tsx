@@ -1,30 +1,22 @@
 import React from 'react'
 import './products.css';
-
-import { faDroplet, faMobileScreenButton, faEarthAfrica } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NavLink } from 'react-router-dom';
+import { E_NavType } from '../../../../types/types';
+import ProductsMenu from './products_menu';
+import ProductsBar from './products_bar';
 
 export default function Products(
-  { handleClick } : { handleClick: () => void }
+  { 
+    handleClick,
+    navType
+  } : {
+    handleClick: () => void,
+    navType: E_NavType
+  }
 ) {
   return (
-    <div className="nav-products-container">
-      <h3>Our Work</h3>
-      <div>
-        <NavLink to = "/work" onClick={handleClick}>
-          <FontAwesomeIcon icon={faDroplet} />
-          <p>Oasis</p>
-        </NavLink>
-        <NavLink to = "/work" onClick={handleClick}>
-          <FontAwesomeIcon icon={faMobileScreenButton} />
-          <p>App</p>
-        </NavLink>
-        <NavLink to = "/work" onClick={handleClick}>
-          <FontAwesomeIcon icon={faEarthAfrica} />
-          <p>Outreach</p>
-        </NavLink>
-      </div>
-    </div>
+    {
+      [E_NavType.Menu]: <ProductsMenu />,
+      [E_NavType.Bar]: <ProductsBar handleClick={handleClick} />
+    }[navType]
   );
 }

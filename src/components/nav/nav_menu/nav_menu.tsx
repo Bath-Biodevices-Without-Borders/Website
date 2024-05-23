@@ -4,10 +4,13 @@ import './nav_menu.css'
 
 import Menus from './menus/menus';
 import Toggle from './toggle/toggle';
+
 import { HeroContext } from '../../../context/hero_context';
 
+import { I_navOptionsProps } from '../../../types/types';
+
 export default function NavMenu(
-  { tabsInfo } : { tabsInfo: { title: string; Component: React.FC<{ handleClick: () => void }> }[] }
+  { tabsInfo } : { tabsInfo: { title: string; Component: React.FC<I_navOptionsProps> }[] }
 ) {
   const [active, setActive] = useState(false);
 

@@ -2,6 +2,8 @@ import React from 'react'
 import './menus.css'
 import { motion } from 'framer-motion'
 
+import { I_navOptionsProps } from '../../../../types/types'
+
 export default function Menus(
   {
     isVisible,
@@ -10,7 +12,7 @@ export default function Menus(
   } : { 
     isVisible: boolean
     setVisibility: (val: boolean) => void
-    tabsInfo: { title: string; Component: React.FC<{ handleClick: () => void }> }[]
+    tabsInfo: { title: string; Component: React.FC<I_navOptionsProps> }[]
   }
 ) {
 
@@ -35,7 +37,7 @@ export default function Menus(
       }}
     >
       {
-        tabsInfo.map(({ title, Component }, index) => (
+        tabsInfo.map(({ title, Component } : { title: string, Component: React.FC<I_navOptionsProps>}, index: number) => (
           <motion.div
             key={index}
             className='nav-menu'
@@ -54,7 +56,7 @@ export default function Menus(
               }
             }}
           >
-            <Component handleClick={() => setVisibility(false)} />
+            <Component handleClick={() => setVisibility(false)} navType={0}/>
           </motion.div>
         ))
       }
