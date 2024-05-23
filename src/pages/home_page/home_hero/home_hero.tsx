@@ -58,7 +58,7 @@ export default function HomeHero() {
           opacity: 1,
           transition: {
             duration: 1,
-            delay: 2,
+            delay: 2.5,
           }
         }}
         style={{
