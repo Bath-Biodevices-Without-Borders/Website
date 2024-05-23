@@ -1,4 +1,6 @@
 nav {
+  position: relative;
+
   box-sizing: border-box;
   width: 100%;
   height: 4rem;
@@ -8,17 +10,29 @@ nav {
   flex-flow: row nowrap;
   justify-content: flex-end;
   align-items: center;
-  
-  /* background: transparent; */
-  /* background: linear-gradient(180deg, #030026 0%,  #070055 100%); */
 }
 
-nav > .bg {
+#nav-bar > .bg,
+#nav-menu> .bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 
   background: linear-gradient(180deg, #030026 0%,  #070055 100%);
+}
+
+nav > #nav-bar {
+  display: flex;
+}
+
+nav > #nav-menu {
+  display: none;
+}
+
+@media screen and (max-width: 670px) {
+  nav > #nav-bar {
+    display: none;
+  }
+  
+  nav > #nav-menu {
+    display: flex;
+  }
 }

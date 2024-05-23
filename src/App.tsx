@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 
-import NavBar from './components/nav_bar/nav_bar';
+import Nav from './components/nav/nav';
 import Footer from './components/footer/footer';
 
 import { Outlet } from 'react-router-dom';
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <HeroContext.Provider value={{heroRef, setHeroRef}}>
         <header>
-          <NavBar />
+          <Nav />
         </header>
         <main>
           <Outlet />

@@ -34,7 +34,7 @@
 .home-hero #hero-logo-caption {
   width: var(--logo-width);
 
-  padding-bottom: 7rem;
+  padding-bottom: 3rem;
 }
 
 .home-hero > #hero-placeholder,

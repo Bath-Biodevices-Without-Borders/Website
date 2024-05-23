@@ -1,0 +1,41 @@
+.nav-toggle {
+  position: relative;
+
+  color: var(--Lavander);
+
+  width: 3rem;
+  height: 3rem;
+
+  border-radius: 0.4rem;
+
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.nav-toggle > .icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-toggle > .icon-container > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  fill: var(--Lavander);
+
+  transition: transform 0.2s;
+}
+
+.nav-toggle:hover > .icon-container > svg {
+  transform: scale(1.2);
+}
+

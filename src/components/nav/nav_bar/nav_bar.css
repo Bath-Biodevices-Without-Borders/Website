@@ -8,3 +8,10 @@
   display: flex;
   gap: 1rem;
 }
+
+#nav-bar > .bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
