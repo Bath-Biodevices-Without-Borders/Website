@@ -3,6 +3,7 @@ import './menus.css'
 import { motion } from 'framer-motion'
 
 import { I_navOptionsProps } from '../../../../types/types'
+import { NavLink } from 'react-router-dom'
 
 export default function Menus(
   {
@@ -42,6 +43,18 @@ export default function Menus(
         className='nav-menus'
         ref={ref}
       >
+        <motion.div
+          className='home-btn'
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <NavLink
+            to='/'
+            onClick={() => setVisibility(false)}
+          >
+            <h3>Home</h3>
+          </NavLink>
+        </motion.div>
       {
         tabsInfo.map(({ title, Component } : { title: string, Component: React.FC<I_navOptionsProps>}, index: number) => (
           <motion.div
