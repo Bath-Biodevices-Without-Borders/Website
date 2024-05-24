@@ -39,7 +39,7 @@
   gap: 4px;
 }
 
-.nav-social-bar-container .social-bars {
+.nav-social-bar-container .socials {
   flex: 1;
   display: flex;
   justify-content: space-around;
