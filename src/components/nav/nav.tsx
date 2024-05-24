@@ -15,7 +15,7 @@ export default function Nav() {
 
   const tabsInfo: { title: string; Component: React.FC<I_navOptionsProps> }[] = [
     {
-      title: "Products",
+      title: "Our Work",
       Component: Products,
     },
     {
