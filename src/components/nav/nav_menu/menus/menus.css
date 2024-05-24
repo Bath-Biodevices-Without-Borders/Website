@@ -45,3 +45,15 @@
 .nav-menus-container .nav-menu {
   width: 100%;
 }
+
+.nav-menus-container .home-btn> a {
+  text-decoration: none;
+}
+
+.nav-menus-container .home-btn > a > h3 {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(0.125rem, 8.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--Lavander);
+}
