@@ -18,12 +18,14 @@ import { faEnvira } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import HomeHero from './home_hero/home_hero';
+import Tag from './tag/tag';
 
 
 export default function HomePage() {
   return (
     <div className="home-page">
       <HomeHero />
+      <Tag />
       <div className="issue-card">
         <aside>
           <main>

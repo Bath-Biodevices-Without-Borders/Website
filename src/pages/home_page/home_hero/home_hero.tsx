@@ -11,7 +11,7 @@ import { HeroContext } from '../../../context/hero_context';
 
 export default function HomeHero() {
   const duration : number = 2;
-  const delay : number = 2;
+  const delay : number = 1;
 
   const {heroRef, setHeroRef} = React.useContext(HeroContext);
 
@@ -74,7 +74,7 @@ export default function HomeHero() {
           opacity: 1,
           transition: {
             duration,
-            delay: delay + 0.5,
+            delay: delay + 0.2,
           },
         }}
       >
