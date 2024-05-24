@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './menus.css'
 import { motion } from 'framer-motion'
 
@@ -16,9 +16,11 @@ export default function Menus(
   }
 ) {
 
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
     <motion.div
-      className='nav-menus'
+      className='nav-menus-container'
       variants={{
         hidden: {
           x: '100vw',
@@ -36,6 +38,10 @@ export default function Menus(
         }
       }}
     >
+      <motion.div
+        className='nav-menus'
+        ref={ref}
+      >
       {
         tabsInfo.map(({ title, Component } : { title: string, Component: React.FC<I_navOptionsProps>}, index: number) => (
           <motion.div
@@ -56,10 +62,15 @@ export default function Menus(
               }
             }}
           >
-            <Component handleClick={() => setVisibility(false)} navType={0}/>
+            <Component
+              handleClick={() => setVisibility(false)}
+              navType={0}
+              viewportRef={ref}
+            />
           </motion.div>
         ))
       }
+      </motion.div>
     </motion.div>
   )
 }

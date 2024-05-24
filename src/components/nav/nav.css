@@ -28,11 +28,21 @@ nav > #nav-menu {
 }
 
 @media screen and (max-width: 670px) {
+  nav {
+    justify-content: flex-end;
+  }
+
   nav > #nav-bar {
     display: none;
   }
   
   nav > #nav-menu {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  nav {
+    justify-content: center;
   }
 }

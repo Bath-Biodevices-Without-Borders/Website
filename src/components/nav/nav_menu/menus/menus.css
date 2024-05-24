@@ -1,14 +1,47 @@
-.nav-menus {
+.nav-menus-container {
   position: absolute;
   top: 0;
   left: 0;
+
+  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
+  padding: 4rem 0 0 0;
 
-  padding-top: 6rem;
+  overflow: hidden;
 
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.nav-menus > .nav-menu * {
-  color: var(--Lavander) !important;
+.nav-menus-container > div {
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 2rem;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+  padding: 3rem 0;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  /* Add the following code to hide the scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow: -moz-scrollbars-none; /* Firefox */
+  -webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+}
+
+.nav-menus-container .nav-menu {
+  width: 100%;
 }

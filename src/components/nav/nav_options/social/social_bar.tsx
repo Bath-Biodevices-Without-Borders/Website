@@ -4,12 +4,16 @@ import './social_bar.css';
 import { faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
+import { I_navOptionsProps } from '../../../../types/types';
 
 export default function SocialBar(
-  { handleClick } : { handleClick: () => void }
+  {
+    handleClick,
+    viewportRef
+  } : I_navOptionsProps
 ) {
   return (
-    <div className="nav-social-container">
+    <div className="nav-social-bar-container">
       <h3>Contact Us</h3>
       <div>
         <div className="links">

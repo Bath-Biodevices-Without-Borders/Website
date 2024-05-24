@@ -59,7 +59,7 @@ export default function Content(
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
               >
-                <t.Component handleClick={() => {}} navType={1} />
+                <t.Component handleClick={() => {}} navType={1} viewportRef={undefined}/>
               </motion.div>
             )}
           </div>

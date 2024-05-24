@@ -2,6 +2,17 @@
   background-color: white;
   width: 100%;
   min-height: 100vh;
+  
+
+  
+  /* Add the following code to hide the scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow: -moz-scrollbars-none; /* Firefox */
+  -webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 }
 
 .App > header {
@@ -12,9 +23,3 @@
 
   width: 100%;
 }
-
-/* .App > main,
-.App > footer {
-  position: relative;
-  top: -4rem;
-} */

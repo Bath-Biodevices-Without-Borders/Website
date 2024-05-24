@@ -1,7 +1,7 @@
 import React from 'react'
 import './social.css';
 
-import { E_NavType } from '../../../../types/types';
+import { E_NavType, I_navOptionsProps } from '../../../../types/types';
 
 import SocialMenu from './social_menu';
 import SocialBar from './social_bar';
@@ -9,16 +9,22 @@ import SocialBar from './social_bar';
 export default function Social(
   { 
     handleClick,
-    navType
-  } : {
-    handleClick: () => void,
-    navType: E_NavType
-  }
+    navType,
+    viewportRef
+  } : I_navOptionsProps
 ) {
   return (
     {
-      [E_NavType.Menu]: <SocialMenu />,
-      [E_NavType.Bar]: <SocialBar handleClick={handleClick} />
+      [E_NavType.Menu]: <SocialMenu
+        handleClick={handleClick}
+        viewportRef={viewportRef}
+        navType={navType}
+      />,
+      [E_NavType.Bar]: <SocialBar
+        handleClick={handleClick}
+        viewportRef={viewportRef}
+        navType={navType}
+      />,
     }[navType]
   );
 }

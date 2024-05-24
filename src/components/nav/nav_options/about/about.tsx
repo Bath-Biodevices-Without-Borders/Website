@@ -1,7 +1,7 @@
 import React from 'react'
 import './about.css';
 
-import { E_NavType } from '../../../../types/types';
+import { E_NavType, I_navOptionsProps } from '../../../../types/types';
 
 import AboutMenu from './about_menu';
 import AboutBar from './about_bar';
@@ -9,17 +9,23 @@ import AboutBar from './about_bar';
 export default function About(
   { 
     handleClick,
-    navType
-  } : {
-    handleClick: () => void,
-    navType: E_NavType
-  }
+    navType,
+    viewportRef
+  } : I_navOptionsProps
 ) {
 
   return (
     {
-      [E_NavType.Menu]: <AboutMenu />,
-      [E_NavType.Bar]: <AboutBar handleClick={handleClick} />
+      [E_NavType.Menu]: <AboutMenu 
+        handleClick={handleClick}
+        viewportRef={viewportRef}
+        navType={navType}
+      />,
+      [E_NavType.Bar]: <AboutBar
+        handleClick={handleClick}
+        viewportRef={viewportRef}
+        navType={navType}
+      />,
     }[navType]
   )
 }

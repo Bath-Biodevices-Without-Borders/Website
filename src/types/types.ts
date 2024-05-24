@@ -61,7 +61,8 @@ export interface I_modalProps extends T_teamMember {
 
 export interface I_navOptionsProps {
   handleClick: () => void,
-  navType: E_NavType
+  navType: E_NavType,
+  viewportRef: React.RefObject<HTMLDivElement> | undefined
 }
 
 export enum E_NavType { 

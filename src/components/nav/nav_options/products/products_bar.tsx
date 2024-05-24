@@ -4,12 +4,16 @@ import './products_bar.css';
 import { faDroplet, faMobileScreenButton, faEarthAfrica } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
+import { I_navOptionsProps } from '../../../../types/types';
 
 export default function ProductsBar(
-  { handleClick } : { handleClick: () => void }
+  {
+    handleClick,
+    viewportRef
+  } : I_navOptionsProps
 ) {
   return (
-    <div className="nav-products-container">
+    <div className="nav-products-bar-container">
       <h3>Our Work</h3>
       <div>
         <NavLink to = "/work" onClick={handleClick}>

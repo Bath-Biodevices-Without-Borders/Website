@@ -1,4 +1,4 @@
-.nav-about-container {
+.nav-about-bar-container {
   flex: 1;
   display: flex;
   flex-flow: column nowrap;
@@ -10,7 +10,7 @@
   color: var(--OxfordBlue);
 }
 
-.nav-about-container h3 {
+.nav-about-bar-container h3 {
   width: 100%;
   text-align: center;
   margin-bottom: 0.5rem;
@@ -19,7 +19,7 @@
   color: var(--OxfordBlue);
 }
 
-.nav-about-container > div {
+.nav-about-bar-container > div {
   flex: 1;
   display: flex;
   justify-content: space-around;
@@ -30,9 +30,8 @@
   width: 100%;
 }
 
-.nav-about-container .business,
-.nav-about-container .technical {
-  /* flex: 1; */
+.nav-about-bar-container .business,
+.nav-about-bar-container .technical {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -40,14 +39,14 @@
   gap: 4px;
 }
 
-.nav-about-container h4 {
+.nav-about-bar-container h4 {
   margin-bottom: 0.2rem;
   font-size: clamp(0.1rem, 7vw, 1rem);
   font-weight: 600;
   color: var(--OxfordBlue);
 }
 
-.nav-about-container a {
+.nav-about-bar-container a {
   flex: 1;
   display: flex;
   align-items: flex-start;
@@ -63,15 +62,15 @@
   transform-origin: center left;
 }
 
-.nav-about-container a > svg {
+.nav-about-bar-container a > svg {
   transition: transform 0.2s;
 }
 
-.nav-about-container a:hover {
+.nav-about-bar-container a:hover {
   color: hsl(245, 50%, 20%);
   transform: scale(1.1);
 }
 
-.nav-about-container a:hover >svg {
+.nav-about-bar-container a:hover >svg {
   transform: scale(1.2) translateY(-2px);
 }
