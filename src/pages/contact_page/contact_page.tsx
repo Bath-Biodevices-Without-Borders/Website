@@ -1,9 +1,21 @@
+import { useContext, useEffect, useRef } from 'react';
 import './contact_page.css';
 
+import { HeroContext } from '../../context/hero_context';
+
 export default function ContactPage() {
+  const { setHeroRef } = useContext(HeroContext);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      setHeroRef(ref);
+    }
+  }, [ref, setHeroRef]);
+  
   return (
     <div className="contact-page">
-      <div className="hero">
+      <div className="hero" ref={ref}>
         <h1>
           Get in touch
         </h1>

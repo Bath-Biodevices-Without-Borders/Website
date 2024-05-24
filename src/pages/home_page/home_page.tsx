@@ -17,19 +17,15 @@ import {
 import { faEnvira } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import HomeHero from './home_hero/home_hero';
+import Tag from './tag/tag';
+
 
 export default function HomePage() {
   return (
     <div className="home-page">
-      <div className="hero">
-        <h1>Empowering communities through innovative water testing solutions.</h1>
-        <p>
-          Join us on our mission to provide clean water and monitoring solutions.
-          Whether you're a community member, potential user, or industry partner, we
-          welcome your collaboration and support.
-        </p>
-        <Link to="/contact" className="custom-button">Get Involved</Link>
-      </div>
+      <HomeHero />
+      <Tag />
       <div className="issue-card">
         <aside>
           <main>
