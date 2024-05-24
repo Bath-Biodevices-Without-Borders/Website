@@ -16,7 +16,7 @@ nav {
 #nav-menu> .bg {
   position: absolute;
 
-  background: linear-gradient(180deg, #030026 0%,  #070055 100%);
+  background: linear-gradient(-45deg, #030026 0%,  #070055 100%);
 }
 
 nav > #nav-bar {
