@@ -1,0 +1,48 @@
+nav {
+  position: relative;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 4rem;
+  padding: 1rem 10vw;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#nav-bar > .bg,
+#nav-menu> .bg {
+  position: absolute;
+
+  background: linear-gradient(180deg, #030026 0%,  #070055 100%);
+}
+
+nav > #nav-bar {
+  display: flex;
+}
+
+nav > #nav-menu {
+  display: none;
+}
+
+@media screen and (max-width: 670px) {
+  nav {
+    justify-content: flex-end;
+  }
+
+  nav > #nav-bar {
+    display: none;
+  }
+  
+  nav > #nav-menu {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  nav {
+    justify-content: center;
+  }
+}

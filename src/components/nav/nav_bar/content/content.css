@@ -1,0 +1,15 @@
+#nav-content-container {
+  overlay: content;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 24px);
+  border-radius: 8px;
+  /* border: 1px solid var(--Lavander); */
+  background-image: linear-gradient(180deg, #fff7, #f0f0f099);
+  backdrop-filter: blur(40px);
+  padding: 16px;
+}
+
+.nav-content {
+  overflow: hidden;
+}
