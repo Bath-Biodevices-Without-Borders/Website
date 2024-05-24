@@ -74,7 +74,7 @@ export default function HomeHero() {
           opacity: 1,
           transition: {
             duration,
-            delay,
+            delay: delay + 0.5,
           },
         }}
       >
