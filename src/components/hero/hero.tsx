@@ -10,8 +10,10 @@ type HeroProps = PropsWithChildren<{
   imageUrl?: string;
   foregroundImage?: string;
   backgroundImage?: string;
-  foregroundText?: string;
-  backgroundText?: string;
+  foregroundElement?: JSX.Element;
+  backgroundElement?: JSX.Element;
+  duration?: number;
+  delay?: number;
 }>;
 
 export default function Hero(
@@ -19,6 +21,12 @@ export default function Hero(
     useParallax,
     imageUrl,
     children,
+    foregroundImage,
+    backgroundImage,
+    foregroundElement,
+    backgroundElement,
+    duration,
+    delay
   } : HeroProps
 ) {
 
@@ -39,7 +47,14 @@ export default function Hero(
     <div className='hero' ref={ref}>
       {
         useParallax
-          ? <ParallaxHero />
+          ? <ParallaxHero
+              foregroundImage={foregroundImage}
+              backgroundImage={backgroundImage}
+              foregroundElement={foregroundElement}
+              backgroundElement={backgroundElement}
+              duration={duration}
+              delay={delay}
+            />
           : <StaticHero imageUrl={imageUrl}>
               {children}
             </StaticHero>
