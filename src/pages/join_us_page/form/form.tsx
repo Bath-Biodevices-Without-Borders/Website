@@ -1,11 +1,23 @@
 import React, { useEffect } from 'react'
-import './form.css'
+import { useNavigate } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import './form.css'
+
+import emailjs from '@emailjs/browser'
 
 import Checkbox from './checkbox/checkbox'
 import { I_FormInput, T_TeamStrings } from '../../../types/types'
 
+import { faCircleCheck, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export default function Form() {
+  const navigate = useNavigate();
+
+  const [isLoading, setLoading] = React.useState(false)
+  const [hasSubmitted, setSubmitted] = React.useState(false)
+  const [hasError, setError] = React.useState(false)
+
   const teams: T_TeamStrings[] = [
     'finance',
     'hardware',
@@ -22,13 +34,78 @@ export default function Form() {
   } = useForm<I_FormInput>()
 
   const onSubmit: SubmitHandler<I_FormInput> = data => {
-    console.log('data:', data);
-    console.log('errors:', errors);
+    if (hasSubmitted) return
+
+    let firstName = data.firstName.toLowerCase()
+    let lastName = data.lastName.toLowerCase()
+
+    firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1)
+    lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1)
+
+    const teams: string[] = data.teams.map((team: T_TeamStrings) => {
+      const titleCase = team.charAt(0).toUpperCase() + team.slice(1)
+      const withSpace = ` ${titleCase}`
+      return withSpace
+    })
+
+    const templateParams = {
+      from_name: firstName + ' ' + lastName,
+      from_email: data.email,
+      to_name: 'Biodevices Without Borders',
+      message: data.message,
+      teams: teams,
+    }
+
+    if (!process.env.REACT_APP_EMAIL_SERVICE_ID) {
+      console.error('There is no email service ID')
+    }
+
+    if (!process.env.REACT_APP_EMAIL_TEMPLATE_ID) {
+      console.error('There is no email template ID')
+    }
+
+    if (!process.env.REACT_APP_EMAIL_PUBLIC_KEY) {
+      console.error('There is no email public key')
+    }
+
+    if (
+      !process.env.REACT_APP_EMAIL_SERVICE_ID ||
+      !process.env.REACT_APP_EMAIL_TEMPLATE_ID ||
+      !process.env.REACT_APP_EMAIL_PUBLIC_KEY
+    ) {
+      return
+    }
+
+    setLoading(true)
+
+    emailjs.send(
+      process.env.REACT_APP_EMAIL_SERVICE_ID || "",
+      process.env.REACT_APP_EMAIL_TEMPLATE_ID || "",
+      templateParams,
+      { 
+        publicKey: process.env.REACT_APP_EMAIL_PUBLIC_KEY || "",
+      }
+    ).then(() => {
+      setSubmitted(true)
+      setError(false)
+    }, (error) => {
+      setSubmitted(false)
+      setError(true)
+      console.log(error)
+    })
   }
 
   useEffect(() => {
-    console.log(errors);
-  }, [errors])
+    let unsubscriber: NodeJS.Timeout
+    if (hasSubmitted || hasError) {
+      unsubscriber = setTimeout(() => {
+        setSubmitted(false)
+        setError(false)
+        navigate('/')
+      }, 3000)
+    }
+    return () => clearTimeout(unsubscriber)
+  })
 
   const emailValidation = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@bath.ac.uk$/
@@ -119,7 +196,18 @@ export default function Form() {
           <textarea {...register('message')}/>
         </section>
         <section>
-          <button type='submit'>Submit</button>
+          <button
+            className={hasSubmitted ? 'submitted' : isLoading ? 'loading' : 'ready'}
+            type='submit'
+          >
+            {
+              hasSubmitted
+              ? <FontAwesomeIcon icon={faCircleCheck} />
+              : isLoading ? <FontAwesomeIcon icon={faSpinner} spin />
+              : 'Submit'
+            }
+          </button>
+          {hasError && <p className='error-message'>There was an error submitting your application. Please try again later.</p>}
         </section>
       </form>
     </div>

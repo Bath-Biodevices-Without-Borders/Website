@@ -129,10 +129,8 @@
   width: 100%;
 
   margin-top: clamp(0.1rem, 6vw, 1rem);
-  padding: clamp(0.1rem, 6vw, 1rem) clamp(0.1rem, 6vw, 1rem);
   
   color: var(--Lavander);
-  background-color: var(--RISDBlue);
   border-radius: clamp(0.1rem, 4vw, 0.5rem);
 
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -143,8 +141,27 @@
   cursor: pointer;
 }
 
-.form-container button[type="submit"]:hover {
+.form-container button[type="submit"].ready {
+  background-color: var(--RISDBlue);
+  padding: clamp(0.1rem, 6vw, 1rem) clamp(0.1rem, 6vw, 1rem);
+}
+
+.form-container button[type="submit"].ready:hover {
   background-color: hsl(227, 88%, 38%);
+}
+
+.form-container button[type="submit"].loading {
+  background-color: #777;
+  font-size: 1.5rem;
+  padding: clamp(0.06rem, 4vw, 0.6rem);
+  cursor: not-allowed;
+}
+
+.form-container button[type="submit"].submitted {
+  background-color: var(--Teal);
+  font-size: 1.5rem;
+  padding: clamp(0.06rem, 4vw, 0.6rem);
+  cursor: not-allowed;
 }
 
 @keyframes shake {

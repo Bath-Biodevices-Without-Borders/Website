@@ -1,4 +1,7 @@
 import React from 'react'
+import './join_us_page.css'
+
+
 import Hero from '../../components/hero/hero'
 import Form from './form/form'
 
