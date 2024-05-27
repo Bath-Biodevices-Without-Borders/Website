@@ -2,6 +2,8 @@
   box-sizing: border-box;
   width: 100%;
   padding: 3rem 10vw;
+
+  color: var(--OxfordBlue);
 }
 
 .form-container > form {
@@ -80,7 +82,7 @@
   width: 100%;
   padding: 1rem;
   margin: 0.5rem 0;
-  border: 1px solid #ccc;
+  border: 1px solid #999;
   border-radius: 5px;
 }
 
@@ -144,6 +146,8 @@
 .form-container button[type="submit"].ready {
   background-color: var(--RISDBlue);
   padding: clamp(0.1rem, 6vw, 1rem) clamp(0.1rem, 6vw, 1rem);
+  font-size: clamp(0.1rem, 7vw, 1rem);
+  font-weight: 600;
 }
 
 .form-container button[type="submit"].ready:hover {
