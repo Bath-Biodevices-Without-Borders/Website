@@ -8,11 +8,13 @@
   user-select: none;
 
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   flex-flow: row nowrap;
   gap: 1rem;
   margin: 0.5rem 0.8rem;
+
+  min-width: 8rem;
 }
 
 .custom-checkbox > input {
@@ -30,6 +32,8 @@
   height: 25px;
   width: 25px;
   background-color: #eee;
+
+  border-radius: 5px;
 
   display: flex;
   justify-content: center;

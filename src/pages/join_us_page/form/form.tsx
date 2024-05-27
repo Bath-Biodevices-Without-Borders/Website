@@ -77,7 +77,7 @@ export default function Form() {
         </div>
         <section>
           <label htmlFor='email'>
-            <p>University of Bath Email</p>
+            <p>University Email</p>
             {errors.email && <p className='required'>required</p>}
           </label>
           {errors.email && <p className='error-message'>{errors.email.message}</p>}
