@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import AfricaMap from '../../images/map-redone-transformed.png';
 import OasisImage from '../../images/OASIS_Device.png';
 
+import HeroBg from '../../images/home-hero-bg.png';
+import HeroFg from '../../images/home-hero-fg.png';
+import Logo from '../../images/logo without caption.png';
+import LogoCaption from '../../images/logo caption.png';
+
 import {
   faPerson,
   faShuffle,
@@ -17,14 +22,23 @@ import {
 import { faEnvira } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import HomeHero from './home_hero/home_hero';
 import Tag from './tag/tag';
-
+import Hero from '../../components/hero/hero';
 
 export default function HomePage() {
   return (
     <div className="home-page">
-      <HomeHero />
+      <Hero
+        useParallax={true}
+        foregroundImage={HeroFg}
+        backgroundImage={HeroBg}
+        foregroundElement={
+          <img id='logo-caption' src={LogoCaption} alt='Team Logo' />
+        }
+        backgroundElement={
+          <img id='logo' src={Logo} alt='Team Logo' />
+        }
+      />
       <Tag />
       <div className="issue-card">
         <aside>
