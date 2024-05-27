@@ -23,3 +23,11 @@
 
   width: 100%;
 }
+
+.App > main {
+  min-height: 100vh;
+}
+
+.App > main > * {
+  min-height: 100dvh;
+}
