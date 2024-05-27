@@ -30,6 +30,7 @@ export default function AboutMenu(
           links.map(({ to, text } : {to: string, text: string}, idx: number) => {
             return (
               <motion.div
+                key={idx}
                 initial={{
                   opacity: 0,
                   scale: 1,
