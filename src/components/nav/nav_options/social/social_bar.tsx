@@ -23,7 +23,7 @@ export default function SocialBar(
           <NavLink to = "/contact" onClick={handleClick}>
             <p>Gallery</p>
           </NavLink>
-          <NavLink to = "/contact" onClick={handleClick}>
+          <NavLink to = "/join-us" onClick={handleClick}>
             <p>Join Us</p>
           </NavLink>
         </div>

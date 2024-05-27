@@ -17,7 +17,7 @@ export default function SocialMenu(
   const links: {to: string, text: string}[] = [
     { to: '/contact', text: 'Blog' },
     { to: '/contact', text: 'Gallery' },
-    { to: '/contact', text: 'Join Us' }
+    { to: '/join-us', text: 'Join Us' }
   ]
 
   const socials: {href: string, icon: any}[] = [
