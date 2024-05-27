@@ -1,0 +1,49 @@
+.hero {
+  width: 100%;
+}
+
+.static-hero {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.static-hero > figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.static-hero > figure > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.static-hero > .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 5;
+}
+
+.static-hero > .content * {
+  color: white;
+  font-size: clamp(1rem, 10vw, 4rem);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  font-weight: bolder;
+}
