@@ -37,6 +37,13 @@
   width: 100%;
 }
 
+.join-us-page > section .team-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .join-us-page > section .teams .team {
   width: 100%;
   max-width: 8rem;

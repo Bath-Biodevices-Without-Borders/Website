@@ -193,7 +193,7 @@ export default function Form() {
             <p className='optional'>optional</p>
           </label>
           <p className='description'>Write a brief message detailing why you want to join Biodeivces Without Borders.</p>
-          <textarea {...register('message')}/>
+          <textarea {...register('message', { maxLength: 1000 })} maxLength={1000} />
         </section>
         <section>
           <button
