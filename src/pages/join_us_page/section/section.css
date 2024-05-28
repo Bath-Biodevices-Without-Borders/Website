@@ -33,7 +33,7 @@
 .join-us-page > section .teams {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 5vw;
+  gap: 3vw;
   width: 100%;
 }
 
