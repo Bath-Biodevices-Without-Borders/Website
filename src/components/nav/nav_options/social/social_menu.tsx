@@ -17,7 +17,7 @@ export default function SocialMenu(
   const links: {to: string, text: string}[] = [
     { to: '/contact', text: 'Blog' },
     { to: '/contact', text: 'Gallery' },
-    { to: '/contact', text: 'Join Us' }
+    { to: '/join-us', text: 'Join Us' }
   ]
 
   const socials: {href: string, icon: any}[] = [
@@ -40,6 +40,7 @@ export default function SocialMenu(
             links.map(({ to, text } : {to: string, text: string}, idx: number) => {
               return (
                 <motion.div
+                  key={idx}
                   initial={{
                     opacity: 0,
                     scale: 1
@@ -66,6 +67,7 @@ export default function SocialMenu(
             socials.map(({ href, icon } : {href: string, icon: any}, idx: number) => {
               return (
                 <motion.a
+                  key={idx}
                   href={href}
                   target='_blank'
                   rel='noopener noreferrer'

@@ -1,3 +1,10 @@
+#logo,
+#logo-caption {
+  width: var(--logo-width);
+
+  padding-bottom: 3rem;
+}
+
 .issue-card {
   background-color: #ECEBFF;
   padding: 5em 10vw;
