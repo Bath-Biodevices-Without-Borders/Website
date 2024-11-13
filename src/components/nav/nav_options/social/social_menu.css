@@ -1,0 +1,77 @@
+.nav-social-menu-container {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  padding: 0 4rem 1rem 4rem;
+
+  color: var(--Lavander);
+}
+
+.nav-social-menu-container h3 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: clamp(0.125rem, 8.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--Lavander);
+}
+
+.nav-social-menu-container > div {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 8px;
+
+  width: 100%;
+}
+
+.nav-social-menu-container .links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 4px;
+}
+
+.nav-social-menu-container .links a {
+  color: var(--Lavander);
+  font-size: clamp(0.125rem, 8.5vw, 1.5rem);
+  text-decoration: none;
+}
+
+.nav-social-menu-container .socials {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-flow: row nowrap;
+  gap: 2rem;
+
+  width: 100%;
+}
+
+.nav-social-menu-container .socials a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  gap: 8px;
+
+  width: 100%;
+
+  color: var(--Lavander);
+}
+
+.nav-social-menu-container a:hover {
+  color: white;
+}
+
+.nav-social-menu-container a > svg {
+  height: 3rem;
+}

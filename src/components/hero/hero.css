@@ -1,0 +1,117 @@
+.hero {
+  width: 100%;
+}
+
+.static-hero {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.static-hero > figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.static-hero > figure > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.static-hero > .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 5;
+}
+
+.static-hero > .content * {
+  color: white;
+  font-size: clamp(1rem, 10vw, 4rem);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  font-weight: bolder;
+}
+
+.parallax-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+}
+
+.parallax-hero > .bg-container,
+.parallax-hero > .fg-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  --logo-width: clamp(0px, 70vw, 80vh);
+}
+
+.parallax-hero > .bg-container {
+  z-index: 10;
+}
+
+.parallax-hero > .fg-container {
+  z-index: 30;
+}
+
+
+.parallax-hero .bg-content-container,
+.parallax-hero .fg-content-container {
+  width: var(--logo-width);
+
+  padding-bottom: 3rem;
+}
+
+.parallax-hero > #hero-placeholder,
+.parallax-hero > #hero-bg,
+.parallax-hero > #hero-fg {
+  width: 100vw;
+  height: calc(100% + 10vw);
+  inset: 0px;
+
+  object-position: center;
+  object-fit: cover;
+}
+
+.parallax-hero > #hero-placeholder {
+  position: relative;
+  z-index: 0;
+  visibility: hidden;
+}
+
+.parallax-hero > #hero-bg {
+  position: absolute;
+  z-index: 0;
+}
+
+.parallax-hero > #hero-fg {
+  position: absolute;
+  z-index: 20;
+  top: -4px;
+}
+

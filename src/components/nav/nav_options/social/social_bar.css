@@ -1,0 +1,84 @@
+.nav-social-bar-container {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  padding: 0 4rem;
+
+  color: var(--OxfordBlue);
+}
+
+.nav-social-bar-container h3 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: clamp(0.125rem, 8.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--OxfordBlue);
+}
+
+.nav-social-bar-container > div {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 8px;
+
+  width: 100%;
+}
+
+.nav-social-bar-container .links {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  gap: 4px;
+}
+
+.nav-social-bar-container .socials {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-flow: row nowrap;
+  gap: 2rem;
+
+  height: 100%;
+  width: 100%;
+}
+
+.nav-social-bar-container a {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  gap: 8px;
+
+  width: 100%;
+
+  color: var(--OxfordBlue);
+  font-size: clamp(0.1rem, 7vw, 1rem);
+  text-decoration: none;
+
+  transition: all 0.2s;
+  transform-origin: center left;
+}
+
+.nav-social-bar-container a > svg {
+  height: 3rem;
+  transition: transform 0.2s;
+}
+
+.nav-social-bar-container a:hover {
+  color: hsl(245, 50%, 20%);
+  transform: scale(1.1);
+}
+
+.nav-social-bar-container a:hover >svg {
+  transform: scale(1.2) translateY(-2px);
+}

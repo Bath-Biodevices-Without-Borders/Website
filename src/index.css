@@ -1,8 +1,5 @@
 :root {
   font-size: 16px;
-}
-
-* {
   --RISDBlue: #355DF2;
   --Aquamarine: #52e1b1;
   --Teal: #0e7c7b;
@@ -10,12 +7,32 @@
   --OxfordBlue: #030026;
   --DogwoodRose: #d62264;
 
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(0.1rem, 6vw, 1rem);
+  
+
+  
+  /* Add the following code to hide the scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow: -moz-scrollbars-none; /* Firefox */
+  -webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+}
+
+* {
   margin: 0;
   padding: 0;
   border: 0;
 
-  font-family: 'Open Sans', sans-serif;
-  font-size: clamp(0.1rem, 6vw, 1rem);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 p {

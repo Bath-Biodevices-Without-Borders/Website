@@ -36,6 +36,8 @@ export type T_orgDetails = {
   };
 };
 
+export type T_TeamStrings = "finance" | "hardware" | "outreach" | "sensors" | "social" | "software";
+
 export interface I_teamSectionProps {
   index: number;
   teamName: string;
@@ -57,4 +59,23 @@ export interface I_profileProps extends T_teamMember {
 
 export interface I_modalProps extends T_teamMember {
   handleSelection: (index: number) => void;
+};
+
+export interface I_navOptionsProps {
+  handleClick: () => void,
+  navType: E_NavType,
+  viewportRef: React.RefObject<HTMLDivElement> | undefined
+}
+
+export interface I_FormInput {
+  firstName: string
+  lastName: string
+  email: string
+  teams: T_TeamStrings[]
+  message: string
+}
+
+export enum E_NavType { 
+  Menu,
+  Bar
 };

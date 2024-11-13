@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import AfricaMap from '../../images/map-redone-transformed.png';
 import OasisImage from '../../images/OASIS_Device.png';
 
+import HeroBg from '../../images/home-hero-bg.png';
+import HeroFg from '../../images/home-hero-fg.png';
+import Logo from '../../images/logo without caption.png';
+import LogoCaption from '../../images/logo caption.png';
+
 import {
   faPerson,
   faShuffle,
@@ -17,19 +22,24 @@ import {
 import { faEnvira } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import Tag from './tag/tag';
+import Hero from '../../components/hero/hero';
 
 export default function HomePage() {
   return (
     <div className="home-page">
-      <div className="hero">
-        <h1>Empowering communities through innovative water testing solutions.</h1>
-        <p>
-          Join us on our mission to provide clean water and monitoring solutions.
-          Whether you're a community member, potential user, or industry partner, we
-          welcome your collaboration and support.
-        </p>
-        <Link to="/contact" className="custom-button">Get Involved</Link>
-      </div>
+      <Hero
+        useParallax={true}
+        foregroundImage={HeroFg}
+        backgroundImage={HeroBg}
+        foregroundElement={
+          <img id='logo-caption' src={LogoCaption} alt='Team Logo' />
+        }
+        backgroundElement={
+          <img id='logo' src={Logo} alt='Team Logo' />
+        }
+      />
+      <Tag />
       <div className="issue-card">
         <aside>
           <main>

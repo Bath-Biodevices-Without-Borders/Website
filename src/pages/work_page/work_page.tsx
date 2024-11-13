@@ -1,3 +1,4 @@
+import { useContext, useEffect, useRef } from 'react';
 import './work_page.css';
 
 import DeviceRender from '../../images/Picture1.png';
@@ -7,16 +8,24 @@ import Riga from '../../images/riga.jpg';
 
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { HeroContext } from '../../context/hero_context';
+import Hero from '../../components/hero/hero';
 
 
 export default function OasisPage() {
+  const { setHeroRef } = useContext(HeroContext);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      setHeroRef(ref);
+    }
+  }, [ref, setHeroRef]);
   return (
     <div className="work-page">
-      <div className="hero">
-        <h1>
-          Our Work
-        </h1>
-      </div>
+      <Hero useParallax={false} imageUrl='https://images.unsplash.com/photo-1519455953755-af066f52f1a6?q=80&w=2261&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'>
+        <h1>Our Work</h1>
+      </Hero>
     <div className="oasis">
       <aside>
         <h2>OASIS</h2>
