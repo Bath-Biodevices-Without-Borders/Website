@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className='footer'>
       <div>
         <h5>Contact Us</h5>
-        <p>Email: info@example.com</p>
+        <p>Email: info.biodeviceswithoutborders.groups@bath.ac.uk</p>
       </div>
       <div>
         <h5>Quick Links</h5>
