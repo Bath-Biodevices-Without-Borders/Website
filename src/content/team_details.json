@@ -16,7 +16,7 @@
                 {
                     "role": "Technical Lead",
                     "team": "Management",
-                    "lead": false
+                    "lead": true
                 }
             ]
         },
@@ -56,7 +56,7 @@
                 {
                     "role": "Business Lead",
                     "team": "Management",
-                    "lead": false
+                    "lead": true
                 },
                 {
                     "role": "Event Coordinator",
@@ -280,7 +280,7 @@
                 {
                     "role": "Business Lead",
                     "team": "Management",
-                    "lead": false
+                    "lead": true
                 },
                 {
                     "role": "Event Coordinator",
@@ -751,7 +751,7 @@
                 {
                     "role": "Business Lead",
                     "team": "Management",
-                    "lead": false
+                    "lead": true
                 },
                 {
                     "role": "Event Coordinator",
