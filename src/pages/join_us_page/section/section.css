@@ -1,0 +1,92 @@
+.join-us-page > section {
+  background: var(--OxfordBlue);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8rem 10vw;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.join-us-page > section > .intro {
+  width: 100%;
+  margin-bottom: 5rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.join-us-page > section > .intro * {
+  color: var(--Lavander);
+  text-align: center;
+}
+
+.join-us-page > section > .intro p {
+  max-width: 80ch;
+}
+
+.join-us-page > section .teams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 3vw;
+  width: 100%;
+}
+
+.join-us-page > section .team-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-us-page > section .teams .team {
+  width: 100%;
+  max-width: 8rem;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--Lavander);
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition: color 0.2s;
+}
+
+.join-us-page > section .teams .team:hover {
+  color: white;
+}
+
+.join-us-page > section .teams .team > figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.join-us-page > section .teams .team svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.join-us-page > section .teams .team h4 {
+  font-size: clamp(0.1rem, 7vw, 1.6rem);
+}
+
+@media screen and (max-width: 685px) {
+  .join-us-page > section .teams {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,205 @@
+.form-container {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 3rem 10vw;
+
+  color: var(--OxfordBlue);
+}
+
+.form-container > form {
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.form-container > form > div {
+  width: 100%;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  column-gap: 5vw;
+}
+
+.form-container section {
+  flex: 1;
+  width: 100%;
+  min-width: 12rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  margin: 1rem 0;
+}
+
+.form-container section > label:first-child {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  column-gap: 2rem;
+}
+
+.form-container .description {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.form-container .error-message {
+  font-size: 0.8rem;
+  color: var(--DogwoodRose);
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.form-container .required,
+.form-container .optional {
+  font-weight: 600;
+  font-variant: small-caps;
+}
+
+.form-container .required {
+  color: var(--DogwoodRose);
+}
+
+.form-container .optional {
+  color: #999;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.form-container .required-error {
+  outline: none;
+  border: 2px solid var(--DogwoodRose) !important;
+  margin: calc(0.5rem - 1px) 0 !important;
+  animation: shake 0.5s;
+}
+
+.form-container input[type="text"]:active,
+.form-container input[type="text"]:focus,
+.form-container input[type="text"]:focus-visible,
+.form-container input[type="email"]:active,
+.form-container input[type="email"]:focus,
+.form-container input[type="email"]:focus-visible,
+.form-container textarea:active,
+.form-container textarea:focus,
+.form-container textarea:focus-visible {
+  border: 2px solid var(--RISDBlue);
+  outline: none;
+  margin: calc(0.5rem - 1px) 0;
+}
+
+.form-container textarea {
+  resize: vertical;
+  min-height: 10rem;
+  font-family: inherit;
+}
+
+.form-container .checkboxes {
+  box-sizing: border-box;
+  width: 100%;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 1rem 0;
+}
+
+.form-container button[type="submit"] {
+  width: 100%;
+
+  margin-top: clamp(0.1rem, 6vw, 1rem);
+  
+  color: var(--Lavander);
+  border-radius: clamp(0.1rem, 4vw, 0.5rem);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.form-container button[type="submit"].ready {
+  background-color: var(--RISDBlue);
+  padding: clamp(0.1rem, 6vw, 1rem) clamp(0.1rem, 6vw, 1rem);
+  font-size: clamp(0.1rem, 7vw, 1rem);
+  font-weight: 600;
+}
+
+.form-container button[type="submit"].ready:hover {
+  background-color: hsl(227, 88%, 38%);
+}
+
+.form-container button[type="submit"].loading {
+  background-color: #777;
+  font-size: 1.5rem;
+  padding: clamp(0.06rem, 4vw, 0.6rem);
+  cursor: not-allowed;
+}
+
+.form-container button[type="submit"].submitted {
+  background-color: var(--Teal);
+  font-size: 1.5rem;
+  padding: clamp(0.06rem, 4vw, 0.6rem);
+  cursor: not-allowed;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-5px);
+  }
+  20% {
+    transform: translateX(5px);
+  }
+  30% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(5px);
+  }
+  70% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  90% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

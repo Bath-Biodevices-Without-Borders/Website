@@ -1,39 +1,8 @@
+#logo,
+#logo-caption {
+  width: var(--logo-width);
 
-.home-page > .hero {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 10vw;
-
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1484318571209-661cf29a69c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-  background-size: cover;
-  background-position: center;
-}
-
-.home-page > .hero h1 {
-  color: white;
-  font-weight: bold;
-}
-
-.home-page > .hero p {
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.home-page > .hero .custom-button {
-  margin-top: clamp(0.1rem, 6vw, 1rem);
-  padding: clamp(0.1rem, 6vw, 1rem) clamp(0.1rem, 6vw, 1rem);
-  display: inline-block;
-  text-align: center;
-  color: #fff;
-  background-color: #355DF2;
-  border-radius: clamp(0.1rem, 6vw, 1rem);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-}
-
-.home-page > .hero .custom-button:hover {
-  background-color: #5976e0;
-  color: #fff;
+  padding-bottom: 3rem;
 }
 
 .issue-card {

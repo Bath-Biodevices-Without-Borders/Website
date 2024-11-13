@@ -36,7 +36,7 @@
                 {
                     "role": "Team Lead",
                     "team": "Management",
-                    "lead": true
+                    "lead": false
                 }
             ]
         },
