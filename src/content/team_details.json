@@ -130,7 +130,7 @@
             "startYear": 2022,
             "endYear": 2024,
             "legacy": false,
-            "isLegacy": true,
+            "isLegacy": false,
             "roles": [
                 {
                     "role": "pH Sensor Developer",
@@ -296,7 +296,7 @@
             "startYear": 2022,
             "endYear": 2024,
             "legacy": false,
-            "isLegacy": true,
+            "isLegacy": false,
             "roles": [
                 {
                     "role": "pH Sensor Developer",
