@@ -54,8 +54,18 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Team Manager",
+                    "role": "Business Director",
                     "team": "Management",
+                    "lead": true
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
                     "lead": false
                 }
             ]
@@ -168,7 +178,7 @@
             ]
         },
         {
-            "id": 28,
+            "id": 30,
             "name": "Alex Marshall",
             "email": "ajfm21@bath.ac.uk",
             "course": "MEng Computer Systems Engineering ",
@@ -188,10 +198,10 @@
             ]
         },
         {
-            "id": 29,
+            "id": 31,
             "name": "Tony Pow",
             "email": "adp60@bath.ac.uk",
-            "course": "MEng Electrical and Electronic Engineering ",
+            "course": "Meng Electrical and Electronic Engineering ",
             "link": "",
             "description": "I\u2019m a final year EEE student and initially worked with BWB through the GDBP last year on the desalination project. I joined officially this year and I\u2019m interested developing the hardware of the Oasis device into something representative of the final product. ",
             "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/cachedImage_Tony%20Pow.png",
@@ -202,51 +212,6 @@
             "roles": [
                 {
                     "role": "Hardware ",
-                    "team": "Hardware",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 36,
-            "name": "Daanish Ansari",
-            "email": "daa59@bath.ac.uk",
-            "course": "MEng Mechanical Engineering ",
-            "link": "https://www.linkedin.com/in/daanish-ansari-b6aab0216/",
-            "description": "I am a second year Mechanical Engineering student passionate about creating impactful solutions and excited to contribute to Bath Biodevices without Borders in driving innovative progress.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/Screenshot_2024-11-04-23-54-37-18_965bbf4d18d_Daanish%20Ansari.jpg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Energy Recovery Device",
-                    "team": "Hardware",
-                    "lead": false
-                },
-                {
-                    "role": "Order Request Forms",
-                    "team": "Finance",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 38,
-            "name": "Frieden Rawding",
-            "email": "fjr32@bath.ac.uk",
-            "course": "Computer Systems Engineering",
-            "link": "https://www.linkedin.com/in/friedenrawding/",
-            "description": "I'm a final year CSE student who just joined the team this semester. I'm especially interested in PCB design and I'm excited to work on hardware to help make a difference.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/20241013_120514000_iOS_Frieden%20Rawding.jpg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Hardware Engineer",
                     "team": "Hardware",
                     "lead": false
                 }
@@ -301,6 +266,36 @@
         },
         {
             "id": 19,
+            "name": "Vrinda Raninga",
+            "email": "vpr24@bath.ac.uk",
+            "course": "MEng Chemical Engineering",
+            "link": "https://www.linkedin.com/in/vrinda-raninga-959459249",
+            "description": "I am a 3rd year student studying Chemical Engineering who has been a part of Bath Biodevices without Borders (and its iterations) since my first year. I have thoroughly enjoyed watching the team grow to what it is today and am excited for it to continue when I leave too. ",
+            "image": "",
+            "startYear": 2021,
+            "endYear": 2024,
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Business Director",
+                    "team": "Management",
+                    "lead": true
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 21,
             "name": "Alexa Mesham",
             "email": "amm305@bath.ac.uk",
             "course": "MEng Chemical Engineering",
@@ -325,7 +320,7 @@
             ]
         },
         {
-            "id": 20,
+            "id": 22,
             "name": "Olivia Smith",
             "email": "os590@bath.ac.uk",
             "course": "MBiol Biology",
@@ -350,7 +345,7 @@
             ]
         },
         {
-            "id": 23,
+            "id": 25,
             "name": "Helena Woodvine",
             "email": "hw2435@bath.ac.uk",
             "course": "BSc(Hons) Biology with Professional Placement",
@@ -380,7 +375,7 @@
             ]
         },
         {
-            "id": 26,
+            "id": 28,
             "name": "Tara Mckenna",
             "email": "tm907@bath.ac.uk",
             "course": "MEng Integrated Mechanical and Electrical Engineering ",
@@ -400,136 +395,6 @@
                 {
                     "role": "Grant Seeker",
                     "team": "Finance",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 32,
-            "name": "Alex Hadjiev",
-            "email": "ah3410@bath.ac.uk",
-            "course": "MEng Electrical and Electronic Engineering",
-            "link": "https://www.linkedin.com/in/alexander-h-7129a32a5/",
-            "description": "I am a 1st year student studying Electrical and Electronic Engineering who has joined Bath Biodevices without Borders this year. I am looking forward to witnessing the team's innovation and creativity throughout the year.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/IMG_2876_Alex%20Hadjiev.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Software Engineer",
-                    "team": "Software",
-                    "lead": false
-                },
-                {
-                    "role": "Sensors Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Outreach Team Member",
-                    "team": "Outreach",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 35,
-            "name": "Vivien Shkodra",
-            "email": "vs817@bath.ac.uk",
-            "course": "Biomedical Sciences",
-            "link": "",
-            "description": "I am a second year Biomedical Sciences student who is also on her second year working for the Biodevices without Borders project. I enjoy working towards an initiative which aims to positively impact our life on Earth and provide basic resource equality such as water.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/FFD6EDDD-7A9D-4C9A-B26B-D0F6CA08931B_Vivien%20Shkodra.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Grant Seeker",
-                    "team": "Finance",
-                    "lead": false
-                },
-                {
-                    "role": "Sensors Developer",
-                    "team": "Sensors",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 39,
-            "name": "Cordelia Liu",
-            "email": "wycal20@bath.ac.uk",
-            "course": "MEng Chemical Engineering",
-            "link": "www.linkedin.com/in/cordelia-liu",
-            "description": "Hello! I am a new member of Bath Biodevices without Borders, currently in my second year of Chemical Engineering. Passionate about using bioengineering to tackle global challenges such as water scarcity, I look forward to contributing to our team\u2019s mission. Following on from my passion in bioengineering, I am eager to deepen my expertise by applying theoretical knowledge to practical, impactful solutions through this project.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/20230923_160348_Cordelia%20Liu.JPG",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "pH Sensor Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Social Team Member",
-                    "team": "Social",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 41,
-            "name": "Mari Mcphail",
-            "email": "mm3581@bath.ac.uk",
-            "course": "Biological sciences ",
-            "link": "https://uk.linkedin.com/in/mari-mcphail-0a801622b",
-            "description": "I am a second-year Biological Sciences student and recently became a member of Bath Biodevices without Borders. Being part of the team has been an incredibly enjoyable and rewarding experience.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/8A7B86C4-4F99-4094-8EB8-2998B42561E0_Mari%20Mcphail.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Nitrate Sensor Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Grant Seeker",
-                    "team": "Finance",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 45,
-            "name": "Toni Adenipekun",
-            "email": "oa562@bath.ac.uk",
-            "course": "MEng Integrated Mechanical and Electrical Engineering (IMEE) ",
-            "link": "https://www.linkedin.com/in/toni-adenipekun-389473323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-            "description": "I\u2019m a 3rd year IMEE student returning from placement. I enjoy mixing software, electrical, and mechanical engineering together to create new ideas. This is my first year as a part of the Biodevices team",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/C4B70E97-9F6B-4E24-8DD9-DB2F162A901C_Toni%20Adenipekun.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Front-End Engineer",
-                    "team": "Software",
-                    "lead": false
-                },
-                {
-                    "role": "Nitrate Sensor Developer",
-                    "team": "Sensors",
                     "lead": false
                 }
             ]
@@ -657,7 +522,7 @@
             ]
         },
         {
-            "id": 22,
+            "id": 24,
             "name": "Anjleen Devgun",
             "email": "ad2598@bath.ac.uk",
             "course": "Electrical and Electronic Engineering ",
@@ -677,7 +542,7 @@
             ]
         },
         {
-            "id": 30,
+            "id": 32,
             "name": "Isabelle Whittle",
             "email": "iw374@bath.ac.uk",
             "course": "MSc Mathematics",
@@ -692,81 +557,6 @@
                 {
                     "role": "Software Engineer",
                     "team": "Software",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 31,
-            "name": "Alex Hadjiev",
-            "email": "ah3410@bath.ac.uk",
-            "course": "MEng Electrical and Electronic Engineering",
-            "link": "https://www.linkedin.com/in/alexander-h-7129a32a5/",
-            "description": "I am a 1st year student studying Electrical and Electronic Engineering who has joined Bath Biodevices without Borders this year. I am looking forward to witnessing the team's innovation and creativity throughout the year.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/IMG_2876_Alex%20Hadjiev.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Software Engineer",
-                    "team": "Software",
-                    "lead": false
-                },
-                {
-                    "role": "Sensors Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Outreach Team Member",
-                    "team": "Outreach",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 43,
-            "name": "Euan Hanna",
-            "email": "eh2282@bath.ac.uk",
-            "course": "MSc Physics",
-            "link": "",
-            "description": "I am a 2nd second year physics student studying physics at the university of Bath where I recently joined the Biodevices without Borders team. I have enjoyed work with the team to develop the project and hope to be involved as it continues to develop",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/IMG_5498_Euan%20Hanna.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Software Engineer",
-                    "team": "Software",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 44,
-            "name": "Toni Adenipekun",
-            "email": "oa562@bath.ac.uk",
-            "course": "MEng Integrated Mechanical and Electrical Engineering (IMEE) ",
-            "link": "https://www.linkedin.com/in/toni-adenipekun-389473323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-            "description": "I\u2019m a 3rd year IMEE student returning from placement. I enjoy mixing software, electrical, and mechanical engineering together to create new ideas. This is my first year as a part of the Biodevices team",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/C4B70E97-9F6B-4E24-8DD9-DB2F162A901C_Toni%20Adenipekun.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Front-End Engineer",
-                    "team": "Software",
-                    "lead": false
-                },
-                {
-                    "role": "Nitrate Sensor Developer",
-                    "team": "Sensors",
                     "lead": false
                 }
             ]
@@ -824,7 +614,7 @@
             ]
         },
         {
-            "id": 25,
+            "id": 27,
             "name": "Helena Woodvine",
             "email": "hw2435@bath.ac.uk",
             "course": "BSc(Hons) Biology with Professional Placement",
@@ -854,7 +644,7 @@
             ]
         },
         {
-            "id": 27,
+            "id": 29,
             "name": "Tara Mckenna",
             "email": "tm907@bath.ac.uk",
             "course": "MEng Integrated Mechanical and Electrical Engineering ",
@@ -868,81 +658,6 @@
             "roles": [
                 {
                     "role": "pH Sensor Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Grant Seeker",
-                    "team": "Finance",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 34,
-            "name": "Vivien Shkodra",
-            "email": "vs817@bath.ac.uk",
-            "course": "Biomedical Sciences",
-            "link": "",
-            "description": "I am a second year Biomedical Sciences student who is also on her second year working for the Biodevices without Borders project. I enjoy working towards an initiative which aims to positively impact our life on Earth and provide basic resource equality such as water.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/FFD6EDDD-7A9D-4C9A-B26B-D0F6CA08931B_Vivien%20Shkodra.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Grant Seeker",
-                    "team": "Finance",
-                    "lead": false
-                },
-                {
-                    "role": "Sensors Developer",
-                    "team": "Sensors",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 37,
-            "name": "Daanish Ansari",
-            "email": "daa59@bath.ac.uk",
-            "course": "MEng Mechanical Engineering ",
-            "link": "https://www.linkedin.com/in/daanish-ansari-b6aab0216/",
-            "description": "I am a second year Mechanical Engineering student passionate about creating impactful solutions and excited to contribute to Bath Biodevices without Borders in driving innovative progress.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/Screenshot_2024-11-04-23-54-37-18_965bbf4d18d_Daanish%20Ansari.jpg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Energy Recovery Device",
-                    "team": "Hardware",
-                    "lead": false
-                },
-                {
-                    "role": "Order Request Forms",
-                    "team": "Finance",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 42,
-            "name": "Mari Mcphail",
-            "email": "mm3581@bath.ac.uk",
-            "course": "Biological sciences ",
-            "link": "https://uk.linkedin.com/in/mari-mcphail-0a801622b",
-            "description": "I am a second-year Biological Sciences student and recently became a member of Bath Biodevices without Borders. Being part of the team has been an incredibly enjoyable and rewarding experience.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/8A7B86C4-4F99-4094-8EB8-2998B42561E0_Mari%20Mcphail.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Nitrate Sensor Developer",
                     "team": "Sensors",
                     "lead": false
                 },
@@ -992,6 +707,36 @@
         },
         {
             "id": 18,
+            "name": "Vrinda Raninga",
+            "email": "vpr24@bath.ac.uk",
+            "course": "MEng Chemical Engineering",
+            "link": "https://www.linkedin.com/in/vrinda-raninga-959459249",
+            "description": "I am a 3rd year student studying Chemical Engineering who has been a part of Bath Biodevices without Borders (and its iterations) since my first year. I have thoroughly enjoyed watching the team grow to what it is today and am excited for it to continue when I leave too. ",
+            "image": "",
+            "startYear": 2021,
+            "endYear": 2024,
+            "legacy": false,
+            "isLegacy": false,
+            "roles": [
+                {
+                    "role": "Business Director",
+                    "team": "Management",
+                    "lead": true
+                },
+                {
+                    "role": "Event Coordinator",
+                    "team": "Outreach",
+                    "lead": false
+                },
+                {
+                    "role": "Nitrate Sensor Developer",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 20,
             "name": "Alexa Mesham",
             "email": "amm305@bath.ac.uk",
             "course": "MEng Chemical Engineering",
@@ -1016,7 +761,7 @@
             ]
         },
         {
-            "id": 24,
+            "id": 26,
             "name": "Helena Woodvine",
             "email": "hw2435@bath.ac.uk",
             "course": "BSc(Hons) Biology with Professional Placement",
@@ -1041,36 +786,6 @@
                 {
                     "role": "Grant Seeker",
                     "team": "Finance",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 33,
-            "name": "Alex Hadjiev",
-            "email": "ah3410@bath.ac.uk",
-            "course": "MEng Electrical and Electronic Engineering",
-            "link": "https://www.linkedin.com/in/alexander-h-7129a32a5/",
-            "description": "I am a 1st year student studying Electrical and Electronic Engineering who has joined Bath Biodevices without Borders this year. I am looking forward to witnessing the team's innovation and creativity throughout the year.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/IMG_2876_Alex%20Hadjiev.jpeg",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "Software Engineer",
-                    "team": "Software",
-                    "lead": false
-                },
-                {
-                    "role": "Sensors Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Outreach Team Member",
-                    "team": "Outreach",
                     "lead": false
                 }
             ]
@@ -1113,7 +828,7 @@
             ]
         },
         {
-            "id": 21,
+            "id": 23,
             "name": "Olivia Smith",
             "email": "os590@bath.ac.uk",
             "course": "MBiol Biology",
@@ -1134,31 +849,6 @@
                     "role": "Head of Social",
                     "team": "Social",
                     "lead": true
-                }
-            ]
-        },
-        {
-            "id": 40,
-            "name": "Cordelia Liu",
-            "email": "wycal20@bath.ac.uk",
-            "course": "MEng Chemical Engineering",
-            "link": "www.linkedin.com/in/cordelia-liu",
-            "description": "Hello! I am a new member of Bath Biodevices without Borders, currently in my second year of Chemical Engineering. Passionate about using bioengineering to tackle global challenges such as water scarcity, I look forward to contributing to our team\u2019s mission. Following on from my passion in bioengineering, I am eager to deepen my expertise by applying theoretical knowledge to practical, impactful solutions through this project.",
-            "image": "https://computingservices-my.sharepoint.com/personal/jd2605_bath_ac_uk/Documents/Apps/Microsoft%20Forms/BWB%20survey%20for%20website/Question%201/20230923_160348_Cordelia%20Liu.JPG",
-            "startYear": 2024,
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "pH Sensor Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Social Team Member",
-                    "team": "Social",
-                    "lead": false
                 }
             ]
         }
