@@ -26,6 +26,12 @@ jobs:
       REACT_APP_EMAIL_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}
 
     steps:
+      - name: Check build output directory
+        run: |
+          echo "Listing contents of the build directory:"
+          ls -la build
+
+    
       - name: Checkout Repository
         uses: actions/checkout@v4
 
