@@ -26,10 +26,6 @@ jobs:
       REACT_APP_EMAIL_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}
 
     steps:
-      - name: Check build output directory
-        run: |
-          echo "Listing contents of the build directory:"
-          ls -la build
 
     
       - name: Checkout Repository
@@ -50,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./
           
   # Deployment job
   deploy:
