@@ -236,8 +236,6 @@
             ]
         },
         {
-            "id": 36,
-=======
             "id": 12,
 
             "name": "Daanish Ansari",
@@ -888,43 +886,64 @@
             ]
         },
         {
-            "id": 25,
-            "name": "Helena Woodvine",
-            "email": "hw2435@bath.ac.uk",
-            "course": "BSc(Hons) Biology with Professional Placement",
-            "link": "https://www.linkedin.com/in/helena-woodvine/",
-            "description": "Being a highly motivated and inquisitive individual I am hugely enjoying contributing towards Biodevices without Borders' applied learning project. Eager to pursue a Biotechnology-orientated career addressing UN STGs, aiding in the development and testing of electrochemical sensors for different water safety parameters is incredibly insightful. Further fuelling my interest in diagnostic lab-on-chip biosensing technology, I'm integrated across teams to have a comprehensive understanding of the processes involved to allow the development of these devices. ",
-            "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Blue%20walled%20BWB%20website_Helena%20Woodvine.jpg",
-            "startYear": 2022,
-            "id": 13,
-            "name": "Daanish Ansari",
-            "email": "daa59@bath.ac.uk",
-            "course": "MEng Mechanical Engineering ",
-            "link": "https://www.linkedin.com/in/daanish-ansari-b6aab0216/",
-            "description": "I am a second year Mechanical Engineering student passionate about creating impactful solutions and excited to contribute to Bath Biodevices without Borders in driving innovative progress.",
-            "image": "daa59.png",
-            "startYear": 2024,
-
-            "endYear": 2024,
-            "legacy": false,
-            "isLegacy": false,
-            "roles": [
-                {
-                    "role": "pH Sensor Developer",
-                    "team": "Sensors",
-                    "lead": false
-                },
-                {
-                    "role": "Event Coordinator",
-                    "team": "Outreach",
-                    "lead": false
-                },
-                {
-                    "role": "Grant Seeker",
-                    "team": "Finance",
-                    "lead": false
-                }
-            ]
+                "id": 25,
+                "name": "Helena Woodvine",
+                "email": "hw2435@bath.ac.uk",
+                "course": "BSc(Hons) Biology with Professional Placement",
+                "link": "https://www.linkedin.com/in/helena-woodvine/",
+                "description": "Being a highly motivated and inquisitive individual I am hugely enjoying contributing towards Biodevices without Borders' applied learning project. Eager to pursue a Biotechnology-orientated career addressing UN STGs, aiding in the development and testing of electrochemical sensors for different water safety parameters is incredibly insightful. Further fuelling my interest in diagnostic lab-on-chip biosensing technology, I'm integrated across teams to have a comprehensive understanding of the processes involved to allow the development of these devices. ",
+                "image": "https://computingservices-my.sharepoint.com/personal/gm768_bath_ac_uk/Documents/Apps/Microsoft%20Forms/Website%20Content/Question/Blue%20walled%20BWB%20website_Helena%20Woodvine.jpg",
+                "startYear": 2022,
+                "endYear": 2024,
+                "legacy": false,
+                "isLegacy": false,
+                "roles": [
+                    {
+                        "role": "pH Sensor Developer",
+                        "team": "Sensors",
+                        "lead": false
+                    },
+                    {
+                        "role": "Event Coordinator",
+                        "team": "Outreach",
+                        "lead": false
+                    },
+                    {
+                        "role": "Grant Seeker",
+                        "team": "Finance",
+                        "lead": false
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "Daanish Ansari",
+                "email": "daa59@bath.ac.uk",
+                "course": "MEng Mechanical Engineering ",
+                "link": "https://www.linkedin.com/in/daanish-ansari-b6aab0216/",
+                "description": "I am a second year Mechanical Engineering student passionate about creating impactful solutions and excited to contribute to Bath Biodevices without Borders in driving innovative progress.",
+                "image": "daa59.png",
+                "startYear": 2024,
+                "endYear": 2024,
+                "legacy": false,
+                "isLegacy": false,
+                "roles": [
+                    {
+                        "role": "pH Sensor Developer",
+                        "team": "Sensors",
+                        "lead": false
+                    },
+                    {
+                        "role": "Event Coordinator",
+                        "team": "Outreach",
+                        "lead": false
+                    },
+                    {
+                        "role": "Grant Seeker",
+                        "team": "Finance",
+                        "lead": false
+                    }
+                ]
         },
         {
             "id": 27,
