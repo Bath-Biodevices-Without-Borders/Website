@@ -76,7 +76,7 @@
                 {
                     "role": "Team Manager",
                     "team": "Management",
-                    "lead": false
+                    "lead": true
                 }
             ]
         }
@@ -310,7 +310,7 @@
             "startYear": 2021,
             "endYear": 2024,
             "legacy": true,
-            "isLegacy": false,
+            "isLegacy": true,
             "roles": [
                 {
                     "role": "Head of Sensors",
