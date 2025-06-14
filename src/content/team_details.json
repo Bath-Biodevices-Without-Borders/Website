@@ -98,7 +98,7 @@
             ]
         },
         {
-            "id": 14,
+            "id": 12,
             "name": "Daanish Ansari",
             "email": "daa59@bath.ac.uk",
             "course": "MEng Mechanical Engineering ",
@@ -123,7 +123,7 @@
             ]
         },
         {
-            "id": 16,
+            "id": 14,
             "name": "Frieden Rawding",
             "email": "fjr32@bath.ac.uk",
             "course": "Computer Systems Engineering",
@@ -166,6 +166,26 @@
         },
         {
             "id": 10,
+            "name": "Tara Mckenna",
+            "email": "tm907@bath.ac.uk",
+            "course": "MEng Integrated Mechanical and Electrical Engineering ",
+            "link": "https://www.linkedin.com/in/tara-mckenna-721529203?trk=contact-info",
+            "description": "A member of the Sensors team, working primarily on pH sensing. ",
+            "image": "https://example.com/default.jpg",
+            "startYear": 2025,
+            "endYear": 2025,
+            "legacy": true,
+            "isLegacy": true,
+            "roles": [
+                {
+                    "role": "\u00a0",
+                    "team": "Sensors",
+                    "lead": false
+                }
+            ]
+        },
+        {
+            "id": 15,
             "name": "Helena Woodvine",
             "email": "hw2435@bath.ac.uk",
             "course": "BSc(Hons) Biology with Professional Placement",
@@ -185,26 +205,6 @@
                 {
                     "role": "Event Coordinator",
                     "team": "Outreach",
-                    "lead": false
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "name": "Tara Mckenna",
-            "email": "tm907@bath.ac.uk",
-            "course": "MEng Integrated Mechanical and Electrical Engineering ",
-            "link": "https://www.linkedin.com/in/tara-mckenna-721529203?trk=contact-info",
-            "description": "A member of the Sensors team, working primarily on pH sensing. ",
-            "image": "https://example.com/default.jpg",
-            "startYear": 2025,
-            "endYear": 2025,
-            "legacy": true,
-            "isLegacy": true,
-            "roles": [
-                {
-                    "role": "\u00a0",
-                    "team": "Sensors",
                     "lead": false
                 }
             ]
@@ -372,7 +372,7 @@
             ]
         },
         {
-            "id": 13,
+            "id": 11,
             "name": "Isabelle Whittle",
             "email": "iw374@bath.ac.uk",
             "course": "MSc Mathematics",
@@ -489,7 +489,7 @@
             ]
         },
         {
-            "id": 15,
+            "id": 13,
             "name": "Daanish Ansari",
             "email": "daa59@bath.ac.uk",
             "course": "MEng Mechanical Engineering ",
@@ -611,7 +611,7 @@
             ]
         },
         {
-            "id": 11,
+            "id": 16,
             "name": "Helena Woodvine",
             "email": "hw2435@bath.ac.uk",
             "course": "BSc(Hons) Biology with Professional Placement",
