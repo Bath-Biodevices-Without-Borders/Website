@@ -34,7 +34,7 @@
             "isLegacy": false,
             "roles": [
                 {
-                    "role": "Acedemic Supervisors",
+                    "role": "Acedemic Supervisor",
                     "team": "Management",
                     "lead": true
                 }
