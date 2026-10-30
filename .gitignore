@@ -26,4 +26,4 @@ yarn-error.log*
 temp_*
 
 # env files (DO NOT REMOVE!)
-.env
+.envpackage-lock.json

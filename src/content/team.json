@@ -1,0 +1,229 @@
+{
+  "_howToEdit": "Fill in course, year, linkedin and indeed for each person. Leave a field as \"\" to hide it. For a photo, put a square image (at least 400x400px, .webp or .jpg) in public/team/ and write its file name in photo, e.g. \"julianne-permo.webp\". Only add photos and links people have agreed to publish.",
+  "subteams": [
+    "Sensors",
+    "Fluidics",
+    "Electronics",
+    "Software",
+    "Membranes",
+    "Logistics"
+  ],
+  "members": [
+    {
+      "name": "Julianne Permo",
+      "subteam": "Sensors",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Chiyi Kong",
+      "subteam": "Sensors",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Jonathan Ward",
+      "subteam": "Sensors",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Louis Beltcher",
+      "subteam": "Sensors",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Malyana Ahmed",
+      "subteam": "Fluidics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Thiravian Mahendrarajah",
+      "subteam": "Fluidics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Aby Joseph",
+      "subteam": "Fluidics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Toby Watts",
+      "subteam": "Fluidics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Elliot Devere",
+      "subteam": "Fluidics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Lase Lawale",
+      "subteam": "Electronics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Nathan Chan",
+      "subteam": "Electronics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Xin Yi Chin",
+      "subteam": "Electronics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Tse Wing Yin Dora Tse",
+      "subteam": "Electronics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Adam Lyon",
+      "subteam": "Software",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "William Kay",
+      "subteam": "Software",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Yely Tkachova",
+      "subteam": "Software",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Ryan Ranjput",
+      "subteam": "Membranes",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Isabelle Hill",
+      "subteam": "Membranes",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Laura Tyrell",
+      "subteam": "Membranes",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Caroline Chin",
+      "subteam": "Membranes",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Sofiia Babych",
+      "subteam": "Logistics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Polina Kryschenko",
+      "subteam": "Logistics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Lilli Illman",
+      "subteam": "Logistics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    },
+    {
+      "name": "Danila Lutsenko",
+      "subteam": "Logistics",
+      "course": "",
+      "year": "",
+      "linkedin": "",
+      "indeed": "",
+      "photo": ""
+    }
+  ]
+}
