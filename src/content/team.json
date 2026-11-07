@@ -1,5 +1,5 @@
 {
-  "_howToEdit": "Fill in course, year, linkedin and indeed for each person. Leave a field as \"\" to hide it. For a photo, put a square image (at least 400x400px, .webp or .jpg) in public/team/ and write its file name in photo, e.g. \"julianne-permo.webp\". Only add photos and links people have agreed to publish.",
+  "_howToEdit": "Fill in role (e.g. \"Software Team Lead\"), course, year, linkedin and indeed for each person. Leave a field as \"\" to hide it. For a photo, put a square image (at least 400x400px, .webp or .jpg) in public/team/ and write its file name in photo, e.g. \"julianne-permo.webp\". Only add photos and links people have agreed to publish. Use quote for a sentence in their own words, e.g. their favourite part of the project.",
   "subteams": [
     "Team Lead",
     "Sensors",
@@ -13,8 +13,10 @@
     {
       "name": "Sascha Lopes",
       "subteam": "Team Lead",
+      "role": "",
       "course": "Biochemistry",
       "year": "3rd year",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": "sascha-lopes.webp"
@@ -22,8 +24,10 @@
     {
       "name": "Julianne Permo",
       "subteam": "Sensors",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -31,8 +35,10 @@
     {
       "name": "Chiyi Kong",
       "subteam": "Sensors",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -40,8 +46,10 @@
     {
       "name": "Jonathan Ward",
       "subteam": "Sensors",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -49,8 +57,10 @@
     {
       "name": "Louis Beltcher",
       "subteam": "Sensors",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -58,8 +68,10 @@
     {
       "name": "Malyana Ahmed",
       "subteam": "Fluidics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -67,8 +79,10 @@
     {
       "name": "Thiravian Mahendrarajah",
       "subteam": "Fluidics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -76,8 +90,10 @@
     {
       "name": "Aby Joseph",
       "subteam": "Fluidics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -85,8 +101,10 @@
     {
       "name": "Toby Watts",
       "subteam": "Fluidics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -94,8 +112,10 @@
     {
       "name": "Elliot Devere",
       "subteam": "Fluidics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -103,8 +123,10 @@
     {
       "name": "Lase Lawale",
       "subteam": "Electronics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -112,8 +134,10 @@
     {
       "name": "Nathan Chan",
       "subteam": "Electronics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -121,8 +145,10 @@
     {
       "name": "Xin Yi Chin",
       "subteam": "Electronics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -130,8 +156,10 @@
     {
       "name": "Tse Wing Yin Dora Tse",
       "subteam": "Electronics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -139,17 +167,21 @@
     {
       "name": "Adam Lyon",
       "subteam": "Software",
-      "course": "",
-      "year": "",
+      "role": "Software Team Lead",
+      "course": "BSc Computer Science and Artificial Intelligence",
+      "year": "2nd year",
+      "quote": "As a kayaker, the work we do actively contributes to improving the water quality of our rivers, which is a big problem that the sport faces.",
       "linkedin": "",
       "indeed": "",
-      "photo": ""
+      "photo": "adam-lyon.webp"
     },
     {
       "name": "William Kay",
       "subteam": "Software",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -157,8 +189,10 @@
     {
       "name": "Yely Tkachova",
       "subteam": "Software",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -166,8 +200,10 @@
     {
       "name": "Ryan Ranjput",
       "subteam": "Membranes",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -175,8 +211,10 @@
     {
       "name": "Isabelle Hill",
       "subteam": "Membranes",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -184,8 +222,10 @@
     {
       "name": "Laura Tyrell",
       "subteam": "Membranes",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -193,8 +233,10 @@
     {
       "name": "Caroline Chin",
       "subteam": "Membranes",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -202,8 +244,10 @@
     {
       "name": "Sofiia Babych",
       "subteam": "Logistics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -211,8 +255,10 @@
     {
       "name": "Polina Kryschenko",
       "subteam": "Logistics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -220,8 +266,10 @@
     {
       "name": "Lilli Illman",
       "subteam": "Logistics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""
@@ -229,8 +277,10 @@
     {
       "name": "Danila Lutsenko",
       "subteam": "Logistics",
+      "role": "",
       "course": "",
       "year": "",
+      "quote": "",
       "linkedin": "",
       "indeed": "",
       "photo": ""

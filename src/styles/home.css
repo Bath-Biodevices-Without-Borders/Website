@@ -264,10 +264,11 @@ ol.timeline { --line: clamp(3.6rem, 9vw, 4.75rem); position: relative; list-styl
 
 .team { display: grid; gap: 3rem; }
 .team-group h3 { font-size: 1.15rem; font-stretch: 110%; margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--clear-2); }
-.team-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); gap: 2rem 1.5rem; }
-.person { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem; align-items: center; }
+.team-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); gap: 2rem 1.5rem; align-items: start; }
+.person { display: grid; grid-template-columns: auto 1fr; grid-auto-rows: min-content; gap: 0.25rem 1rem; align-items: center; }
+@media (min-width: 48rem) { .person--wide { grid-column: span 2; } }
 .person__avatar {
-  grid-row: span 3; position: relative;
+  grid-row: span 4; align-self: start; position: relative;
   width: 4.25rem; height: 4.25rem; border-radius: 50%;
   display: grid; place-items: center; overflow: hidden;
   background: linear-gradient(135deg, var(--a, #1f47c4), var(--b, #0e7a63));
@@ -285,6 +286,8 @@ ol.timeline { --line: clamp(3.6rem, 9vw, 4.75rem); position: relative; list-styl
 }
 .person:hover .person__avatar::after { box-shadow: inset 0 0 0 3px rgb(255 255 255 / 0.7); }
 .person__name { font-weight: 700; font-size: 1.05rem; line-height: 1.25; }
+.person__role { font-size: 0.92rem; font-weight: 600; color: var(--link-light); line-height: 1.3; }
+.person__quote { grid-column: 1 / -1; margin: 0.6rem 0 0; padding-left: 0.8rem; border-left: 3px solid var(--clear-2); font-size: 0.92rem; font-style: italic; color: var(--ink-soft); line-height: 1.45; }
 .person__meta { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.35; }
 .person__links { display: flex; gap: 0.75rem; font-size: 0.92rem; font-weight: 600; }
 .person__links a { padding-block: 0.15rem; }

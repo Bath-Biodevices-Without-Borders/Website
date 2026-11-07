@@ -19,11 +19,13 @@ function person(m, i) {
     safeUrl(m.linkedin) && `<a href="${esc(m.linkedin)}" rel="noopener noreferrer" aria-label="${esc(m.name)} on LinkedIn">LinkedIn</a>`,
     safeUrl(m.indeed) && `<a href="${esc(m.indeed)}" rel="noopener noreferrer" aria-label="${esc(m.name)} on Indeed">Indeed</a>`,
   ].filter(Boolean).join('');
-  return `<li class="person" data-i="${i}">
+  return `<li class="person${m.quote ? ' person--wide' : ''}" data-i="${i}">
     <span class="person__avatar" data-subteam="${esc(m.subteam)}">${photo}</span>
     <span class="person__name">${esc(m.name)}</span>
+    ${m.role ? `<span class="person__role">${esc(m.role)}</span>` : ''}
     ${meta ? `<span class="person__meta">${meta}</span>` : ''}
     ${links ? `<span class="person__links">${links}</span>` : ''}
+    ${m.quote ? `<blockquote class="person__quote"><p>“${esc(m.quote)}”</p></blockquote>` : ''}
   </li>`;
 }
 
