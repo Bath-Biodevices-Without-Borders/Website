@@ -90,6 +90,33 @@
           "alt": "Two team members in lab coats and gloves working together at a lab bench."
         }
       ]
+    },
+    {
+      "id": "biohackathon",
+      "title": "Biohackathon",
+      "description": "",
+      "photos": [
+        {
+          "file": "biohackathon-microscope-desk.webp",
+          "alt": "Two team members at a desk with a microscope and glassware, one smiling at the camera while preparing leaf samples."
+        },
+        {
+          "file": "biohackathon-green-extract.webp",
+          "alt": "Close-up of two small tubes of green plant extract on a desk, with a syringe, a vial and glassware behind."
+        },
+        {
+          "file": "biohackathon-improvised-bench.webp",
+          "alt": "An improvised bench of glassware, a drill, lemon juice, distilled water, a syringe and leaves, with small tubes of green extract."
+        },
+        {
+          "file": "biohackathon-spiral-chip.webp",
+          "alt": "A clear chip with a spiral channel, a 3D-printed tube holder, funnels and a vial on a lab balance."
+        },
+        {
+          "file": "biohackathon-tray.webp",
+          "alt": "A clear plastic tray next to a rack of pipette tips and glass beakers on a lab bench."
+        }
+      ]
     }
   ]
 }

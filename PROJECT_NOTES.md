@@ -6,7 +6,7 @@
 
 ## Update (7 Nov 2026)
 - Added a "Team Lead" group at the top of the team list (Sascha Lopes, with photo in `public/team/`).
-- New Gallery page (`gallery.html`), linked in the header. Sections and photos are listed in `src/content/gallery.json`; photos go in `public/gallery/`. Sections: Oasis, Saline Supernova, Microfluidics, Membrane Test Rig, Nitrate Sensing.
+- New Gallery page (`gallery.html`), linked in the header. Sections and photos are listed in `src/content/gallery.json`; photos go in `public/gallery/`. Sections: Oasis, Saline Supernova, Microfluidics, Membrane Test Rig, Nitrate Sensing, Biohackathon.
 - Top of the homepage changed from brown to neon blue (#1F51FF); accent and small-print colours there were lightened to keep WCAG AA contrast. Footer is now dark navy.
 
 ## Decisions
