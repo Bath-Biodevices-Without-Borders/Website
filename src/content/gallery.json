@@ -43,7 +43,28 @@
       "id": "microfluidics",
       "title": "Microfluidics",
       "description": "",
-      "photos": []
+      "photos": [
+        {
+          "file": "microfluidics-chip-design-top.webp",
+          "alt": "Top-down CAD drawing of the microfluidic chip design, showing its inlets, channels and chambers."
+        },
+        {
+          "file": "microfluidics-chip-design-3d.webp",
+          "alt": "3D CAD view of the microfluidic chip, with its channels, mixing sections and reservoir inside a clear block."
+        },
+        {
+          "file": "microfluidics-syringe-pumps.webp",
+          "alt": "Three team members at a workbench, one pointing at a row of stepper-motor syringe pumps."
+        },
+        {
+          "file": "microfluidics-assembly.webp",
+          "alt": "Team members in blue gloves working together on a small part at a bench."
+        },
+        {
+          "file": "microfluidics-sketches.webp",
+          "alt": "Two team members reviewing hand-drawn design sketches spread out on the floor."
+        }
+      ]
     },
     {
       "id": "membrane-test-rig",
