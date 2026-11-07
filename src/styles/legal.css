@@ -31,6 +31,8 @@
 .gallery__grid { list-style: none; padding: 0 !important; display: flex; flex-wrap: wrap; gap: 1.25rem; }
 .gallery__item { margin: 0 !important; }
 .gallery__item img { height: 20rem; width: auto; max-width: 100%; object-fit: cover; border-radius: var(--radius-l, 12px); display: block; background: var(--clear-2); }
+.gallery__item video { height: 20rem; width: auto; max-width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius-l, 12px); display: block; background: #000; }
+@media (max-width: 40rem) { .gallery__item video { width: 100%; height: auto; } }
 .gallery__item a { display: block; border-radius: var(--radius-l, 12px); }
 @media (max-width: 40rem) { .gallery__item { width: 100%; } .gallery__item img { width: 100%; height: auto; } }
 .gallery__item figcaption { font-size: 0.95rem; color: var(--ink-soft); margin-top: 0.5rem; }

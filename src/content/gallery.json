@@ -1,5 +1,5 @@
 {
-  "_howToEdit": "To add a photo, put the image (.webp or .jpg, ideally at least 1200px wide) in public/gallery/ and add an entry to the right section's photos list, e.g. { \"file\": \"oasis-prototype.webp\", \"alt\": \"What the photo shows, for screen readers\", \"caption\": \"Optional short caption\" }. Use \"description\" for a short line of text under the section heading. Only publish photos everyone in them has agreed to.",
+  "_howToEdit": "To add a photo, put the image (.webp or .jpg, ideally at least 1200px wide) in public/gallery/ and add an entry to the right section's photos list, e.g. { \"file\": \"oasis-prototype.webp\", \"alt\": \"What the photo shows, for screen readers\", \"caption\": \"Optional short caption\" }. Use \"description\" for a short line of text under the section heading. Only publish photos everyone in them has agreed to. Videos work too: put an .mp4 in public/gallery/ and add { \"file\": \"name.mp4\", \"poster\": \"still-frame.webp\", \"alt\": \"What the video shows\" }.",
   "sections": [
     {
       "id": "oasis",
@@ -17,6 +17,12 @@
         {
           "file": "oasis-electronics.webp",
           "alt": "Two Oasis circuit boards on a bench, one wired up to sensors and a probe, beside the assembled red probe with its cap fitted."
+        },
+        {
+          "file": "oasis-probe-test.mp4",
+          "poster": "oasis-probe-test-poster.webp",
+          "alt": "Video: testing the Oasis sensors by dipping a probe into a beaker of murky water, with the sensor electronics on the table.",
+          "caption": "Testing the sensors in murky water"
         }
       ]
     },
