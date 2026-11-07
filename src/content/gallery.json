@@ -24,7 +24,20 @@
       "id": "saline-supernova",
       "title": "Saline Supernova",
       "description": "",
-      "photos": []
+      "photos": [
+        {
+          "file": "saline-supernova-cabinet.webp",
+          "alt": "The Saline Supernova unit: a tall black-framed cabinet with blue acrylic panels showing the team logo, filter cartridges inside and a water container on top."
+        },
+        {
+          "file": "saline-supernova-rig.webp",
+          "alt": "Inside a Saline Supernova rig: a blue pre-filter housing, a pump and two white filter cartridges connected by tubing on a wooden board, with the control electronics on top."
+        },
+        {
+          "file": "saline-supernova-control-board.webp",
+          "alt": "Close-up of the Saline Supernova control circuit board, with its button panel and small display, mounted on a grey plate."
+        }
+      ]
     },
     {
       "id": "microfluidics",
