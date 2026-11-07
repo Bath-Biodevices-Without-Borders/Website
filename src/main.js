@@ -9,6 +9,7 @@ import { initCounters } from './scripts/counters.js';
 import { initRig } from './scripts/rig.js';
 import { initTimeline } from './scripts/timeline.js';
 import { initTeam } from './scripts/team.js';
+import { initGallery } from './scripts/gallery.js';
 import { initScroll } from './scripts/scroll.js';
 
 // Links from the old site used "#/about"-style addresses. Send them somewhere sensible.
@@ -27,4 +28,5 @@ initCounters();
 initRig();
 initTimeline();
 initTeam();
+initGallery();
 initScroll();

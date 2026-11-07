@@ -1,6 +1,7 @@
 {
   "_howToEdit": "Fill in course, year, linkedin and indeed for each person. Leave a field as \"\" to hide it. For a photo, put a square image (at least 400x400px, .webp or .jpg) in public/team/ and write its file name in photo, e.g. \"julianne-permo.webp\". Only add photos and links people have agreed to publish.",
   "subteams": [
+    "Team Lead",
     "Sensors",
     "Fluidics",
     "Electronics",
@@ -9,6 +10,15 @@
     "Logistics"
   ],
   "members": [
+    {
+      "name": "Sascha Lopes",
+      "subteam": "Team Lead",
+      "course": "Biochemistry",
+      "year": "3rd year",
+      "linkedin": "",
+      "indeed": "",
+      "photo": "sascha-lopes.webp"
+    },
     {
       "name": "Julianne Permo",
       "subteam": "Sensors",

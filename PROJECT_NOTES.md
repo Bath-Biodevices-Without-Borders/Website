@@ -4,6 +4,11 @@
 - v2 rebuild done on branch `redesign`; not yet merged to `main` (needs a team member with write access).
 - Text approved by Danila Lutsenko (logistics) in the shared doc "Bath Biodevices website: draft site text".
 
+## Update (7 Nov 2026)
+- Added a "Team Lead" group at the top of the team list (Sascha Lopes, with photo in `public/team/`).
+- New Gallery page (`gallery.html`), linked in the header. Sections and photos are listed in `src/content/gallery.json`; photos go in `public/gallery/`. Sections: Oasis, Saline Supernova, Microfluidics, Membrane Test Rig, Nitrate Sensing.
+- Top of the homepage changed from brown to neon blue (#1F51FF); accent and small-print colours there were lightened to keep WCAG AA contrast. Footer is now dark navy.
+
 ## Decisions
 - One scrolling homepage + privacy, cookies, terms, accessibility, 404. Old About/Work/Contact/Join Us pages removed; old `#/about`-style links redirect to the homepage.
 - No cookies, analytics, embeds or third-party requests (fonts self-hosted), so no cookie banner is needed under PECR. A Content-Security-Policy meta tag enforces this.

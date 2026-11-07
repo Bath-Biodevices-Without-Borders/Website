@@ -10,6 +10,7 @@ Anything pushed to the `main` branch is built and published automatically by Git
 |---|---|
 | Team members (course, year, LinkedIn, Indeed, photo) | `src/content/team.json` (photos go in `public/team/`) |
 | Homepage text | `index.html` |
+| Gallery photos (Oasis, Saline Supernova, Microfluidics, Membrane Test Rig, Nitrate Sensing) | `src/content/gallery.json` (photos go in `public/gallery/`) |
 | Legal pages | `privacy.html`, `cookies.html`, `terms.html`, `accessibility.html` |
 | Header and footer (all pages) | `src/partials/header.html`, `src/partials/footer.html` |
 | Colours and fonts | `src/styles/base.css` |

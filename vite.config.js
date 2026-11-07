@@ -13,7 +13,7 @@ const partials = () => ({
   },
 });
 
-const pages = ['index', 'privacy', 'cookies', 'terms', 'accessibility', '404'];
+const pages = ['index', 'privacy', 'cookies', 'terms', 'accessibility', 'gallery', '404'];
 
 export default defineConfig({
   plugins: [partials()],

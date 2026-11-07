@@ -1,8 +1,8 @@
 /* ---------- Tokens ---------- */
 :root {
-  /* Turbid river water (top of the page) */
-  --silt: #231b10;
-  --silt-2: #33281a;
+  /* Top of the homepage: neon blue */
+  --silt: #1f51ff;
+  --silt-2: #3a68ff;
   --sediment: #e0bd76;      /* amber accent on dark */
   /* Deep, settled water (the rig) */
   --deep: #0b2a3c;
@@ -91,7 +91,7 @@ section { padding-block: var(--section); position: relative; }
 /* ---------- Header ---------- */
 .site-header {
   position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--fog);
-  background: rgb(20 16 9 / 0.72);
+  background: rgb(18 52 170 / 0.72);
   backdrop-filter: blur(12px) saturate(1.2);
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
   border-bottom: 1px solid rgb(236 241 236 / 0.08);
@@ -138,7 +138,7 @@ section { padding-block: var(--section); position: relative; }
 
   .site-nav {
     position: absolute; inset: 100% 0 auto 0;
-    background: rgb(20 16 9 / 0.97);
+    background: rgb(18 52 170 / 0.97);
     border-bottom: 1px solid rgb(236 241 236 / 0.1);
     display: none;
   }
@@ -150,7 +150,7 @@ section { padding-block: var(--section); position: relative; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: #120e08; color: var(--fog-soft);
+  background: #081638; color: var(--fog-soft);
   padding-block: 4rem 2rem; font-size: 0.95rem;
 }
 .site-footer__inner {

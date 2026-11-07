@@ -35,7 +35,7 @@ export function initParticles() {
     ctx.clearRect(0, 0, w, h);
     for (const m of motes) {
       ctx.globalAlpha = m.a;
-      ctx.fillStyle = '#e0bd76';
+      ctx.fillStyle = '#ffef9f';
       ctx.beginPath();
       ctx.arc(m.x + m.dx + Math.sin(t / 2400 + m.phase) * 6, m.y + m.dy, m.r, 0, Math.PI * 2);
       ctx.fill();

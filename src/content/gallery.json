@@ -1,0 +1,61 @@
+{
+  "_howToEdit": "To add a photo, put the image (.webp or .jpg, ideally at least 1200px wide) in public/gallery/ and add an entry to the right section's photos list, e.g. { \"file\": \"oasis-prototype.webp\", \"alt\": \"What the photo shows, for screen readers\", \"caption\": \"Optional short caption\" }. Use \"description\" for a short line of text under the section heading. Only publish photos everyone in them has agreed to.",
+  "sections": [
+    {
+      "id": "oasis",
+      "title": "Oasis",
+      "description": "",
+      "photos": [
+        {
+          "file": "oasis-probe-assembled.webp",
+          "alt": "The assembled Oasis probe: a red 3D-printed handle with a black threaded sensor head holding several water sensors, next to its white protective cap."
+        },
+        {
+          "file": "oasis-printed-parts.webp",
+          "alt": "3D-printed Oasis parts on a workbench: two handle prototypes in red and orange, and the sensor-head mount."
+        },
+        {
+          "file": "oasis-electronics.webp",
+          "alt": "Two Oasis circuit boards on a bench, one wired up to sensors and a probe, beside the assembled red probe with its cap fitted."
+        }
+      ]
+    },
+    {
+      "id": "saline-supernova",
+      "title": "Saline Supernova",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "microfluidics",
+      "title": "Microfluidics",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "membrane-test-rig",
+      "title": "Membrane Test Rig",
+      "description": "",
+      "photos": []
+    },
+    {
+      "id": "nitrate-sensing",
+      "title": "Nitrate Sensing",
+      "description": "",
+      "photos": [
+        {
+          "file": "nitrate-bench.webp",
+          "alt": "A lab bench set up for a nitrate assay: pipettes, colour reagent bottles, sample tubes and the assay instructions."
+        },
+        {
+          "file": "nitrate-standards.webp",
+          "alt": "Labelled sample tubes for a nitrate standard series, from 1000 down to 50, in a green tube rack."
+        },
+        {
+          "file": "nitrate-team-lab.webp",
+          "alt": "Two team members in lab coats and gloves working together at a lab bench."
+        }
+      ]
+    }
+  ]
+}

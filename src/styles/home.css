@@ -1,11 +1,13 @@
 /* ================= Hero ================= */
+/* Lighter accent and small-print colours so text stays readable on the neon blue */
+.hero, .s-water { --sediment: #ffef9f; --fog-soft: #e3e9ff; }
 .hero {
   min-height: 100vh; min-height: 100svh;
   display: flex; align-items: flex-end;
   padding-block: 7rem clamp(3rem, 8vw, 6rem);
   background:
-    radial-gradient(120% 80% at 15% 10%, #3a2d1b 0%, transparent 60%),
-    radial-gradient(90% 70% at 90% 100%, #2c2416 0%, transparent 70%),
+    radial-gradient(120% 80% at 15% 10%, #3c6bff 0%, transparent 60%),
+    radial-gradient(90% 70% at 90% 100%, #1846e6 0%, transparent 70%),
     var(--silt);
   overflow: hidden;
 }
@@ -47,9 +49,9 @@
   display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 0.5rem 3rem; align-items: baseline;
   padding-block: clamp(1.5rem, 3vw, 2.25rem);
-  border-top: 1px solid rgb(224 189 118 / 0.22);
+  border-top: 1px solid rgb(255 239 159 / 0.35);
 }
-.stat:last-child { border-bottom: 1px solid rgb(224 189 118 / 0.22); }
+.stat:last-child { border-bottom: 1px solid rgb(255 239 159 / 0.35); }
 .stat__value {
   font-size: clamp(2.2rem, 5.4vw, 4.4rem);
   font-weight: 800; font-stretch: 122%;
@@ -71,12 +73,12 @@
 
 /* ================= Gap ================= */
 .s-gap {
-  background: linear-gradient(to bottom, var(--silt) 0%, #1d2a22 45%, var(--deep) 100%);
+  background: linear-gradient(to bottom, var(--silt) 0%, #163fae 45%, var(--deep) 100%);
   padding-block: clamp(3rem, 8vw, 6rem) clamp(6rem, 14vw, 11rem);
 }
 .gap .display-1 { max-width: 15ch; margin-bottom: 2rem; }
 .gap__text { max-width: 40rem; font-size: clamp(1.15rem, 1.7vw, 1.35rem); }
-.gap__text em { font-style: normal; font-weight: 650; color: var(--signal); }
+.gap__text em { font-style: normal; font-weight: 650; color: #9ff3d4; }
 
 /* ================= Rig ================= */
 .s-rig { background: var(--deep); }
