@@ -24,15 +24,47 @@ const setStatus = (msg = '', isError = false) => {
 };
 const fail = (context, error) => {
   console.error(context, error);
-  setStatus(`${context}: ${error.message || error}`, true);
+  setStatus(`${context}: ${error?.message || error}`, true);
 };
+// Show any unexpected error on the page rather than failing silently.
+window.addEventListener('error', (e) => fail('Page error', e.error || e.message));
+window.addEventListener('unhandledrejection', (e) => fail('Page error', e.reason));
 
-const fmtTime = (iso, withDate = true) =>
-  new Date(iso).toLocaleString('en-GB', {
+// Timestamps arrive as ISO from the REST API ("2026-11-21T14:04:02.123+00:00") but can
+// arrive Postgres-style from Realtime ("2026-11-21 14:04:02.123456+00"), which browsers
+// don't all parse. Normalise to milliseconds; NaN if it really can't be read.
+function toMs(t) {
+  if (t == null || t === '') return NaN;
+  if (typeof t === 'number') return t;
+  if (t instanceof Date) return t.getTime();
+  const m = String(t).trim().match(
+    /^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2}(?::\d{2})?)(?:\.(\d+))?\s*(Z|[+-]\d{2}(?::?\d{2})?)?$/i
+  );
+  if (!m) return Date.parse(t);
+  const [, date, time, frac = '', zone = 'Z'] = m;
+  let tz = zone.toUpperCase();
+  if (tz !== 'Z') tz = tz.length === 3 ? `${tz}:00` : tz.replace(/^([+-]\d{2}):?(\d{2})$/, '$1:$2');
+  const ms = frac ? `.${(frac + '000').slice(0, 3)}` : '';
+  return Date.parse(`${date}T${time.length === 5 ? `${time}:00` : time}${ms}${tz}`);
+}
+const toNum = (v) => (v == null || v === '' ? NaN : Number(v));
+
+function fmtTime(t, withDate = true) {
+  const ms = toMs(t);
+  if (!Number.isFinite(ms)) return '–';
+  return new Date(ms).toLocaleString('en-GB', {
     ...(withDate ? { day: 'numeric', month: 'short' } : {}),
     hour: '2-digit', minute: '2-digit', second: '2-digit',
   });
-const fmtNum = (n, digits = 3) => (n == null ? '–' : Number(n).toPrecision(digits).replace(/\.?0+(e|$)/, '$1'));
+}
+// 3 significant figures; scientific notation for very small/large values (e.g. currents in A).
+function fmtNum(v, digits = 3) {
+  const x = toNum(v);
+  if (!Number.isFinite(x)) return '–';
+  const a = Math.abs(x);
+  if (a !== 0 && (a < 1e-3 || a >= 1e6)) return x.toExponential(digits - 1).replace(/\.?0+e/, 'e');
+  return String(Number(x.toPrecision(digits)));
+}
 
 function fillSelect(select, items, { keep = true, placeholder } = {}) {
   const previous = select.value;
@@ -47,6 +79,19 @@ function fillSelect(select, items, { keep = true, placeholder } = {}) {
   if (keep && items.some((i) => String(i.value) === previous)) select.value = previous;
 }
 const unique = (arr) => [...new Set(arr.filter((v) => v != null && v !== ''))].sort();
+const hasOption = (select, value) => [...select.options].some((o) => o.value === String(value));
+
+// Live events can arrive faster than we can query. Run refreshes one at a time,
+// and collapse repeated requests for the same refresh into one.
+let queue = Promise.resolve();
+const pending = new Set();
+function enqueue(key, fn) {
+  if (pending.has(key)) return;
+  pending.add(key);
+  queue = queue
+    .then(() => { pending.delete(key); return fn(); })
+    .catch((e) => fail('Live update failed', e));
+}
 
 // ---------- Chart styling (site tokens) ----------
 const css = getComputedStyle(document.documentElement);
@@ -58,22 +103,30 @@ Chart.defaults.font.family = token('--font');
 Chart.defaults.color = INK_SOFT;
 Chart.defaults.borderColor = GRID;
 Chart.defaults.plugins.legend.display = false; // every chart is one series; the heading names it
-Chart.defaults.animation = matchMedia('(prefers-reduced-motion: reduce)').matches ? false : { duration: 300 };
+// No animation: charts update many times a second during a test, and re-animating
+// each time leaves them looking blank.
+Chart.defaults.animation = false;
 
+// Each chart is created once and then updated in place.
 const charts = {};
-function drawChart(key, canvas, config) {
-  charts[key]?.destroy();
-  charts[key] = new Chart(canvas, config);
+function upsertChart(key, canvas, makeConfig, apply) {
+  if (!charts[key]) charts[key] = new Chart(canvas, makeConfig());
+  apply(charts[key]);
+  charts[key].update('none');
 }
-function destroyCharts() {
-  Object.keys(charts).forEach((k) => { charts[k].destroy(); delete charts[k]; });
-}
+function clearChart(key) { charts[key]?.destroy(); delete charts[key]; }
+function destroyCharts() { Object.keys(charts).forEach(clearChart); }
 const axisTitle = (text) => ({ display: true, text, color: INK_SOFT });
+const lineDataset = () => ({
+  data: [], borderColor: SERIES, backgroundColor: SERIES, borderWidth: 2,
+  pointRadius: 0, pointHoverRadius: 5, tension: 0, spanGaps: true,
+});
 
 // ---------- State ----------
 let samples = [];             // newest first
 let channel = null;
 let started = false;
+const NO_LABEL = '__none__';  // select value for samples with no run_label
 
 // =====================================================================
 // 1. Voltammetry curve
@@ -89,13 +142,15 @@ const sampleLabel = (s) =>
 async function loadSamples() {
   const { data, error } = await db
     .from('samples')
-    .select('id, created_at, pot, run_label, rig_pressure_bar, rig_temperature_c, rig_flow_lpm')
+    .select('id, created_at, pot, run_label')
     .order('created_at', { ascending: false })
     .limit(500);
   if (error) return fail('Could not load samples', error);
   samples = data;
   fillSelect(curveSample, samples.map((s) => ({ value: s.id, label: sampleLabel(s) })), { placeholder: 'No samples yet' });
-  fillSelect(potsRun, unique(samples.map((s) => s.run_label)).map((r) => ({ value: r, label: r })), { placeholder: 'No runs yet' });
+  const runs = unique(samples.map((s) => s.run_label)).map((r) => ({ value: r, label: r }));
+  if (samples.some((s) => !s.run_label)) runs.push({ value: NO_LABEL, label: '(no run label)' });
+  fillSelect(potsRun, runs, { placeholder: 'No runs yet' });
 }
 
 async function loadMeasurementList(sampleId, selectId) {
@@ -111,15 +166,34 @@ async function loadMeasurementList(sampleId, selectId) {
   if (error) return fail('Could not load measurements', error);
   fillSelect(
     curveMeasurement,
-    data.map((m) => ({ value: m.id, label: `Electrode ${m.electrode} · ${m.analyte} · ${m.technique} · ${fmtTime(m.created_at, false)}` })),
+    data.map((m) => ({ value: m.id, label: `Electrode ${m.electrode ?? '?'} · ${m.analyte ?? '?'} · ${m.technique ?? '?'} · ${fmtTime(m.created_at, false)}` })),
     { placeholder: 'No measurements for this sample' }
   );
-  if (selectId) curveMeasurement.value = String(selectId);
+  if (selectId && hasOption(curveMeasurement, selectId)) curveMeasurement.value = String(selectId);
 }
 
+// The curve should be {"v":[...], "i":[...]}. Also cope with it being stored as a
+// JSON string, or as a list of [v, i] pairs / {v, i} points.
+function curvePoints(curve) {
+  let c = curve;
+  if (typeof c === 'string') { try { c = JSON.parse(c); } catch { return []; } }
+  if (!c) return [];
+  let pts = [];
+  if (Array.isArray(c)) {
+    pts = c.map((p) => (Array.isArray(p) ? { x: toNum(p[0]), y: toNum(p[1]) } : { x: toNum(p?.v), y: toNum(p?.i) }));
+  } else {
+    const v = c.v ?? c.V ?? [];
+    const i = c.i ?? c.I ?? [];
+    pts = (Array.isArray(v) ? v : []).map((x, k) => ({ x: toNum(x), y: toNum(i[k]) }));
+  }
+  return pts.filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+}
+
+let shownMeasurementId = null;
 async function loadCurve(measurementId) {
+  shownMeasurementId = measurementId ? String(measurementId) : null;
   if (!measurementId) {
-    charts.curve?.destroy(); delete charts.curve;
+    clearChart('curve');
     curveMeta.textContent = 'No measurements yet.';
     return;
   }
@@ -129,48 +203,40 @@ async function loadCurve(measurementId) {
     .eq('id', measurementId)
     .single();
   if (error) return fail('Could not load curve', error);
+  if (String(data.id) !== shownMeasurementId) return; // a newer request has taken over
   const m = data;
-  const v = m.curve?.v ?? [];
-  const i = m.curve?.i ?? [];
+  const pts = curvePoints(m.curve);
   curveMeta.textContent =
-    `${m.analyte} · ${m.technique} · electrode ${m.electrode} · result ${fmtNum(m.result)} ${m.unit ?? ''} · ` +
-    `${fmtNum(m.temperature_c)} °C · ${fmtTime(m.created_at)}` + (v.length ? '' : ' · no curve data');
-  drawChart('curve', $('[data-curve-chart]'), {
+    `${m.analyte ?? '?'} · ${m.technique ?? '?'} · electrode ${m.electrode ?? '?'} · result ${fmtNum(m.result)} ${m.unit ?? ''} · ` +
+    `${fmtNum(m.temperature_c)} °C · ${fmtTime(m.created_at)}` +
+    (pts.length ? ` · ${pts.length} points` : ' · no curve data yet');
+  upsertChart('curve', $('[data-curve-chart]'), () => ({
     type: 'line',
-    data: {
-      datasets: [{
-        label: 'Current (A)',
-        data: v.map((x, k) => ({ x, y: i[k] })),
-        borderColor: SERIES, backgroundColor: SERIES, borderWidth: 2,
-        pointRadius: 0, pointHoverRadius: 5, tension: 0,
-      }],
-    },
+    data: { datasets: [{ ...lineDataset(), label: 'Current (A)' }] },
     options: {
       maintainAspectRatio: false,
+      parsing: false,
       interaction: { mode: 'nearest', axis: 'x', intersect: false },
-      plugins: {
-        tooltip: { callbacks: { label: (c) => `${fmtNum(c.parsed.y)} A at ${fmtNum(c.parsed.x)} V` } },
-      },
+      plugins: { tooltip: { callbacks: { label: (c) => `${fmtNum(c.parsed.y)} A at ${fmtNum(c.parsed.x)} V` } } },
       scales: {
-        x: { type: 'linear', title: axisTitle('Potential (V)'), grid: { display: false } },
-        y: { title: axisTitle('Current (A)'), ticks: { callback: (val) => fmtNum(val, 2) } },
+        x: { type: 'linear', title: axisTitle('Potential (V)'), grid: { display: false }, ticks: { callback: (v) => fmtNum(v) } },
+        y: { type: 'linear', title: axisTitle('Current (A)'), ticks: { callback: (v) => fmtNum(v, 2) } },
       },
     },
-  });
+  }), (chart) => { chart.data.datasets[0].data = pts; });
 }
 
 // Show a particular measurement (or the newest one if no id is given).
 async function showMeasurement(measurementId) {
-  let m;
   const query = db.from('measurements').select('id, sample_id');
   const { data, error } = measurementId
     ? await query.eq('id', measurementId).limit(1)
     : await query.order('created_at', { ascending: false }).limit(1);
   if (error) return fail('Could not load measurements', error);
-  [m] = data;
+  const [m] = data;
   if (!m) { await loadCurve(null); return; }
-  if (m.sample_id && ![...curveSample.options].some((o) => o.value === String(m.sample_id))) await loadSamples();
-  curveSample.value = String(m.sample_id ?? '');
+  if (m.sample_id != null && !hasOption(curveSample, m.sample_id)) await loadSamples();
+  if (m.sample_id != null) curveSample.value = String(m.sample_id);
   await loadMeasurementList(m.sample_id, m.id);
   await loadCurve(m.id);
 }
@@ -193,12 +259,13 @@ let potsRows = [];
 async function loadPotsData() {
   const run = potsRun.value;
   if (!run) { potsRows = []; renderPots(); return; }
-  const { data, error } = await db
+  let q = db
     .from('measurements')
     .select('result, unit, analyte, technique, samples!inner(pot, run_label)')
-    .eq('samples.run_label', run)
     .not('result', 'is', null)
     .limit(5000);
+  q = run === NO_LABEL ? q.is('samples.run_label', null) : q.eq('samples.run_label', run);
+  const { data, error } = await q;
   if (error) return fail('Could not load pot results', error);
   potsRows = data;
   fillSelect(potsAnalyte, unique(data.map((r) => r.analyte)).map((a) => ({ value: a, label: a })), { placeholder: 'No results' });
@@ -210,7 +277,7 @@ function renderPots() {
   const rows = potsRows.filter((r) => r.analyte === potsAnalyte.value && r.technique === potsTechnique.value);
   const unit = unique(rows.map((r) => r.unit)).join(' / ');
   const pots = [1, 2, 3, 4].map((pot) => {
-    const vals = rows.filter((r) => r.samples?.pot === pot).map((r) => Number(r.result));
+    const vals = rows.filter((r) => Number(r.samples?.pot) === pot).map((r) => toNum(r.result)).filter(Number.isFinite);
     return { pot, n: vals.length, mean: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null };
   });
 
@@ -222,30 +289,31 @@ function renderPots() {
     return tr;
   }));
 
-  drawChart('pots', $('[data-pots-chart]'), {
+  upsertChart('pots', $('[data-pots-chart]'), () => ({
     type: 'bar',
     data: {
-      labels: pots.map((p) => `Pot ${p.pot}`),
+      labels: ['Pot 1', 'Pot 2', 'Pot 3', 'Pot 4'],
       datasets: [{
-        label: `${potsAnalyte.value} (${unit})`,
-        data: pots.map((p) => p.mean),
-        backgroundColor: SERIES,
-        borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: 'bottom',
-        maxBarThickness: 64,
+        data: [], backgroundColor: SERIES,
+        borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: 'bottom', maxBarThickness: 64,
       }],
     },
     options: {
       maintainAspectRatio: false,
       plugins: {
-        tooltip: {
-          callbacks: { label: (c) => `${fmtNum(c.parsed.y)} ${unit} (mean of ${pots[c.dataIndex].n})` },
-        },
+        tooltip: { callbacks: { label: (c) => `${fmtNum(c.parsed.y)} ${charts.pots.$unit} (mean of ${charts.pots.$n[c.dataIndex]})` } },
       },
       scales: {
         x: { grid: { display: false } },
-        y: { beginAtZero: true, title: axisTitle(unit ? `Result (${unit})` : 'Result') },
+        y: { beginAtZero: true, title: axisTitle('Result'), ticks: { callback: (v) => fmtNum(v) } },
       },
     },
+  }), (chart) => {
+    chart.data.datasets[0].data = pots.map((p) => p.mean);
+    chart.data.datasets[0].label = potsAnalyte.value;
+    chart.options.scales.y.title.text = unit ? `Result (${unit})` : 'Result';
+    chart.$unit = unit;
+    chart.$n = pots.map((p) => p.n);
   });
 }
 
@@ -259,7 +327,8 @@ potsTechnique.addEventListener('change', renderPots);
 const sensorSelect = $('[data-sensor]');
 const sensorRange = $('[data-sensor-range]');
 const sensorMeta = $('[data-sensor-meta]');
-let sensorPoints = [];
+const MAX_SENSOR_POINTS = 5000;
+let sensorPoints = [];   // [{x: ms, y: value}], oldest first
 let sensorUnit = '';
 
 async function loadSensorList() {
@@ -275,53 +344,75 @@ async function loadSensorList() {
 
 async function loadSensorData() {
   const sensor = sensorSelect.value;
-  if (!sensor) { sensorPoints = []; sensorMeta.textContent = ''; renderSensor(); return; }
+  if (!sensor) { sensorPoints = []; renderSensor(); return; }
   let q = db.from('sensor_readings').select('created_at, value, unit').eq('sensor', sensor);
   const hours = Number(sensorRange.value);
   if (hours) q = q.gte('created_at', new Date(Date.now() - hours * 3600e3).toISOString());
-  // Newest 5000 rows, flipped to time order for the chart.
-  const { data, error } = await q.order('created_at', { ascending: false }).limit(5000);
+  // Newest rows, flipped to time order for the chart.
+  const { data, error } = await q.order('created_at', { ascending: false }).limit(MAX_SENSOR_POINTS);
   if (error) return fail('Could not load sensor readings', error);
+  if (sensor !== sensorSelect.value) return; // selection changed while loading
   data.reverse();
   sensorUnit = unique(data.map((r) => r.unit)).join(' / ');
-  sensorPoints = data.map((r) => ({ x: Date.parse(r.created_at), y: Number(r.value) }));
+  sensorPoints = data.map((r) => ({ x: toMs(r.created_at), y: toNum(r.value) }))
+    .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+  renderSensor();
+}
+
+function addSensorPoint(row) {
+  const p = { x: toMs(row.created_at), y: toNum(row.value) };
+  if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) {
+    console.warn('Skipped sensor reading that could not be read', row);
+    return;
+  }
+  if (!sensorUnit && row.unit) sensorUnit = row.unit;
+  // Keep time order even if rows arrive slightly out of order.
+  let k = sensorPoints.length;
+  while (k > 0 && sensorPoints[k - 1].x > p.x) k--;
+  sensorPoints.splice(k, 0, p);
+  // Slide the window for the chosen period, and cap the number of points.
+  const hours = Number(sensorRange.value);
+  if (hours) {
+    const cutoff = sensorPoints.at(-1).x - hours * 3600e3;
+    while (sensorPoints.length && sensorPoints[0].x < cutoff) sensorPoints.shift();
+  }
+  if (sensorPoints.length > MAX_SENSOR_POINTS) sensorPoints.splice(0, sensorPoints.length - MAX_SENSOR_POINTS);
   renderSensor();
 }
 
 function renderSensor() {
   const last = sensorPoints.at(-1);
   sensorMeta.textContent = last
-    ? `Latest: ${fmtNum(last.y)} ${sensorUnit} at ${fmtTime(new Date(last.x).toISOString())} · ${sensorPoints.length} readings`
-    : (sensorSelect.value ? 'No readings in this period.' : '');
-  drawChart('sensor', $('[data-sensor-chart]'), {
+    ? `Latest: ${fmtNum(last.y)} ${sensorUnit} at ${fmtTime(last.x)} · ${sensorPoints.length} readings`
+    : (sensorSelect.value ? 'No readings in this period yet.' : '');
+  const showDate = Number(sensorRange.value) !== 1;
+  upsertChart('sensor', $('[data-sensor-chart]'), () => ({
     type: 'line',
-    data: {
-      datasets: [{
-        label: sensorSelect.value,
-        data: sensorPoints,
-        borderColor: SERIES, backgroundColor: SERIES, borderWidth: 2,
-        pointRadius: sensorPoints.length > 60 ? 0 : 3, pointHoverRadius: 5,
-      }],
-    },
+    data: { datasets: [{ ...lineDataset() }] },
     options: {
       maintainAspectRatio: false,
+      parsing: false,
       interaction: { mode: 'nearest', axis: 'x', intersect: false },
       plugins: {
         tooltip: {
           callbacks: {
-            title: (items) => fmtTime(new Date(items[0].parsed.x).toISOString()),
+            title: (items) => fmtTime(items[0].parsed.x),
             label: (c) => `${fmtNum(c.parsed.y)} ${sensorUnit}`,
           },
         },
       },
       scales: {
-        x: {
-          type: 'linear', grid: { display: false },
-          ticks: { maxTicksLimit: 6, callback: (v) => fmtTime(new Date(v).toISOString(), Number(sensorRange.value) !== 1) },
-        },
-        y: { title: axisTitle(sensorUnit ? `${sensorSelect.value} (${sensorUnit})` : sensorSelect.value) },
+        x: { type: 'linear', grid: { display: false }, ticks: { maxTicksLimit: 6, callback: (v) => fmtTime(v, charts.sensor?.$showDate ?? true) } },
+        y: { type: 'linear', title: axisTitle(''), ticks: { callback: (v) => fmtNum(v) } },
       },
     },
+  }), (chart) => {
+    const ds = chart.data.datasets[0];
+    ds.data = sensorPoints;
+    ds.label = sensorSelect.value;
+    ds.pointRadius = sensorPoints.length > 60 ? 0 : 3;
+    chart.$showDate = showDate;
+    chart.options.scales.y.title.text = sensorUnit ? `${sensorSelect.value} (${sensorUnit})` : sensorSelect.value;
   });
 }
 
@@ -337,30 +428,57 @@ function setLive(on) {
   liveEl.dataset.state = on ? 'on' : 'off';
   liveEl.textContent = on ? 'Live' : 'Not live';
 }
+// Log the first live row from each table, to help check its format.
+const logged = new Set();
+const logFirst = (table, row) => {
+  if (logged.has(table)) return;
+  logged.add(table);
+  console.info(`First live row from ${table}:`, row);
+};
+
+function onMeasurement({ eventType, new: m }) {
+  logFirst('measurements', m);
+  if (eventType === 'INSERT') {
+    setStatus(`New measurement: ${m.analyte ?? '?'} ${m.technique ?? ''}, electrode ${m.electrode ?? '?'}.`);
+    if (follow.checked) enqueue('show', () => showMeasurement(m.id));
+    else if (String(m.sample_id) === curveSample.value) {
+      enqueue('list', () => loadMeasurementList(m.sample_id, curveMeasurement.value));
+    }
+  } else if (eventType === 'UPDATE' && String(m.id) === shownMeasurementId) {
+    // e.g. the rig adds the curve or result after creating the row
+    enqueue('curve', () => loadCurve(m.id));
+  }
+  enqueue('pots', loadPotsData);
+}
+
+function onSensorReading({ new: r }) {
+  logFirst('sensor_readings', r);
+  if (!hasOption(sensorSelect, r.sensor)) {
+    // First reading from a new sensor: refresh the list (and the chart if it was empty).
+    enqueue('sensors', async () => {
+      const before = sensorSelect.value;
+      await loadSensorList();
+      if (sensorSelect.value !== before) await loadSensorData();
+    });
+    return;
+  }
+  if (r.sensor === sensorSelect.value) addSensorPoint(r);
+}
 
 function subscribeLive() {
   channel = db
     .channel('dashboard-live')
-    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'samples' }, async () => {
-      await loadSamples();
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'samples' }, ({ new: s }) => {
+      logFirst('samples', s);
+      enqueue('samples', loadSamples);
     })
-    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'measurements' }, async ({ new: m }) => {
-      if (follow.checked) await showMeasurement(m.id);
-      else if (String(m.sample_id) === curveSample.value) await loadMeasurementList(m.sample_id, curveMeasurement.value);
-      await loadPotsData();
-      setStatus(`New measurement: ${m.analyte} ${m.technique}, electrode ${m.electrode}.`);
-    })
-    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'sensor_readings' }, async ({ new: r }) => {
-      if (![...sensorSelect.options].some((o) => o.value === r.sensor)) {
-        await loadSensorList();
-        if (sensorSelect.value === r.sensor) await loadSensorData();
-        return;
-      }
-      if (r.sensor !== sensorSelect.value) return;
-      sensorPoints.push({ x: Date.parse(r.created_at), y: Number(r.value) });
-      renderSensor();
-    })
-    .subscribe((status) => setLive(status === 'SUBSCRIBED'));
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'measurements' }, onMeasurement)
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'measurements' }, onMeasurement)
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'sensor_readings' }, onSensorReading)
+    .subscribe((status, err) => {
+      setLive(status === 'SUBSCRIBED');
+      if (err) fail('Live updates', err);
+    });
 }
 
 // =====================================================================
@@ -375,7 +493,7 @@ async function start(session) {
   if (started) return;
   started = true;
   $('[data-user]').textContent = session.user.email;
-  showSignedIn(true);
+  showSignedIn(true); // show the cards before drawing, so charts get their real size
   setStatus('Loading…');
   await loadSamples();
   await Promise.all([showMeasurement(), loadPotsData(), loadSensorList().then(loadSensorData)]);
@@ -388,7 +506,7 @@ function stop() {
   if (channel) { db.removeChannel(channel); channel = null; }
   setLive(false);
   destroyCharts();
-  samples = []; potsRows = []; sensorPoints = [];
+  samples = []; potsRows = []; sensorPoints = []; sensorUnit = ''; shownMeasurementId = null;
   [curveSample, curveMeasurement, potsRun, potsAnalyte, potsTechnique, sensorSelect].forEach((s) => s.replaceChildren());
   [curveMeta, sensorMeta, $('[data-user]')].forEach((el) => (el.textContent = ''));
   potsTableBody.replaceChildren();
