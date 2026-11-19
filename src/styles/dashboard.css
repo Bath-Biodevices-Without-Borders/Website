@@ -1,0 +1,60 @@
+/* Team dashboard (dashboard.html). Builds on legal.css for the light page style. */
+.dash [hidden] { display: none !important; }
+.dash { padding-block: 7rem 5rem; }
+.dash__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.legal.dash h1 { margin-bottom: 0; }
+.dash__session { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; font-size: 0.95rem; }
+.dash__user { color: var(--ink-soft); overflow-wrap: anywhere; }
+
+.dash__live {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+  background: var(--clear-2); color: var(--ink-soft);
+}
+.dash__live::before { content: ''; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: currentColor; }
+.dash__live[data-state='on'] { color: var(--link-light); }
+
+.dash__status { min-height: 1.6em; margin: 0.75rem 0 1rem; color: var(--ink-soft); }
+.dash__status.is-error { color: #a4161a; font-weight: 600; }
+
+.dash__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.75rem; padding: 0.55rem 1.3rem; border-radius: 999px; border: 1px solid var(--ink);
+  background: var(--ink); color: var(--clear); font-weight: 650; cursor: pointer;
+}
+.dash__btn:hover { background: var(--deep-2); }
+.dash__btn:disabled { opacity: 0.6; cursor: progress; }
+.dash__btn--ghost { background: transparent; color: var(--ink); min-height: 2.4rem; padding-inline: 1rem; }
+.dash__btn--ghost:hover { background: var(--clear-2); }
+
+.dash__login, .dash__card {
+  background: #fcfcfb; border: 1px solid var(--clear-2); border-radius: var(--radius-l);
+  padding: clamp(1.25rem, 3vw, 2rem); margin-bottom: 1.5rem;
+}
+.dash__login { max-width: 28rem; }
+.legal .dash__login h2, .legal .dash__card h2 { margin-top: 0; }
+.dash__login form { display: grid; gap: 0.4rem; margin-top: 1rem; }
+.dash__login label { font-weight: 600; margin-top: 0.5rem; }
+.dash__login button { margin-top: 1rem; justify-self: start; }
+
+.dash input[type='email'], .dash input[type='password'], .dash select {
+  font: inherit; color: var(--ink); background: #fff;
+  border: 1px solid #9aaab2; border-radius: var(--radius-s);
+  padding: 0.5rem 0.65rem; min-height: 2.75rem; max-width: 100%;
+}
+.dash select:disabled { color: var(--ink-soft); background: var(--clear); }
+
+.dash__filters { display: flex; flex-wrap: wrap; align-items: end; gap: 0.75rem 1.25rem; margin-bottom: 0.75rem; }
+.dash__filters label { display: grid; gap: 0.25rem; font-size: 0.9rem; font-weight: 600; min-width: 0; max-width: 100%; }
+.dash__filters .dash__check { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; min-height: 2.75rem; }
+.dash__check input { width: 1.1rem; height: 1.1rem; accent-color: var(--ink); }
+
+.dash__hint, .dash__meta { color: var(--ink-soft); font-size: 0.95rem; }
+.legal .dash__meta { min-height: 1.6em; margin-bottom: 0.5rem; }
+
+.dash__chart { position: relative; height: clamp(16rem, 45vw, 24rem); }
+.dash__chart--short { height: clamp(14rem, 35vw, 18rem); }
+
+.dash__table { border-collapse: collapse; margin-top: 1rem; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.dash__table th, .dash__table td { text-align: left; padding: 0.35rem 1.5rem 0.35rem 0; border-bottom: 1px solid var(--clear-2); }
+.dash__table th { color: var(--ink-soft); font-weight: 600; }

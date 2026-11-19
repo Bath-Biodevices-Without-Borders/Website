@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- @head_dashboard -->
+  <title>Team dashboard | Bath Biodevices</title>
+  <meta name="description" content="Team-only dashboard for the Bath Biodevices membrane test rig." />
+  <script type="module" src="/src/dashboard.js"></script>
+</head>
+<body class="page-legal page-dashboard">
+  <!-- @header -->
+  <main id="main" tabindex="-1" class="legal dash">
+    <div class="wrap">
+      <div class="dash__top">
+        <h1>Test rig dashboard</h1>
+        <div class="dash__session" data-signed-in hidden>
+          <span class="dash__live" data-live data-state="off">Not live</span>
+          <span class="dash__user" data-user></span>
+          <button type="button" class="dash__btn dash__btn--ghost" data-signout>Sign out</button>
+        </div>
+      </div>
+      <p class="dash__status" role="status" aria-live="polite" data-status></p>
+
+      <!-- Signed out: only the form is shown. No data is in this page's HTML. -->
+      <section class="dash__login" data-signed-out hidden aria-labelledby="login-title">
+        <h2 id="login-title">Team sign-in</h2>
+        <p>This page is for Bath Biodevices team members. Ask the hardware lead for a login.</p>
+        <form data-login novalidate>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="username" required />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required />
+          <button type="submit" class="dash__btn">Sign in</button>
+        </form>
+      </section>
+
+      <div data-signed-in hidden>
+        <section class="dash__card" aria-labelledby="curve-title">
+          <h2 id="curve-title">Voltammetry curve</h2>
+          <div class="dash__filters">
+            <label>Sample <select data-curve-sample></select></label>
+            <label>Measurement <select data-curve-measurement></select></label>
+            <label class="dash__check"><input type="checkbox" data-follow checked /> Jump to new measurements</label>
+          </div>
+          <p class="dash__meta" data-curve-meta></p>
+          <div class="dash__chart"><canvas data-curve-chart role="img" aria-label="Voltammetry curve: current against potential"></canvas></div>
+        </section>
+
+        <section class="dash__card" aria-labelledby="pots-title">
+          <h2 id="pots-title">Results across pots 1–4</h2>
+          <p class="dash__hint">Shows what each membrane removes. Pot 2 is after membrane 1, and so on. Bars are the mean of all electrode results for that pot.</p>
+          <div class="dash__filters">
+            <label>Run <select data-pots-run></select></label>
+            <label>Analyte <select data-pots-analyte></select></label>
+            <label>Technique <select data-pots-technique></select></label>
+          </div>
+          <div class="dash__chart dash__chart--short"><canvas data-pots-chart role="img" aria-label="Bar chart of mean result per pot. The same figures are in the table below."></canvas></div>
+          <table class="dash__table" data-pots-table>
+            <caption class="sr-only">Mean result per pot</caption>
+            <thead><tr><th scope="col">Pot</th><th scope="col">Mean result</th><th scope="col">Readings</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section class="dash__card" aria-labelledby="sensor-title">
+          <h2 id="sensor-title">Sensor trends</h2>
+          <div class="dash__filters">
+            <label>Sensor <select data-sensor></select></label>
+            <label>Period
+              <select data-sensor-range>
+                <option value="1">Last hour</option>
+                <option value="24" selected>Last 24 hours</option>
+                <option value="168">Last 7 days</option>
+                <option value="0">All</option>
+              </select>
+            </label>
+          </div>
+          <p class="dash__meta" data-sensor-meta></p>
+          <div class="dash__chart"><canvas data-sensor-chart role="img" aria-label="Line chart of the selected sensor's value over time"></canvas></div>
+        </section>
+      </div>
+
+      <noscript><p>Turn on JavaScript to use the dashboard.</p></noscript>
+    </div>
+  </main>
+  <!-- @footer -->
+</body>
+</html>
