@@ -223,7 +223,7 @@ h3 .btn{margin-left:auto;padding:3px 9px;font-size:12px}
     <section class="view" id="v-requests">
       <div class="listWrap">
         <div style="max-width:760px">
-          <p class="note" style="margin:0 0 8px">Describe what you'd like added or changed (a part, a connection, a correction). Lala reviews each request, makes the change and replies here.</p>
+          <p class="note" style="margin:0 0 8px">Describe what you'd like added or changed (a part, a connection, a correction). Each request is reviewed, and you'll see the outcome and any reply here.</p>
           <div id="reqForm" class="card" style="margin-bottom:14px">
             <label class="f"><span>Your request</span><textarea id="reqText" placeholder="e.g. Add a level sensor to reservoir 2 and connect it to the carrier's digital inputs"></textarea></label>
             <div class="acts"><select id="reqDiag" class="btn"></select><span class="spacer"></span><button class="btn pri" id="reqSend">Send request</button></div>
@@ -283,7 +283,7 @@ function hint(t){const h=$("#hint");if(t){h.textContent=t;h.style.display="block
 /* ---------- data ---------- */
 const SB_URL="https://cvjyymfzdnaucjahufzc.supabase.co",SB_KEY="sb_publishable_1KcZ5hJtdHZ_Y1enWPqzhw_ixRCQPRM";
 let sb=null,session=null,isEditor=false,isOwner=false,myName="";const priv=new Map();
-const pv=n=>priv.get("nodes/"+n.id)||{notes:"",flag:""};const isFlagged=n=>!!(n.flagged||n.flag||(isOwner&&pv(n).flag));
+const pv=n=>priv.get("nodes/"+n.id)||{notes:"",flag:"",extra:{}};const pc=(c,id)=>priv.get(c+"/"+id)||{notes:"",flag:"",extra:{}};const isFlagged=n=>!!(n.flagged||n.flag||(isOwner&&pv(n).flag));
 function newId(){const a="abcdefghijklmnopqrstuvwxyz0123456789";let s="";const r=new Uint8Array(20);(window.crypto||{}).getRandomValues?crypto.getRandomValues(r):r.forEach((_,i)=>r[i]=Math.random()*256|0);r.forEach(x=>s+=a[x%36]);return s}
 function makeDb(sb){
   const cache={},listeners={};const ALL=COLLS.concat(["history","requests"]);ALL.forEach(c=>{cache[c]=new Map();listeners[c]=[]});
@@ -312,7 +312,7 @@ async function refreshAuth(){
   isOwner=false;priv.clear();
   if(session){try{const a=await sb.rpc("hub_is_editor");isEditor=!!a.data;const b=await sb.rpc("hub_my_name");myName=(b.data||"")||(session.user.email||"").split("@")[0];
     const o=await sb.rpc("hub_is_owner");isOwner=!!o.data;
-    if(isOwner){const r=await sb.from("hub_private").select("coll,id,notes,flag");(r.data||[]).forEach(x=>priv.set(x.coll+"/"+x.id,{notes:x.notes||"",flag:x.flag||""}))}}catch(_){}
+    if(isOwner){const r=await sb.from("hub_private").select("coll,id,notes,flag,extra");(r.data||[]).forEach(x=>priv.set(x.coll+"/"+x.id,{notes:x.notes||"",flag:x.flag||"",extra:x.extra||{}}))}}catch(_){}
     maybeAskPassword();}
   readOnly=!isEditor;assets=isEditor?{upload:uploadFile}:null;document.body.classList.toggle("viewer",!isEditor);
   const btn=$("#authBtn");btn.style.display="";
@@ -366,9 +366,15 @@ function maybeAskPassword(){
   $("#pwGo").onclick=async()=>{const a=$("#pw1").value,b=$("#pw2").value;if(a.length<8){toast("Use at least 8 characters.");return}if(a!==b){toast("The two passwords don’t match.");return}
     const r=await sb.auth.updateUser({password:a,data:{has_password:true}});if(r.error){toast("Couldn’t save it: "+r.error.message,5000);return}closeModal();toast("Password saved")};
 }
+async function savePrivItem(c,id,notes,extra){
+  const cur=pc(c,id),ex=Object.assign({},cur.extra||{},extra||{});
+  if(notes===cur.notes&&JSON.stringify(ex)===JSON.stringify(cur.extra||{}))return true;
+  const ok=await write(async()=>{const r=await sb.from("hub_private").upsert({coll:c,id,notes,flag:cur.flag||"",extra:ex,updated_at:new Date().toISOString()});if(r.error)throw r.error});
+  if(ok)priv.set(c+"/"+id,{notes,flag:cur.flag||"",extra:ex});return ok;
+}
 async function savePriv(n,notes,flag){
-  const ok=await write(async()=>{const r=await sb.from("hub_private").upsert({coll:"nodes",id:n.id,notes,flag,updated_at:new Date().toISOString()});if(r.error)throw r.error});
-  if(!ok)return false;priv.set("nodes/"+n.id,{notes,flag});
+  const ok=await write(async()=>{const r=await sb.from("hub_private").upsert({coll:"nodes",id:n.id,notes,flag,extra:pv(n).extra||{},updated_at:new Date().toISOString()});if(r.error)throw r.error});
+  if(!ok)return false;priv.set("nodes/"+n.id,{notes,flag,extra:pv(n).extra||{}});
   if(!!flag!==!!n.flagged){const patch={flagged:!!flag};if(flag&&!n.notes)patch.notes="Flagged: still undecided.";await editItem("nodes",n.id,patch,{name:n.label,diagram:n.diagram,summary:flag?"flagged":"flag cleared"})}
   return true;
 }
@@ -855,31 +861,36 @@ function confirmBox(msg,yes,label){
 }
 
 /* ---------- parts / values / files ---------- */
-async function saveListItem(c,it,data,labels){
-  const nm=data.name;
-  if(it&&it.id){const sm=diff(it,data,labels);if(!sm){toast("No changes");return}return editItem(c,it.id,data,{name:nm,summary:sm})}
-  return addItem(c,data,{name:nm});
+async function saveListItem(c,it,data,labels,pnotes,pextra){
+  const nm=data.name;let id=it&&it.id,ok=true;
+  const privChanged=isOwner&&pnotes!==undefined&&(pnotes!==pc(c,id||"").notes||JSON.stringify(Object.assign({},pc(c,id||"").extra,pextra||{}))!==JSON.stringify(pc(c,id||"").extra||{}));
+  if(id){const sm=diff(it,data,labels);if(!sm&&!privChanged){toast("No changes");return}if(sm)ok=await editItem(c,id,data,{name:nm,summary:sm})}
+  else{id=await addItem(c,data,{name:nm});ok=!!id}
+  if(ok&&id&&isOwner&&pnotes!==undefined)ok=await savePrivItem(c,id,pnotes,pextra);
+  if(ok&&privChanged)renderLists();
+  return ok;
 }
-const PL={name:"part",qty:"qty",unitCost:"unit cost",supplier:"supplier",link:"link",status:"status",nodeId:"symbol"};
+const PRIVF=[{k:"pnotes",l:"🔒 Private notes (only you can see)",t:"textarea"}];
+const PL={name:"part",qty:"qty",notes:"note",supplier:"supplier",link:"link",status:"status",nodeId:"symbol"};
 function partForm(it){it=it||{};openForm({title:it.id?"Edit part":"New part",
-  fields:[{k:"name",l:"Part",t:"text",req:1},{k:"qty",l:"Quantity",t:"number"},{k:"unitCost",l:"Unit cost (£)",t:"number"},{k:"supplier",l:"Supplier",t:"text"},{k:"link",l:"Link",t:"url",ph:"https://"},{k:"status",l:"Status",t:"select",o:PART_STATUS},{k:"nodeId",l:"Symbol",t:"node"},{k:"notes",l:"Notes",t:"textarea"}],
-  values:Object.assign({qty:1,status:"To check"},it),
-  onSave:v=>{const d={name:v.name,qty:v.qty===""?1:v.qty,unitCost:v.unitCost,supplier:v.supplier,link:v.link,status:v.status,nodeId:v.nodeId,notes:v.notes};if(isArrived(d)){d.arrivedAt=it.arrivedAt||new Date().toISOString();d.arrivedBy=it.arrivedBy||myName||""}return saveListItem("parts",it,d,PL)},
+  fields:[{k:"name",l:"Part",t:"text",req:1},{k:"qty",l:"Quantity",t:"number"},{k:"supplier",l:"Supplier",t:"text"},{k:"link",l:"Link",t:"url",ph:"https://"},{k:"status",l:"Status",t:"select",o:PART_STATUS},{k:"nodeId",l:"Symbol",t:"node"},{k:"notes",l:"Note (everyone can see)",t:"textarea"}].concat(isOwner?[{k:"unitCost",l:"🔒 Unit cost, £ (only you can see)",t:"number"}].concat(PRIVF):[]),
+  values:Object.assign({qty:1,status:"To check"},it,it.id?{pnotes:pc("parts",it.id).notes,unitCost:pc("parts",it.id).extra.unitCost??""}:{}),
+  onSave:v=>{const d={name:v.name,qty:v.qty===""?1:v.qty,supplier:v.supplier,link:v.link,status:v.status,nodeId:v.nodeId,notes:v.notes};if(isArrived(d)){d.arrivedAt=it.arrivedAt||new Date().toISOString();d.arrivedBy=it.arrivedBy||myName||""}return saveListItem("parts",it,d,PL,isOwner?v.pnotes:undefined,isOwner?{unitCost:v.unitCost}:undefined)},
   onDelete:it.id?()=>confirmBox("Delete part “"+it.name+"”?",()=>delItem("parts",it.id,{name:it.name})):null})}
-const VL={name:"name",value:"value",unit:"unit",status:"status",nodeId:"symbol"};
+const VL={name:"name",value:"value",unit:"unit",status:"status",nodeId:"symbol",notes:"note"};
 function varForm(it){it=it||{};openForm({title:it.id?"Edit design value":"New design value",
-  fields:[{k:"name",l:"Name",t:"text",req:1,ph:"e.g. Current range"},{k:"value",l:"Value",t:"text",req:1},{k:"unit",l:"Unit",t:"text"},{k:"status",l:"Status",t:"select",o:VAR_STATUS},{k:"nodeId",l:"Symbol",t:"node"},{k:"notes",l:"Notes / why",t:"textarea"}],
-  values:Object.assign({status:"Target"},it),
-  onSave:v=>saveListItem("vars",it,{name:v.name,value:v.value,unit:v.unit,status:v.status,nodeId:v.nodeId,notes:v.notes},VL),
+  fields:[{k:"name",l:"Name",t:"text",req:1,ph:"e.g. Current range"},{k:"value",l:"Value",t:"text",req:1},{k:"unit",l:"Unit",t:"text"},{k:"status",l:"Status",t:"select",o:VAR_STATUS},{k:"nodeId",l:"Symbol",t:"node"},{k:"notes",l:"Note (everyone can see)",t:"textarea"}].concat(isOwner?PRIVF:[]),
+  values:Object.assign({status:"Target"},it,it.id?{pnotes:pc("vars",it.id).notes}:{}),
+  onSave:v=>saveListItem("vars",it,{name:v.name,value:v.value,unit:v.unit,status:v.status,nodeId:v.nodeId,notes:v.notes},VL,isOwner?v.pnotes:undefined),
   onDelete:it.id?()=>confirmBox("Delete “"+it.name+"”?",()=>delItem("vars",it.id,{name:it.name})):null})}
-const FL={name:"name",type:"type",link:"link",fileName:"upload",nodeId:"symbol"};
+const FL={name:"name",type:"type",link:"link",fileName:"upload",nodeId:"symbol",notes:"note"};
 function fileForm(it){it=it||{};openForm({title:it.id?"Edit file":"Add file or link",
-  fields:[{k:"name",l:"Name",t:"text",req:1},{k:"type",l:"Type",t:"select",o:FILE_TYPES},{k:"link",l:"Link (Onshape, GitHub, Drive…)",t:"url",ph:"https://"},{k:"upload",l:it.assetId?"Replace uploaded file":"Or upload a file (up to 50 MB)",t:"file"},{k:"nodeId",l:"Symbol",t:"node"},{k:"notes",l:"Notes",t:"textarea"}],
-  values:Object.assign({type:"CAD"},it),
+  fields:[{k:"name",l:"Name",t:"text",req:1},{k:"type",l:"Type",t:"select",o:FILE_TYPES},{k:"link",l:"Link (Onshape, GitHub, Drive…)",t:"url",ph:"https://"},{k:"upload",l:it.assetId?"Replace uploaded file":"Or upload a file (up to 50 MB)",t:"file"},{k:"nodeId",l:"Symbol",t:"node"},{k:"notes",l:"Note (everyone can see)",t:"textarea"}].concat(isOwner?PRIVF:[]),
+  values:Object.assign({type:"CAD"},it,it.id?{pnotes:pc("files",it.id).notes}:{}),
   onSave:async(v,file)=>{let assetId=it.assetId||"",fileName=it.fileName||"",assetUrl=it.assetUrl||"";
     if(file){if(!assets){toast("Uploads aren’t available for you here.");return}
       try{toast("Uploading…",20000);if(file.size>52428800){toast("That file is over 50 MB.",4000);return}const r=await assets.upload(file);assetId=r.id;assetUrl=r.url;fileName=file.name;toast("Uploaded")}catch(e){toast("Upload failed: "+((e&&e.message)||"try a smaller file"),4000);return}}
-    await saveListItem("files",it,{name:v.name,type:v.type,link:v.link,assetId,assetUrl,fileName,nodeId:v.nodeId,notes:v.notes},FL)},
+    await saveListItem("files",it,{name:v.name,type:v.type,link:v.link,assetId,assetUrl,fileName,nodeId:v.nodeId,notes:v.notes},FL,isOwner?v.pnotes:undefined)},
   onDelete:it.id?()=>confirmBox("Remove “"+it.name+"” from the hub?",()=>delItem("files",it.id,{name:it.name})):null})}
 function fileUrl(f){return safeUrl(f.assetUrl||f.link)}
 $("#addPart").onclick=()=>partForm();$("#addVar").onclick=()=>varForm();$("#addFile").onclick=()=>fileForm();
@@ -893,22 +904,22 @@ $("#partsSeg").addEventListener("click",e=>{const b=e.target.closest("button");i
 function renderLists(){
   const q=$("#q-parts").value,ps=[...S.parts.values()].filter(p=>match(q,p.name,p.supplier,p.notes,p.status,nodeName(p.nodeId))&&(!partsFilter||(partsFilter==="arr")===isArrived(p))).sort((a,b)=>String(a.name).localeCompare(b.name));
   const nArr=[...S.parts.values()].filter(isArrived).length;
-  let tot=0,unk=0;[...S.parts.values()].forEach(p=>{if(p.unitCost===""||p.unitCost==null)unk++;else tot+=(+p.qty||1)*(+p.unitCost||0)});
-  $("#partsTotal").textContent=S.parts.size?`${nArr} of ${S.parts.size} arrived`+(isEditor?` · Total ${money(tot)}${unk?` · ${unk} unpriced`:""}`:""):"";
+  const costOf=p=>{const c=pc("parts",p.id).extra.unitCost;return c===""||c==null?null:+c};let tot=0,unk=0;[...S.parts.values()].forEach(p=>{const c=costOf(p);if(c==null)unk++;else tot+=(+p.qty||1)*c});
+  $("#partsTotal").textContent=S.parts.size?`${nArr} of ${S.parts.size} arrived`+(isOwner?` · 🔒 Total ${money(tot)}${unk?` · ${unk} unpriced`:""}`:""):"";
   $("#partsList").innerHTML=ps.map(p=>{const u=safeUrl(p.link);return`<div class="card"><div class="top"><span class="nm">${esc(p.name)}</span>${statusPill(p.status)}</div>
-    <div class="meta">×${esc(p.qty||1)}${isEditor&&p.unitCost!==""&&p.unitCost!=null?` · ${money(+p.unitCost)} each`:""}${p.supplier?` · ${esc(p.supplier)}`:""}</div>
-    ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}
+    <div class="meta">×${esc(p.qty||1)}${isOwner&&costOf(p)!=null?` · 🔒 ${money(costOf(p))} each`:""}${p.supplier?` · ${esc(p.supplier)}`:""}</div>
+    ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}${isOwner&&pc("parts",p.id).notes?`<div class="meta">🔒 ${esc(pc("parts",p.id).notes)}</div>`:""}
     ${isArrived(p)&&p.arrivedAt?`<div class="meta" style="color:var(--ok)">Arrived ${esc(new Date(p.arrivedAt).toLocaleDateString(undefined,{day:"numeric",month:"short"}))}${p.arrivedBy?" · checked in by "+esc(p.arrivedBy):""}</div>`:""}
     <div class="row">${nodeChip(p.nodeId)}<span class="spacer"></span>${u?`<a class="lnk" href="${esc(u)}" target="_blank" rel="noopener noreferrer">Link</a>`:""}${isArrived(p)?"":`<button class="btn" data-arrive="${esc(p.id)}" style="color:var(--ok)">✓ Arrived</button>`}<button class="btn" data-edit="parts" data-id="${esc(p.id)}">Edit</button></div></div>`}).join("")||emptyList("parts");
   const qv=$("#q-vars").value,vs=[...S.vars.values()].filter(p=>match(qv,p.name,p.value,p.notes,nodeName(p.nodeId))).sort((a,b)=>String(a.name).localeCompare(b.name));
   $("#varsList").innerHTML=vs.map(p=>`<div class="card"><div class="top"><span class="nm">${esc(p.name)}</span>${statusPill(p.status)}</div>
     <div style="font-size:18px;font-weight:650">${esc(p.value)} <span class="muted" style="font-size:13px;font-weight:500">${esc(p.unit||"")}</span></div>
-    ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}
+    ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}${isOwner&&pc("vars",p.id).notes?`<div class="meta">🔒 ${esc(pc("vars",p.id).notes)}</div>`:""}
     <div class="row">${nodeChip(p.nodeId)}<span class="spacer"></span><button class="btn" data-edit="vars" data-id="${esc(p.id)}">Edit</button></div></div>`).join("")||emptyList("vars");
   const qf=$("#q-files").value,fs=[...S.files.values()].filter(p=>match(qf,p.name,p.type,p.notes,nodeName(p.nodeId))).sort((a,b)=>String(a.name).localeCompare(b.name));
   $("#filesList").innerHTML=fs.map(p=>{const u=fileUrl(p);return`<div class="card"><div class="top"><span class="nm">${u?`<a class="lnk" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(p.name)}</a>`:esc(p.name)}</span><span class="pill">${esc(p.type||"")}</span></div>
     ${p.assetId?`<div class="meta">Uploaded: ${esc(p.fileName||"file")}</div>`:(!u?`<div class="meta" style="color:var(--warn)">No link or upload yet</div>`:"")}
-    ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}
+    ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}${isOwner&&pc("files",p.id).notes?`<div class="meta">🔒 ${esc(pc("files",p.id).notes)}</div>`:""}
     <div class="row">${nodeChip(p.nodeId)}<span class="spacer"></span>${isStl(p)?`<button class="btn" data-cad="${esc(p.id)}">View in 3D</button>`:""}<button class="btn" data-edit="files" data-id="${esc(p.id)}">Edit</button></div></div>`}).join("")||emptyList("files");
 }
 function emptyList(c){return`<p class="muted">${S[c].size?"Nothing matches that search.":"Nothing here yet."}</p>`}
