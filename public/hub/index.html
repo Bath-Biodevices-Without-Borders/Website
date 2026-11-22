@@ -399,10 +399,10 @@ function renderPresence(){
   const el=$("#presence");
   el.innerHTML=named.slice(0,4).map(p=>`<img src="${esc(initials(p.me?"You":p.name))}" alt="">`).join("")+
     (named.length>4?`<span class="more">+${named.length-4}</span>`:"")+(guests?`<span class="more">${named.length?"+ ":""}${guests} viewer${guests>1?"s":""}</span>`:"");
-  el.title=ps.length+" here now";
+  el.title=session?ps.length+" here now":"";el.style.cursor=session?"pointer":"default";if(!session)$("#presPop").classList.remove("on");
   $("#presList").innerHTML=`<li style="font-weight:650">Here now (${ps.length})</li>`+ps.map(p=>`<li><img src="${esc(initials(p.name?(p.me?"You":p.name):"?"))}" style="width:22px;height:22px;border-radius:50%" alt=""><span><b>${esc(p.me?(p.name?p.name+" (you)":"You"):(p.name||"Viewer (not signed in)"))}</b><br><span class="sub">${esc(presLine(p))}</span></span></li>`).join("");
 }
-$("#presence").addEventListener("click",e=>{e.stopPropagation();$("#presPop").classList.toggle("on")});
+$("#presence").addEventListener("click",e=>{e.stopPropagation();if(!session){$("#presPop").classList.remove("on");return}$("#presPop").classList.toggle("on")});
 document.addEventListener("click",e=>{if(!e.target.closest("#presPop"))$("#presPop").classList.remove("on")});
 async function init(){
   renderAll();
