@@ -282,7 +282,8 @@ function hint(t){const h=$("#hint");if(t){h.textContent=t;h.style.display="block
 
 /* ---------- data ---------- */
 const SB_URL="https://cvjyymfzdnaucjahufzc.supabase.co",SB_KEY="sb_publishable_1KcZ5hJtdHZ_Y1enWPqzhw_ixRCQPRM";
-let sb=null,session=null,isEditor=false,myName="";
+let sb=null,session=null,isEditor=false,isOwner=false,myName="";const priv=new Map();
+const pv=n=>priv.get("nodes/"+n.id)||{notes:"",flag:""};const isFlagged=n=>!!(n.flagged||n.flag||(isOwner&&pv(n).flag));
 function newId(){const a="abcdefghijklmnopqrstuvwxyz0123456789";let s="";const r=new Uint8Array(20);(window.crypto||{}).getRandomValues?crypto.getRandomValues(r):r.forEach((_,i)=>r[i]=Math.random()*256|0);r.forEach(x=>s+=a[x%36]);return s}
 function makeDb(sb){
   const cache={},listeners={};const ALL=COLLS.concat(["history","requests"]);ALL.forEach(c=>{cache[c]=new Map();listeners[c]=[]});
@@ -308,7 +309,11 @@ function makeDb(sb){
 }
 async function refreshAuth(){
   const r=await sb.auth.getSession();session=r.data&&r.data.session;myId=session?session.user.id:null;isEditor=false;myName="";
-  if(session){try{const a=await sb.rpc("hub_is_editor");isEditor=!!a.data;const b=await sb.rpc("hub_my_name");myName=(b.data||"")||(session.user.email||"").split("@")[0]}catch(_){}}
+  isOwner=false;priv.clear();
+  if(session){try{const a=await sb.rpc("hub_is_editor");isEditor=!!a.data;const b=await sb.rpc("hub_my_name");myName=(b.data||"")||(session.user.email||"").split("@")[0];
+    const o=await sb.rpc("hub_is_owner");isOwner=!!o.data;
+    if(isOwner){const r=await sb.from("hub_private").select("coll,id,notes,flag");(r.data||[]).forEach(x=>priv.set(x.coll+"/"+x.id,{notes:x.notes||"",flag:x.flag||""}))}}catch(_){}
+    maybeAskPassword();}
   readOnly=!isEditor;assets=isEditor?{upload:uploadFile}:null;document.body.classList.toggle("viewer",!isEditor);
   const btn=$("#authBtn");btn.style.display="";
   btn.textContent=!session?"Sign in to edit":"Sign out";btn.title=session?(myName||"")+(isEditor?"":" (view only)"):"";
@@ -322,10 +327,51 @@ async function uploadFile(file){
 }
 $("#authBtn").addEventListener("click",async()=>{
   if(session){await sb.auth.signOut();await refreshAuth();toast("Signed out");return}
-  openForm({title:"Sign in to edit",fields:[{k:"email",l:"Your email (it must be on the editor list)",t:"text",req:1,ph:"you@example.com"}],values:{},
-    onSave:async v=>{const r=await sb.auth.signInWithOtp({email:v.email,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname}});
-      if(r.error)toast("Couldn’t send the link: "+r.error.message,5000);else toast("Check your email for a sign-in link.",6000)}});
+  openSignIn();
 });
+function openSignIn(){
+  formCfg={fields:[],onSave:async()=>{}};$("#mTitle").textContent="Sign in to edit";
+  $("#mForm").innerHTML=`<label class="f"><span>Email</span><input id="siEmail" type="email" autocomplete="username" placeholder="you@bath.ac.uk"></label>
+    <label class="f"><span>Password</span><input id="siPass" type="password" autocomplete="current-password"></label>
+    <div class="acts"><button class="btn pri" type="button" id="siGo">Sign in</button><button class="btn" type="button" data-m="cancel">Cancel</button></div>
+    <p class="note" style="margin:14px 0 6px">First time, or forgotten your password? Enter your email above and we'll send you a link to set one. Only emails on the editor list get a link.</p>
+    <button class="btn" type="button" id="siLink">Email me a link to set my password</button>`;
+  $("#modal").classList.add("on");setTimeout(()=>{try{$("#siEmail").focus()}catch(_){}},50);
+  $("#siGo").onclick=async()=>{const email=$("#siEmail").value.trim(),password=$("#siPass").value;if(!email||!password){toast("Enter your email and password.");return}
+    const r=await sb.auth.signInWithPassword({email,password});
+    if(r.error){toast(/invalid/i.test(r.error.message)?"Wrong email or password. First time here? Use the link button below.":"Couldn’t sign in: "+r.error.message,5000);return}
+    closeModal();toast("Signed in");};
+  $("#siPass").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("#siGo").click()}});
+  $("#siEmail").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("#siPass").focus()}});
+  $("#siLink").onclick=async()=>{const email=$("#siEmail").value.trim();if(!email){toast("Enter your email first.");return}
+    const ok=await sb.rpc("hub_email_allowed",{p_email:email});
+    if(ok.error){toast("Couldn’t check that email. Try again.",4000);return}
+    if(!ok.data){toast("That email isn’t on the editor list. Ask Lala to add it.",5000);return}
+    const r=await sb.auth.signInWithOtp({email,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname+"?setpw=1"}});
+    if(r.error)toast("Couldn’t send the link: "+r.error.message,5000);else{closeModal();toast("Check your email for the link to set your password.",7000)}};
+}
+let pwAsked=false;
+function maybeAskPassword(){
+  if(!session||pwAsked)return;const q=new URLSearchParams(location.search);
+  const need=q.has("setpw")||!(session.user.user_metadata&&session.user.user_metadata.has_password);
+  if(q.has("setpw")){try{history.replaceState(null,"",location.pathname+location.hash)}catch(_){}}
+  if(!need)return;pwAsked=true;
+  formCfg={fields:[],onSave:async()=>{}};$("#mTitle").textContent="Set your password";
+  $("#mForm").innerHTML=`<p class="note" style="margin:0 0 10px">Choose a password for next time. You'll sign in with your email and this password.</p>
+    <label class="f"><span>New password (at least 8 characters)</span><input id="pw1" type="password" autocomplete="new-password"></label>
+    <label class="f"><span>Repeat it</span><input id="pw2" type="password" autocomplete="new-password"></label>
+    <div class="acts"><button class="btn pri" type="button" id="pwGo">Save password</button><button class="btn" type="button" data-m="cancel">Later</button></div>`;
+  $("#modal").classList.add("on");
+  $("#pw1").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("#pw2").focus()}});$("#pw2").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("#pwGo").click()}});
+  $("#pwGo").onclick=async()=>{const a=$("#pw1").value,b=$("#pw2").value;if(a.length<8){toast("Use at least 8 characters.");return}if(a!==b){toast("The two passwords don’t match.");return}
+    const r=await sb.auth.updateUser({password:a,data:{has_password:true}});if(r.error){toast("Couldn’t save it: "+r.error.message,5000);return}closeModal();toast("Password saved")};
+}
+async function savePriv(n,notes,flag){
+  const ok=await write(async()=>{const r=await sb.from("hub_private").upsert({coll:"nodes",id:n.id,notes,flag,updated_at:new Date().toISOString()});if(r.error)throw r.error});
+  if(!ok)return false;priv.set("nodes/"+n.id,{notes,flag});
+  if(!!flag!==!!n.flagged){const patch={flagged:!!flag};if(flag&&!n.notes)patch.notes="Flagged: still undecided.";await editItem("nodes",n.id,patch,{name:n.label,diagram:n.diagram,summary:flag?"flagged":"flag cleared"})}
+  return true;
+}
 let loadedAll=false;
 /* ---------- presence: who's here ---------- */
 let presCh=null,presT=null,presState={};
@@ -571,8 +617,8 @@ function nodeSvg(n,op){
   let s=`<g data-node="${esc(n.id)}" class="node ${ctrl?"ctrl":"phys"}${sel?" sel":""}${connectFrom===n.id?" from":""}" transform="translate(${p.x} ${p.y})" opacity="${op}">`+
     `<rect class="hb" x="${-w/2-6}" y="${-h/2-6}" width="${w+12}" height="${h+12}"/>`+symSvg(n);
   if(cnt)s+=`<circle class="badge" cx="${w/2+4}" cy="${-h/2-2}" r="7.5"/><text class="badgeT" x="${w/2+4}" y="${-h/2+1.3}">${cnt}</text>`;
-  if(n.flag)s+=`<g class="flagb"><path d="M${-w/2-14} ${-h/2+4}l9 -16l9 16z" fill="#ef4444"/><text x="${-w/2-5}" y="${-h/2+2}">!</text></g>`;
-  s+=`<title>${esc(n.label)}${n.tag?" ("+esc(n.tag)+")":""}${n.flag?"\n⚠ "+esc(n.flag):""}${n.notes?"\n"+esc(n.notes):""}</title>`;
+  if(isFlagged(n))s+=`<g class="flagb"><path d="M${-w/2-14} ${-h/2+4}l9 -16l9 16z" fill="#ef4444"/><text x="${-w/2-5}" y="${-h/2+2}">!</text></g>`;
+  s+=`<title>${esc(n.label)}${n.tag?" ("+esc(n.tag)+")":""}${n.notes?"\n"+esc(n.notes):""}${isOwner&&pv(n).flag?"\n⚠ "+esc(pv(n).flag):""}${isOwner&&pv(n).notes?"\n"+esc(pv(n).notes):""}</title>`;
   return s+"</g>";
 }
 function rel(e){const r=svg.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
@@ -693,9 +739,11 @@ function renderSheet(){
     ${(s==="valve"||s==="valve3")?`<label class="f"><span>Actuator letter</span><input id="nAct" value="${esc(n.act||"")}" placeholder="blank = manual"></label>`:""}</div>
     <label class="f"><span>Symbol</span><select id="nSym">${symOptions(symValue(n))}</select></label>
     ${s==="instrument"?`<div class="row2"><label class="f"><span>Tap line to the right (px)</span><input id="nSx" type="number" value="${esc(n.sx||0)}"></label><label class="f"><span>Tap line down (px)</span><input id="nSy" type="number" value="${esc(n.sy||0)}"></label></div>`:""}
-    ${n.flag?`<div class="flagbox"><b>Differs from your design:</b> ${esc(n.flag)}</div>`:""}
-    <label class="f"><span>Notes, decisions, open questions</span><textarea id="nNotes">${esc(n.notes||"")}</textarea></label>
-    <label class="f"><span>Flag: how this differs from the design (clear it once resolved)</span><textarea id="nFlag" style="min-height:50px">${esc(n.flag||"")}</textarea></label>
+    ${isOwner&&pv(n).flag?`<div class="flagbox"><b>Your flag:</b> ${esc(pv(n).flag)}</div>`:(isFlagged(n)?`<div class="flagbox">Flagged as still undecided.</div>`:"")}
+    <label class="f"><span>Note (everyone can see this)</span><textarea id="nNotes" style="min-height:56px" placeholder="e.g. Flagged: still undecided">${esc(n.notes||"")}</textarea></label>
+    ${isOwner?`<div style="border:1px dashed var(--line);border-radius:10px;padding:10px 10px 2px;margin:0 0 10px"><p class="note" style="margin:0 0 8px">🔒 Only you can see these two fields.</p>
+      <label class="f"><span>Your private notes</span><textarea id="nPriv">${esc(pv(n).notes)}</textarea></label>
+      <label class="f"><span>Your flag reasoning (while this has text, everyone sees a ▲! marker)</span><textarea id="nFlag" style="min-height:50px">${esc(pv(n).flag)}</textarea></label></div>`:""}
     <button class="btn pri" data-act="saveNode">Save</button>
     <div id="shLists"></div>
     <div style="margin-top:18px"><button class="btn danger" data-act="delNode">Delete symbol</button></div>`;
@@ -733,11 +781,14 @@ $("#sheet").addEventListener("click",async e=>{
   if(act==="saveNode"){
     const ps=parseSym($("#nSym").value);
     const patch={label:$("#nLabel").value.trim()||n.label,tag:$("#nTag").value.trim(),symbol:ps.symbol,kind:ps.kind||(ps.layer==="physical"?(n.layer==="physical"?n.kind||"":""):"controller"),layer:ps.layer,notes:$("#nNotes").value};
-    if($("#nAct"))patch.act=$("#nAct").value.trim();if($("#nFlag"))patch.flag=$("#nFlag").value.trim();
+    if($("#nAct"))patch.act=$("#nAct").value.trim();
     if($("#nSx")){patch.sx=+$("#nSx").value||0;patch.sy=+$("#nSy").value||0}
-    const sm=diff(n,patch,{label:"name",tag:"tag",symbol:"symbol",kind:"type",act:"actuator",sx:"tap x",sy:"tap y",flag:"flag"});
-    if(!sm){toast("No changes");return}
-    if(await editItem("nodes",n.id,patch,{name:patch.label,diagram:n.diagram,summary:sm})){document.activeElement&&document.activeElement.blur();body0().dataset.for="";toast("Saved");renderAll()}}
+    const sm=diff(n,patch,{label:"name",tag:"tag",symbol:"symbol",kind:"type",act:"actuator",sx:"tap x",sy:"tap y",notes:"note"});
+    let privChanged=false,pn="",pf="";if(isOwner&&$("#nPriv")){pn=$("#nPriv").value;pf=$("#nFlag").value.trim();const cur=pv(n);privChanged=pn!==cur.notes||pf!==cur.flag}
+    if(!sm&&!privChanged){toast("No changes");return}
+    let ok=true;if(sm)ok=await editItem("nodes",n.id,patch,{name:patch.label,diagram:n.diagram,summary:sm});
+    if(ok&&privChanged){Object.assign(n,patch);ok=await savePriv(n,pn,pf)}
+    if(ok){document.activeElement&&document.activeElement.blur();body0().dataset.for="";toast("Saved");renderAll()}}
   if(act==="delNode")confirmBox("Delete “"+n.label+"” and its connections? You can restore it from History.",async()=>{await deleteNode(n.id);closeSheet()});
   if(act==="addPart")partForm({nodeId:n.id});
   if(act==="addVar")varForm({nodeId:n.id});
@@ -843,9 +894,9 @@ function renderLists(){
   const q=$("#q-parts").value,ps=[...S.parts.values()].filter(p=>match(q,p.name,p.supplier,p.notes,p.status,nodeName(p.nodeId))&&(!partsFilter||(partsFilter==="arr")===isArrived(p))).sort((a,b)=>String(a.name).localeCompare(b.name));
   const nArr=[...S.parts.values()].filter(isArrived).length;
   let tot=0,unk=0;[...S.parts.values()].forEach(p=>{if(p.unitCost===""||p.unitCost==null)unk++;else tot+=(+p.qty||1)*(+p.unitCost||0)});
-  $("#partsTotal").textContent=S.parts.size?`${nArr} of ${S.parts.size} arrived · Total ${money(tot)}${unk?` · ${unk} unpriced`:""}`:"";
+  $("#partsTotal").textContent=S.parts.size?`${nArr} of ${S.parts.size} arrived`+(isEditor?` · Total ${money(tot)}${unk?` · ${unk} unpriced`:""}`:""):"";
   $("#partsList").innerHTML=ps.map(p=>{const u=safeUrl(p.link);return`<div class="card"><div class="top"><span class="nm">${esc(p.name)}</span>${statusPill(p.status)}</div>
-    <div class="meta">×${esc(p.qty||1)}${p.unitCost!==""&&p.unitCost!=null?` · ${money(+p.unitCost)} each`:""}${p.supplier?` · ${esc(p.supplier)}`:""}</div>
+    <div class="meta">×${esc(p.qty||1)}${isEditor&&p.unitCost!==""&&p.unitCost!=null?` · ${money(+p.unitCost)} each`:""}${p.supplier?` · ${esc(p.supplier)}`:""}</div>
     ${p.notes?`<div class="meta">${esc(p.notes)}</div>`:""}
     ${isArrived(p)&&p.arrivedAt?`<div class="meta" style="color:var(--ok)">Arrived ${esc(new Date(p.arrivedAt).toLocaleDateString(undefined,{day:"numeric",month:"short"}))}${p.arrivedBy?" · checked in by "+esc(p.arrivedBy):""}</div>`:""}
     <div class="row">${nodeChip(p.nodeId)}<span class="spacer"></span>${u?`<a class="lnk" href="${esc(u)}" target="_blank" rel="noopener noreferrer">Link</a>`:""}${isArrived(p)?"":`<button class="btn" data-arrive="${esc(p.id)}" style="color:var(--ok)">✓ Arrived</button>`}<button class="btn" data-edit="parts" data-id="${esc(p.id)}">Edit</button></div></div>`}).join("")||emptyList("parts");
@@ -1068,7 +1119,7 @@ function build3D(){
   ns.forEach(n=>{const g=model3(n);const p=pos(n);g.position.set(p.x/SC,0,p.y/SC);g.userData.id=n.id;
     if(selected&&selected.type==="node"&&selected.id===n.id)g.traverse(o=>{if(o.isMesh&&o.material!==T.mat.glass)o.material=T.mat.sel});
     T.group.add(g);T.pick.push(g);tops.set(n.id,g.userData.top);
-    if(showLbl){const t=n.layer==="control"?(n.tag||abbr(n.label))+" · "+n.label:(n.tag?n.tag+" · ":"")+n.label;const l=label3(trunc((n.flag?"⚠ ":"")+t,36),n.flag?"#fca5a5":n.layer==="control"?"#fdba74":"#e5e9ee");l.position.set(p.x/SC,g.userData.top+0.35,p.y/SC);T.group.add(l)}});
+    if(showLbl){const t=n.layer==="control"?(n.tag||abbr(n.label))+" · "+n.label:(n.tag?n.tag+" · ":"")+n.label;const l=label3(trunc((isFlagged(n)?"⚠ ":"")+t,36),isFlagged(n)?"#fca5a5":n.layer==="control"?"#fdba74":"#e5e9ee");l.position.set(p.x/SC,g.userData.top+0.35,p.y/SC);T.group.add(l)}});
   const es=[...S.edges.values()].filter(e=>by.has(e.from)&&by.has(e.to));
   es.forEach(e=>{const a=by.get(e.from),b=by.get(e.to),k=edgeKind(e,a,b);
     if(k==="signal"){const pa=pos(a),pb=pos(b);const y1=a.layer==="control"?3.2:tops.get(a.id),y2=b.layer==="control"?3.2:tops.get(b.id);
@@ -1082,7 +1133,7 @@ function pick3(e){
   const box=$("#info3d");
   if(!hits.length){box.style.display="none";return}
   let o=hits[0].object;while(o&&!o.userData.id)o=o.parent;const n=o&&S.nodes.get(o.userData.id);if(!n){box.style.display="none";return}
-  box.innerHTML=`<b>${esc(n.label)}${n.tag?" · "+esc(n.tag):""}</b><div style="color:#9aa3ad;font-size:12px;margin-bottom:6px">${esc(n.layer==="control"?"Control · "+(CTRL_KINDS[n.kind]||""):SYMBOLS[symOf(n)]||"")}</div>${n.notes?`<div style="margin-bottom:8px">${esc(n.notes)}</div>`:""}<button class="btn" data-goto3="${esc(n.id)}">Open in schematic</button> <button class="btn" data-close3="1">Close</button>`;
+  box.innerHTML=`<b>${esc(n.label)}${n.tag?" · "+esc(n.tag):""}</b><div style="color:#9aa3ad;font-size:12px;margin-bottom:6px">${esc(n.layer==="control"?"Control · "+(CTRL_KINDS[n.kind]||""):SYMBOLS[symOf(n)]||"")}</div>${n.notes?`<div style="margin-bottom:8px">${esc(n.notes)}</div>`:""}${isOwner&&(pv(n).flag||pv(n).notes)?`<div style="margin-bottom:8px;color:#fca5a5">🔒 ${esc([pv(n).flag,pv(n).notes].filter(Boolean).join(" · "))}</div>`:""}<button class="btn" data-goto3="${esc(n.id)}">Open in schematic</button> <button class="btn" data-close3="1">Close</button>`;
   box.style.display="block";
 }
 $("#info3d").addEventListener("click",e=>{const g=e.target.closest("[data-goto3]");if(g){$("#info3d").style.display="none";gotoNode(g.dataset.goto3)}if(e.target.closest("[data-close3]"))$("#info3d").style.display="none"});

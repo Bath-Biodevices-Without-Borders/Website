@@ -27,3 +27,9 @@
 - Collect each member's photo, course, year, LinkedIn and Indeed (with consent) into `src/content/team.json`.
 - Merge `redesign` into `main` to publish.
 - Review legal pages with the SU/supervisor.
+
+## Team project hub (22 Nov 2026)
+- `/hub/` is the team's system hub (schematics with a control overlay, 3D view, parts list, files, change history, requests). It lives in `public/hub/` and is copied into the build as-is, so it doesn't use the shared header/footer or the site's CSP.
+- Linked from the footer. Anyone can view it; editing needs an email + password sign-in, and only emails on the editor list (kept in the TBB Supabase project) can edit. The page has `noindex` so search engines skip it.
+- Unlike the rest of the site, the hub talks to Supabase (supabase.co) for its data, and signed-in editors' sessions are kept in the browser's local storage. No cookies or tracking. The privacy/cookie pages may need a line about this; check with the team before changing them.
+- Owner: Lase Lawale (tl2086@bath.ac.uk).
