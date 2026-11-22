@@ -369,7 +369,7 @@ const ELEC=new Set(["board","electrode","power","screen","motor"]);
 const PART_STATUS=["To check","To source","To order","On hold","Ordered","Arrived","In use"];
 const VAR_STATUS=["Target","Fixed","Assumed","Measured","TBC"];
 const FILE_TYPES=["CAD","PCB","Firmware / code","Spreadsheet","Datasheet","Drawing / diagram","Report / doc","Image / photo","Data","Other"];
-const TEAMS=["Team Lead","Sensors","Fluidics","Hardware & Electronics","Software","Membranes","Logistics"];let curTeam="";
+const TEAMS=["Sensors","Fluidics","Hardware & Electronics","Software","Membranes","Logistics"];let curTeam="";
 const ED_TABS=new Set(["parts","files","history","requests","team"]);
 const teamOpts=v=>`<option value="">No team</option>`+TEAMS.map(t=>`<option${t===v?" selected":""}>${esc(t)}</option>`).join("");
 const PROTECTED=new Set(["sideA","sideB"]);
