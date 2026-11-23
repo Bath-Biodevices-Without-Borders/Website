@@ -9,6 +9,14 @@
 - New Gallery page (`gallery.html`), linked in the header. Sections and photos are listed in `src/content/gallery.json`; photos go in `public/gallery/`. Sections: Oasis, Saline Supernova, Microfluidics, Membrane Test Rig, Nitrate Sensing, Biohackathon.
 - Top of the homepage changed from brown to neon blue (#1F51FF); accent and small-print colours there were lightened to keep WCAG AA contrast. Footer is now dark navy.
 
+## Update (19 Nov 2026)
+- New team-only dashboard at `dashboard.html` (branch `dashboard`), following the handover doc "Dashboard handover: GitHub site to Supabase" from Lala. It signs in to Supabase and shows: a voltammetry curve (choose sample and measurement), mean result per pot 1–4 for a run/analyte/technique, sensor trends over time, and live updates.
+- Changed from the handover doc: supabase-js and Chart.js are installed with npm and bundled by Vite, not loaded from a CDN. This site has a build step, and its CSP and "no third-party scripts" rule would block CDN scripts.
+- The dashboard has its own CSP (`src/partials/head_dashboard.html`) that also allows the Supabase project. It is `noindex` and not in the sitemap. It is linked from the footer ("Team dashboard").
+- Privacy and cookie pages updated for the dashboard: Supabase handles team logins, and a sign-in token is kept in local storage while signed in (strictly necessary, no consent needed). Still to be reviewed with the legal pages.
+- Live updates need the three tables added to the `supabase_realtime` publication (Lala's side).
+- Table names are version 1 and may change. Lala will warn before they do. Queries are all in `src/dashboard.js`.
+
 ## Decisions
 - One scrolling homepage + privacy, cookies, terms, accessibility, 404. Old About/Work/Contact/Join Us pages removed; old `#/about`-style links redirect to the homepage.
 - No cookies, analytics, embeds or third-party requests (fonts self-hosted), so no cookie banner is needed under PECR. A Content-Security-Policy meta tag enforces this.

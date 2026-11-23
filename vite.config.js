@@ -13,10 +13,22 @@ const partials = () => ({
   },
 });
 
-const pages = ['index', 'privacy', 'cookies', 'terms', 'accessibility', 'gallery', '404'];
+// Dev server only: Vite injects CSS as inline <style> tags and talks to its
+// HMR websocket, both of which the strict CSP blocks. Production keeps the CSP.
+const devCsp = () => ({
+  name: 'dev-csp',
+  apply: 'serve',
+  transformIndexHtml(html) {
+    return html
+      .replace("style-src 'self'", "style-src 'self' 'unsafe-inline'")
+      .replace("connect-src 'self'", "connect-src 'self' ws://localhost:* ws://127.0.0.1:*");
+  },
+});
+
+const pages = ['index', 'privacy', 'cookies', 'terms', 'accessibility', 'gallery', 'dashboard', '404'];
 
 export default defineConfig({
-  plugins: [partials()],
+  plugins: [partials(), devCsp()],
   build: {
     outDir: 'build',
     rollupOptions: {

@@ -26,4 +26,7 @@ yarn-error.log*
 temp_*
 
 # env files (DO NOT REMOVE!)
-.envpackage-lock.json
+.env
+
+# Editor settings
+.idea/
