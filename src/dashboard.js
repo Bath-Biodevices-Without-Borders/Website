@@ -27,7 +27,11 @@ const fail = (context, error) => {
   setStatus(`${context}: ${error?.message || error}`, true);
 };
 // Show any unexpected error on the page rather than failing silently.
-window.addEventListener('error', (e) => fail('Page error', e.error || e.message));
+// (Chart.js resizing can trigger a harmless ResizeObserver warning; ignore it.)
+window.addEventListener('error', (e) => {
+  if (/ResizeObserver loop/i.test(e.message || '')) return;
+  fail('Page error', e.error || e.message);
+});
 window.addEventListener('unhandledrejection', (e) => fail('Page error', e.reason));
 
 // Timestamps arrive as ISO from the REST API ("2026-11-21T14:04:02.123+00:00") but can
@@ -81,15 +85,34 @@ function fillSelect(select, items, { keep = true, placeholder } = {}) {
 const unique = (arr) => [...new Set(arr.filter((v) => v != null && v !== ''))].sort();
 const hasOption = (select, value) => [...select.options].some((o) => o.value === String(value));
 
+// Supabase's API returns at most 1000 rows per request (its "Max rows" setting),
+// whatever .limit() asks for. Page through with .range() to read up to `max` rows.
+// `build` must return a fresh, ordered query each time.
+const PAGE = 1000;
+async function fetchRows(build, max) {
+  const rows = [];
+  while (rows.length < max) {
+    const from = rows.length;
+    const to = Math.min(from + PAGE, max) - 1;
+    const { data, error } = await build().range(from, to);
+    if (error) return { data: null, error, capped: false };
+    rows.push(...data);
+    if (data.length < to - from + 1) return { data: rows, error: null, capped: false };
+  }
+  return { data: rows, error: null, capped: true };
+}
+
 // Live events can arrive faster than we can query. Run refreshes one at a time,
 // and collapse repeated requests for the same refresh into one.
 let queue = Promise.resolve();
 const pending = new Set();
+// Jobs queued before a sign-out are skipped.
 function enqueue(key, fn) {
   if (pending.has(key)) return;
   pending.add(key);
+  const gen = session;
   queue = queue
-    .then(() => { pending.delete(key); return fn(); })
+    .then(() => { pending.delete(key); if (isCurrent(gen)) return fn(); })
     .catch((e) => fail('Live update failed', e));
 }
 
@@ -126,6 +149,8 @@ const lineDataset = () => ({
 let samples = [];             // newest first
 let channel = null;
 let started = false;
+let session = 0;              // bumped on every start/stop; async work checks it is still current
+const isCurrent = (gen) => started && gen === session;
 const NO_LABEL = '__none__';  // select value for samples with no run_label
 
 // =====================================================================
@@ -236,16 +261,23 @@ async function showMeasurement(measurementId) {
   const [m] = data;
   if (!m) { await loadCurve(null); return; }
   if (m.sample_id != null && !hasOption(curveSample, m.sample_id)) await loadSamples();
+  if (m.sample_id != null && !hasOption(curveSample, m.sample_id)) {
+    // Older than the newest 500 samples: add it so the dropdown isn't blank.
+    curveSample.disabled = false;
+    curveSample.append(new Option(`#${m.sample_id} (older sample)`, String(m.sample_id)));
+  }
   if (m.sample_id != null) curveSample.value = String(m.sample_id);
   await loadMeasurementList(m.sample_id, m.id);
   await loadCurve(m.id);
 }
 
-curveSample.addEventListener('change', async () => {
+// User changes go through the same queue as live updates, so they can't race them.
+// Each job reads the dropdowns when it runs, so the latest choice always wins.
+curveSample.addEventListener('change', () => enqueue('user-sample', async () => {
   await loadMeasurementList(curveSample.value);
   await loadCurve(curveMeasurement.value);
-});
-curveMeasurement.addEventListener('change', () => loadCurve(curveMeasurement.value));
+}));
+curveMeasurement.addEventListener('change', () => enqueue('user-measurement', () => loadCurve(curveMeasurement.value)));
 
 // =====================================================================
 // 2. Results across pots 1-4
@@ -254,20 +286,26 @@ const potsRun = $('[data-pots-run]');
 const potsAnalyte = $('[data-pots-analyte]');
 const potsTechnique = $('[data-pots-technique]');
 const potsTableBody = $('[data-pots-table] tbody');
+const potsNote = $('[data-pots-note]');
+const MAX_POT_ROWS = 20000;
 let potsRows = [];
 
 async function loadPotsData() {
   const run = potsRun.value;
   if (!run) { potsRows = []; renderPots(); return; }
-  let q = db
-    .from('measurements')
-    .select('result, unit, analyte, technique, samples!inner(pot, run_label)')
-    .not('result', 'is', null)
-    .limit(5000);
-  q = run === NO_LABEL ? q.is('samples.run_label', null) : q.eq('samples.run_label', run);
-  const { data, error } = await q;
+  const build = () => {
+    const q = db
+      .from('measurements')
+      .select('id, result, unit, analyte, technique, samples!inner(pot, run_label)')
+      .not('result', 'is', null)
+      .order('id', { ascending: true }); // stable order so pages don't overlap
+    return run === NO_LABEL ? q.is('samples.run_label', null) : q.eq('samples.run_label', run);
+  };
+  const { data, error, capped } = await fetchRows(build, MAX_POT_ROWS);
   if (error) return fail('Could not load pot results', error);
+  if (run !== potsRun.value) return; // selection changed while loading
   potsRows = data;
+  potsNote.textContent = capped ? `Only the first ${MAX_POT_ROWS} results for this run are included.` : '';
   fillSelect(potsAnalyte, unique(data.map((r) => r.analyte)).map((a) => ({ value: a, label: a })), { placeholder: 'No results' });
   fillSelect(potsTechnique, unique(data.map((r) => r.technique)).map((t) => ({ value: t, label: t })), { placeholder: 'No results' });
   renderPots();
@@ -317,7 +355,7 @@ function renderPots() {
   });
 }
 
-potsRun.addEventListener('change', loadPotsData);
+potsRun.addEventListener('change', () => enqueue('pots', loadPotsData));
 potsAnalyte.addEventListener('change', renderPots);
 potsTechnique.addEventListener('change', renderPots);
 
@@ -327,9 +365,10 @@ potsTechnique.addEventListener('change', renderPots);
 const sensorSelect = $('[data-sensor]');
 const sensorRange = $('[data-sensor-range]');
 const sensorMeta = $('[data-sensor-meta]');
-const MAX_SENSOR_POINTS = 5000;
+const MAX_SENSOR_POINTS = 20000;
 let sensorPoints = [];   // [{x: ms, y: value}], oldest first
 let sensorUnit = '';
+let sensorCapped = false;
 
 async function loadSensorList() {
   // No DISTINCT in the REST API: read recent rows and de-duplicate here.
@@ -345,13 +384,19 @@ async function loadSensorList() {
 async function loadSensorData() {
   const sensor = sensorSelect.value;
   if (!sensor) { sensorPoints = []; renderSensor(); return; }
-  let q = db.from('sensor_readings').select('created_at, value, unit').eq('sensor', sensor);
-  const hours = Number(sensorRange.value);
-  if (hours) q = q.gte('created_at', new Date(Date.now() - hours * 3600e3).toISOString());
-  // Newest rows, flipped to time order for the chart.
-  const { data, error } = await q.order('created_at', { ascending: false }).limit(MAX_SENSOR_POINTS);
+  const range = sensorRange.value;
+  const hours = Number(range);
+  const since = hours ? new Date(Date.now() - hours * 3600e3).toISOString() : null;
+  // Newest rows, flipped to time order for the chart. id breaks ties so pages don't overlap.
+  const build = () => {
+    let q = db.from('sensor_readings').select('id, created_at, value, unit').eq('sensor', sensor);
+    if (since) q = q.gte('created_at', since);
+    return q.order('created_at', { ascending: false }).order('id', { ascending: false });
+  };
+  const { data, error, capped } = await fetchRows(build, MAX_SENSOR_POINTS);
   if (error) return fail('Could not load sensor readings', error);
-  if (sensor !== sensorSelect.value) return; // selection changed while loading
+  if (sensor !== sensorSelect.value || range !== sensorRange.value) return; // selection changed while loading
+  sensorCapped = capped;
   data.reverse();
   sensorUnit = unique(data.map((r) => r.unit)).join(' / ');
   sensorPoints = data.map((r) => ({ x: toMs(r.created_at), y: toNum(r.value) }))
@@ -383,7 +428,8 @@ function addSensorPoint(row) {
 function renderSensor() {
   const last = sensorPoints.at(-1);
   sensorMeta.textContent = last
-    ? `Latest: ${fmtNum(last.y)} ${sensorUnit} at ${fmtTime(last.x)} · ${sensorPoints.length} readings`
+    ? `Latest: ${fmtNum(last.y)} ${sensorUnit} at ${fmtTime(last.x)} · ${sensorPoints.length} readings` +
+      (sensorCapped ? ` (newest ${MAX_SENSOR_POINTS} only)` : '')
     : (sensorSelect.value ? 'No readings in this period yet.' : '');
   const showDate = Number(sensorRange.value) !== 1;
   upsertChart('sensor', $('[data-sensor-chart]'), () => ({
@@ -416,8 +462,8 @@ function renderSensor() {
   });
 }
 
-sensorSelect.addEventListener('change', loadSensorData);
-sensorRange.addEventListener('change', loadSensorData);
+sensorSelect.addEventListener('change', () => enqueue('sensor', loadSensorData));
+sensorRange.addEventListener('change', () => enqueue('sensor', loadSensorData));
 
 // =====================================================================
 // Live updates (Supabase Realtime). Needs the tables in the
@@ -436,11 +482,15 @@ const logFirst = (table, row) => {
   console.info(`First live row from ${table}:`, row);
 };
 
+let latestMeasurementId = null;
 function onMeasurement({ eventType, new: m }) {
   logFirst('measurements', m);
   if (eventType === 'INSERT') {
     setStatus(`New measurement: ${m.analyte ?? '?'} ${m.technique ?? ''}, electrode ${m.electrode ?? '?'}.`);
-    if (follow.checked) enqueue('show', () => showMeasurement(m.id));
+    // Several rows can arrive together (one per electrode). Requests are merged, so
+    // remember the newest id and read it when the job runs.
+    latestMeasurementId = m.id;
+    if (follow.checked) enqueue('show', () => showMeasurement(latestMeasurementId));
     else if (String(m.sample_id) === curveSample.value) {
       enqueue('list', () => loadMeasurementList(m.sample_id, curveMeasurement.value));
     }
@@ -462,7 +512,11 @@ function onSensorReading({ new: r }) {
     });
     return;
   }
-  if (r.sensor === sensorSelect.value) addSensorPoint(r);
+  // Queued (not merged: each reading gets its own key) so a reading can't be lost
+  // under a reload that is already running.
+  if (r.sensor === sensorSelect.value) enqueue(Symbol('point'), () => {
+    if (r.sensor === sensorSelect.value) addSensorPoint(r);
+  });
 }
 
 function subscribeLive() {
@@ -489,26 +543,31 @@ const showSignedIn = (on) => {
   document.querySelectorAll('[data-signed-out]').forEach((el) => (el.hidden = on));
 };
 
-async function start(session) {
+async function start(authSession) {
   if (started) return;
   started = true;
-  $('[data-user]').textContent = session.user.email;
+  const gen = ++session;
+  $('[data-user]').textContent = authSession.user.email;
   showSignedIn(true); // show the cards before drawing, so charts get their real size
   setStatus('Loading…');
   await loadSamples();
+  if (!isCurrent(gen)) return; // signed out while loading
   await Promise.all([showMeasurement(), loadPotsData(), loadSensorList().then(loadSensorData)]);
+  if (!isCurrent(gen)) return;
   if (!statusEl.classList.contains('is-error')) setStatus('');
   subscribeLive();
 }
 
 function stop() {
   started = false;
+  session++;
   if (channel) { db.removeChannel(channel); channel = null; }
   setLive(false);
   destroyCharts();
-  samples = []; potsRows = []; sensorPoints = []; sensorUnit = ''; shownMeasurementId = null;
+  samples = []; potsRows = []; sensorPoints = []; sensorUnit = ''; sensorCapped = false;
+  shownMeasurementId = null; latestMeasurementId = null;
   [curveSample, curveMeasurement, potsRun, potsAnalyte, potsTechnique, sensorSelect].forEach((s) => s.replaceChildren());
-  [curveMeta, sensorMeta, $('[data-user]')].forEach((el) => (el.textContent = ''));
+  [curveMeta, sensorMeta, potsNote, $('[data-user]')].forEach((el) => (el.textContent = ''));
   potsTableBody.replaceChildren();
   showSignedIn(false);
 }

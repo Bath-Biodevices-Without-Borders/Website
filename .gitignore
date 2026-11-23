@@ -27,4 +27,6 @@ temp_*
 
 # env files (DO NOT REMOVE!)
 .env
-package-lock.json
+
+# Editor settings
+.idea/
